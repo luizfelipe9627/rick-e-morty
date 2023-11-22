@@ -1,0 +1,24 @@
+@font-face {
+  font-family: "Inter";
+  font-weight: 400;
+  src: (
+    url("../font/Inter-Regular.ttf") format("truetype") 400,
+    url("../font/Inter-Bold.ttf") format("truetype") 700
+  );
+}
+
+$main-font: "Inter", sans-serif !default;
+
+:root {
+  --main-font: #{$main-font};
+  --light-color: #ffffff;
+  --primary-color: #11b0c8;
+  --secondary-color: #313234;
+  --dark-color: #1a1a1a;
+  --accent-color: #bfde42;
+  --bg-color: #e4f4f4;
+  --overlay-color: #e4f4f480;
+  --text-color: #000000;
+  --nav-color: #1e1e20;
+  --border-color: #d9d9d9;
+}
