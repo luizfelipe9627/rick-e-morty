@@ -1,0 +1,22 @@
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 32px auto;
+
+  .favorites {
+    display: flex;
+    align-items: center;
+    height: 32px;
+    border-radius: 32px;
+    border: none;
+    padding: 0 4px;
+    background-color: var(--primary-color);
+    color: var(--light-color);
+
+    img {
+      width: 24px;
+      margin-right: 8px;
+    }
+  }
+}

@@ -1,0 +1,14 @@
+.label {
+  display: flex;
+  background-color: transparent;
+  border: none;
+  padding: 4px 6px;
+  align-items: center;
+  border-radius: 32px;
+  cursor: pointer;
+
+  p {
+    margin-left: 4px;
+    color: var(--secondary-color);
+  }
+}

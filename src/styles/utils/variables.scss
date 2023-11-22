@@ -1,13 +1,9 @@
 @font-face {
   font-family: "Inter";
-  font-weight: 400;
-  src: (
-    url("../font/Inter-Regular.ttf") format("truetype") 400,
-    url("../font/Inter-Bold.ttf") format("truetype") 700
-  );
+  src: (url("../font/Inter-Regular.ttf"), url("../font/Inter-Bold.ttf"));
 }
 
-$main-font: "Inter", sans-serif !default;
+$main-font: "Inter" !default;
 
 :root {
   --main-font: #{$main-font};
