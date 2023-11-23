@@ -6,6 +6,7 @@ interface LabelProps {
   toLink?: string;
   altImg?: string;
   srcImg?: string;
+  componentSvg?: React.ReactNode;
   children: React.ReactNode;
   style?: React.CSSProperties;
   onClick?: React.MouseEventHandler<HTMLElement>;
@@ -16,6 +17,7 @@ interface LabelProps {
   padding?: string;
   margin?: string;
   active?: boolean;
+  className?: string;
 }
 
 const Label = ({
@@ -29,6 +31,8 @@ const Label = ({
   color,
   backgroundColor,
   active,
+  componentSvg,
+  className,
   ...props
 }: LabelProps) => {
   const CustomComponent = toLink ? Link : "button";
@@ -49,11 +53,12 @@ const Label = ({
   return (
     <CustomComponent
       to={toLink ? `/${toLink}` : ""}
-      className={`${styles.label} ${active ? "active" : ""}`}
+      className={`${styles.label} ${className} ${active ? "active" : ""}`}
       style={labelStyle}
       onClick={onClick}
     >
       {srcImg && altImg && <img src={srcImg} alt={altImg} />}
+      {componentSvg && componentSvg}
       <p style={paragraphStyle}>{children}</p>
     </CustomComponent>
   );

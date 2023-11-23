@@ -9,14 +9,14 @@ a.label {
   align-items: center;
   border-radius: 32px;
   cursor: pointer;
- background-color: var(--bg-color2);
+  background-color: var(--bg-color2);
 
   p {
     color: var(--white-color);
     font-size: 14px;
   }
 
-  img {
+  img, svg {
     width: 24px;
     margin-right: 8px;
   }

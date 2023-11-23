@@ -12,11 +12,18 @@ body {
     --dark-gray-color: #ffffff;
     --black1-color: #1a1a1a;
     --gray-color: #e4f4f480;
+    --image-color: #313234;
+    --line-blue-color: #000000;
+    --button-ver-todos: #11b0c8;
 
     main {
       background-color: #1e1e20;
     }
   }
+}
+
+main {
+  height: 2000px;
 }
 
 .container {

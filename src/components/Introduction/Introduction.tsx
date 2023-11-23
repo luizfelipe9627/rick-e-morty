@@ -22,17 +22,14 @@ const Introduction = () => {
     ) as HTMLParagraphElement;
     const buttons = document.querySelectorAll(`.${styles.themes} button`);
 
-    if (newTheme === "dark") {
-      phrase.innerText = "Ai sim, Porr#@%&*";
-      document.body.classList.add("dark");
-      buttons[0].classList.add("active");
-      buttons[1].classList.remove("active");
-    } else {
-      phrase.innerText = "Wubba Lubba Dub Dub! Cuidado com os olhos.";
-      document.body.classList.remove("dark");
-      buttons[0].classList.remove("active");
-      buttons[1].classList.add("active");
-    }
+    const isDarkTheme = newTheme === "dark";
+    phrase.innerText = isDarkTheme
+      ? "Ai sim, Porr#@%&*"
+      : "Wubba Lubba Dub Dub! Cuidado com os olhos.";
+
+    document.body.classList.toggle("dark", isDarkTheme);
+    buttons[0].classList.toggle("active", isDarkTheme);
+    buttons[1].classList.toggle("active", !isDarkTheme);
   };
 
   React.useEffect(() => {
@@ -55,6 +52,7 @@ const Introduction = () => {
               srcImg={theme === "dark" ? MoonLight : MoonDark}
               altImg="Lua"
               onClick={() => updateTheme("dark")}
+              className="buttonDark"
             >
               Escuro
             </Label>
@@ -64,6 +62,7 @@ const Introduction = () => {
               altImg="Sol"
               margin="0 0 0 8px"
               onClick={() => updateTheme("light")}
+              className="buttonLight"
               active
             >
               Claro
