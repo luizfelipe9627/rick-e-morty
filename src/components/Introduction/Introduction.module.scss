@@ -1,64 +1,48 @@
 .introduction {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+  background-color: var(--bg-color);
 
-  .content {
-    .title {
-      color: var(--secondary-color);
-      font-size: 3rem;
-      font-weight: 700;
-      line-height: normal;
-      margin-bottom: 24px;
-      max-width: 12ch;
+  .wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 
-      span {
-        color: var(--primary-color);
+    .content {
+      .title {
+        color: var(--dark-gray-color);
+        font-size: 3rem;
         font-weight: 700;
+        line-height: normal;
+        margin-bottom: 24px;
+        max-width: 12ch;
+
+        span {
+          color: var(--blue1-color);
+          font-weight: 700;
+        }
       }
-    }
 
-    .subtitle {
-      margin-bottom: 64px;
-      font-size: 1rem;
-      color: var(--secondary-color);
-    }
+      .subtitle {
+        margin-bottom: 64px;
+        font-size: 1rem;
+        color: var(--dark-gray-color);
+      }
 
-    .themes {
-      display: flex;
-
-      .light,
-      .dark {
+      .themes {
         display: flex;
-        background-color: transparent;
-        border: none;
-        padding: 4px 6px;
-        align-items: center;
-        border-radius: 32px;
-        cursor: pointer;
 
-        p {
-          margin-left: 4px;
-          font-size: 14px;
-          color: var(--secondary-color);
+        button:nth-child(1) {
+          p {
+            color: var(--dark-gray-color);
+          }
         }
       }
 
-      .light {
-        background-color: var(--primary-color);
-        margin-left: 8px;
-
-        p {
-          color: var(--light-color);
-        }
+      .phrase {
+        display: block;
+        color: var(--blue1-color);
+        font-size: 16px;
+        margin-top: 24px;
       }
-    }
-
-    .phrase {
-      display: block;
-      color: var(--primary-color);
-      font-size: 16px;
-      margin-top: 24px;
     }
   }
 }

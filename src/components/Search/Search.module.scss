@@ -1,0 +1,44 @@
+.search {
+  display: flex;
+  justify-content: space-between;
+
+  .input {
+    display: flex;
+    position: relative;
+
+    input {
+      width: 405px;
+      background-color: var(--black1-color);
+      padding: 16px 64px 16px 12px;
+      border-radius: 32px;
+      border: 1px solid #313234;
+
+      &::placeholder {
+        color: var(--gray-color);
+        font-size: 16px;
+      }
+    }
+
+    button {
+      border: none;
+      background-color: transparent;
+      position: absolute;
+      right: 16px;
+      top: 8px;
+      cursor: pointer;
+    }
+  }
+
+  .filter {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+
+    button {
+      p {
+        color: var(--dark-gray-color);
+      }
+    }
+  }
+}

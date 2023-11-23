@@ -3,7 +3,32 @@
   font-weight: 400;
 }
 
+body {
+  background-color: var(--white-color);
+
+  &.dark {
+    --bg-color: #000000;
+    --bg-color2: #313234;
+    --dark-gray-color: #ffffff;
+    --black1-color: #1a1a1a;
+    --gray-color: #e4f4f480;
+
+    main {
+      background-color: #1e1e20;
+    }
+  }
+}
+
 .container {
   width: 70vw;
   margin: 0 auto;
+}
+
+.active {
+  background-color: var(--blue1-color) !important;
+  color: var(--dark-gray-color);
+
+  p {
+    color: var(--white-color) !important;
+  }
 }

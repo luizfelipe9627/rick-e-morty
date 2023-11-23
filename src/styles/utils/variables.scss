@@ -7,14 +7,16 @@ $main-font: "Inter" !default;
 
 :root {
   --main-font: #{$main-font};
-  --light-color: #ffffff;
-  --primary-color: #11b0c8;
-  --secondary-color: #313234;
-  --dark-color: #1a1a1a;
-  --accent-color: #bfde42;
-  --bg-color: #e4f4f4;
-  --overlay-color: #e4f4f480;
-  --text-color: #000000;
-  --nav-color: #1e1e20;
-  --border-color: #d9d9d9;
+
+  --black1-color: #ffffff;
+  --black2-color: #1e1e20;
+  
+  --dark-gray-color: #313234;
+  --blue1-color: #11b0c8;
+  --blue2-color: #42b4ca;
+  --pear-color: #bfde42;
+  --white-color: #ffffff;
+  --gray-color: #313234;
+  --bg-color2: #ffffff;
+  --bg-color: #ffffff;
 }

@@ -1,36 +1,61 @@
 import { Link } from "react-router-dom";
 import styles from "./Label.module.scss";
+import React from "react";
 
 interface LabelProps {
   toLink?: string;
   altImg?: string;
   srcImg?: string;
-  pText: string;
-
+  children: React.ReactNode;
+  style?: React.CSSProperties;
+  onClick?: React.MouseEventHandler<HTMLElement>;
   fontSize?: string;
   fontWeight?: string;
   color?: string;
   backgroundColor?: string;
+  padding?: string;
+  margin?: string;
+  active?: boolean;
 }
 
-const Label = ({ toLink, srcImg, altImg, pText, ...props }: LabelProps) => {
-  return toLink ? (
-    <Link
-      to={`/${toLink}`}
-      className={styles.label}
-      style={{ backgroundColor: `${props.backgroundColor}` }}
+const Label = ({
+  toLink,
+  srcImg,
+  altImg,
+  children,
+  onClick,
+  fontSize,
+  fontWeight,
+  color,
+  backgroundColor,
+  active,
+  ...props
+}: LabelProps) => {
+  const CustomComponent = toLink ? Link : "button";
+
+  // Estilos do componente(pai) personalizado.
+  const labelStyle: React.CSSProperties = {
+    backgroundColor,
+    ...props,
+  };
+
+  // Estilos do parágrafo(filho) personalizado.
+  const paragraphStyle: React.CSSProperties = {
+    fontSize,
+    fontWeight,
+    color,
+  };
+
+  return (
+    <CustomComponent
+      to={toLink ? `/${toLink}` : ""}
+      className={`${styles.label} ${active ? "active" : ""}`}
+      style={labelStyle}
+      onClick={onClick}
     >
       {srcImg && altImg && <img src={srcImg} alt={altImg} />}
-      <p style={{ ...props }}>{pText}</p>
-    </Link>
-  ) : (
-    <button
-      className={styles.label}
-      style={{ backgroundColor: `${props.backgroundColor}` }}
-    >
-      {srcImg && altImg && <img src={srcImg} alt={altImg} />}
-      <p style={{ ...props }}>{pText}</p>
-    </button>
+      <p style={paragraphStyle}>{children}</p>
+    </CustomComponent>
   );
 };
 

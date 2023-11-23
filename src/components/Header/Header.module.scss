@@ -1,22 +1,26 @@
 .header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin: 32px auto;
-
-  .favorites {
+  background-color: var(--bg-color);
+  padding: 32px 0;
+  
+  .wrapper {
     display: flex;
     align-items: center;
-    height: 32px;
-    border-radius: 32px;
-    border: none;
-    padding: 0 4px;
-    background-color: var(--primary-color);
-    color: var(--light-color);
+    justify-content: space-between;
 
-    img {
-      width: 24px;
-      margin-right: 8px;
+    .favorites {
+      display: flex;
+      align-items: center;
+      height: 32px;
+      border-radius: 32px;
+      border: none;
+      padding: 0 4px;
+      background-color: var(--blue1-color);
+      color: var(--white-color);
+
+      img {
+        width: 24px;
+        margin-right: 8px;
+      }
     }
   }
 }
