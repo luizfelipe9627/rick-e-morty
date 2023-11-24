@@ -3,12 +3,10 @@ import Label from "../Button/Label";
 import styles from "./Search.module.scss";
 import PlayLight from "../../assets/svg/PlayLight.svg";
 import PlayDark from "../../assets/svg/PlayDark.svg";
-import PlanetLight from "../../assets/svg/PlanetLight.svg";
-import PlanetDark from "../../assets/svg/PlanetDark.svg";
 import MagnifyinGlassLight from "../../assets/svg/MagnifyingGlassLight.svg";
 import MagnifyinGlassDark from "../../assets/svg/MagnifyingGlassDark.svg";
-import SmileyDark from "../Svg/Smiley/SmileyDark";
-import SmileyLight from "../Svg/Smiley/SmileyLight";
+import Smiley from "../Svg/Smiley";
+import Planet from "../Svg/Planet";
 
 const Search = () => {
   const [active, setActive] = React.useState("characters");
@@ -86,9 +84,9 @@ const Search = () => {
           <Label
             componentSvg={
               theme === "dark" ? (
-                <SmileyDark />
+                <Smiley theme="dark" />
               ) : (
-                <SmileyLight
+                <Smiley
                   color={active === "characters" ? "#FFFFFF" : "#313234"}
                 />
               )
@@ -100,10 +98,15 @@ const Search = () => {
             Personagens
           </Label>
           <Label
-            srcImg={
-              theme === "dark" || active == "locations"
-                ? PlanetLight
-                : PlanetDark
+            componentSvg={
+              theme === "dark" ? (
+                <Planet theme="dark" size="medium" />
+              ) : (
+                <Planet
+                  size="medium"
+                  color={active === "locations" ? "#FFFFFF" : "#313234"}
+                />
+              )
             }
             altImg="Planeta"
             onClick={handleClick}

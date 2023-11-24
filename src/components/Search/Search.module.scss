@@ -32,7 +32,7 @@
     }
   }
 
-  @media (max-width: 1330px) {
+  @media (max-width: 1200px) {
     justify-content: center;
 
     .input {
@@ -53,7 +53,7 @@
     align-items: center;
     gap: 8px;
 
-    @media (max-width: 1330px) {
+    @media (max-width: 1200px) {
       flex-direction: column;
     }
 

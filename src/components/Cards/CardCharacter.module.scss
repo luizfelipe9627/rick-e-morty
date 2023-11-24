@@ -1,0 +1,59 @@
+.cardCharacter {
+  background-color: var(--bg-card-color);
+  padding: 16px;
+  border-radius: 8px;
+
+  .photo {
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 16px;
+    }
+  }
+
+  .infos {
+    color: var(--dark-gray-color);
+
+    .wrapper {
+      position: relative;
+
+      .name {
+        color: var(--dark-gray-color);
+        font-size: 16px;
+        font-weight: 700;
+        margin: 16px 0;
+      }
+
+      .favorite {
+        position: absolute;
+        top: 0;
+        right: 0;
+        cursor: pointer;
+      }
+    }
+
+    .alive,
+    .species,
+    .planet {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      margin-bottom: 8px;
+    }
+
+    .planet {
+      margin-bottom: 24px;
+    }
+
+    .saibaMais {
+      display: flex;
+      justify-content: flex-end;
+
+      a {
+        background-color: var(--button-ver-todos);
+        max-width: max-content;
+      }
+    }
+  }
+}

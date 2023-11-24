@@ -1,3 +1,9 @@
 .character {
   margin: 60px auto;
+
+  .cards {
+    display: grid;
+    gap: 16px;
+    grid-template-columns: repeat(4, 1fr);
+  }
 }
