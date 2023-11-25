@@ -1,7 +1,13 @@
 import { useParams } from "react-router-dom";
 import useFetch from "../hooks/useFetch";
 import Heart from "../components/Svg/Heart";
-
+import Play from "../components/Svg/Play";
+import Alien from "../components/Svg/Alien";
+import Pulse from "../components/Svg/Pulse";
+import Gender from "../components/Svg/Gender";
+import useTheme from "../hooks/useTheme";
+import React from "react";
+import styles from "./Characters.module.scss";
 interface CharacterProps {
   id: number;
   name: string;
@@ -15,79 +21,93 @@ interface CharacterProps {
   };
   image: string;
   episode: [];
+  gender: string;
 }
 
 const Characters = () => {
   const { id } = useParams();
+  const [theme] = useTheme();
+
+  React.useEffect(() => {
+    // Adiciona a classe ao body com base no tema
+    document.body.classList.toggle("dark", theme === "dark");
+    // Salva o tema no localStorage
+    localStorage.setItem("theme", theme);
+  }, [theme]);
 
   const character = useFetch<CharacterProps>(
     `https://rickandmortyapi.com/api/character/${id}`,
   );
 
-  /*
-  {character.data &&
-    [character.data].map((character: CharacterProps) => (
-      <div key={character.id}>
-        <img src={character.image} alt={character.name} />
-        <h1>{character.name}</h1>
-        <p>{character.status}</p>
-        <p>{character.species}</p>
-        <p>{character.location.name}</p>
-      </div>
-    ))}
-  */
-
   return (
-    <div>
-      <div>
-        <div>
-          <img src="" alt="" />
-        </div>
+    <section className={`${styles.characters} container`}>
+      <div className={styles.wrapper}>
+        {character.loading && <p>Carregando...</p>}
 
-        <div>
-          <div>
-            <h1>Nome</h1>
-            <Heart size="medium" />
-          </div>
+        {character.data && id && (
+          <>
+            <div className={styles.infos}>
+              <img src={character.data.image} alt={character.data.name} />
 
-          <div>
-            <img src="" alt="" />
-            <p>Participou...</p>
-          </div>
+              <div>
+                <div className={styles.name}>
+                  <h1>{character.data.name}</h1>
+                  <Heart size="huge" />
+                </div>
 
-          <div>
-            <p>
-              <span>
-                <img src="" alt="" />
-              </span>
-              Vivo
-            </p>
+                <div className={styles.episode}>
+                  {theme === "dark" ? (
+                    <Play size="big" theme="dark" />
+                  ) : (
+                    <Play size="big" />
+                  )}
+                  <p>
+                    Participou de {character.data.episode.length}{" "}
+                    {character.data.episode.length > 1
+                      ? "episódios"
+                      : "episódio"}
+                  </p>
+                </div>
 
-            <p>
-              <span>
-                <img src="" alt="" />
-              </span>
-              Humano
-            </p>
+                <div className={styles.statistics}>
+                  <p>
+                    <Pulse size="big" />
+                    {character.data.status === "Alive" ? "Vivo" : "Morto"}
+                  </p>
 
-            <p>
-              <span>
-                <img src="" alt="" />
-              </span>
-              Male
-            </p>
-          </div>
-        </div>
+                  <p>
+                    {theme === "dark" ? (
+                      <Alien size="big" theme="dark" />
+                    ) : (
+                      <Alien size="big" />
+                    )}
+                    {character.data.species === "Human"
+                      ? "Humano"
+                      : "Alienígena"}
+                  </p>
 
-        <div>
-          <p>Componente a fazer</p>
-        </div>
+                  <p className={styles.gender}>
+                    {theme === "dark" ? (
+                      <Gender size="big" theme="dark" />
+                    ) : (
+                      <Gender size="big" />
+                    )}
+                    {character.data.gender === "Male"
+                      ? "Masculino"
+                      : "Feminino"}
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div className={styles.location}>
+              <p>Componente a fazer</p>
+              <p>Teste</p>
+            </div>
+          </>
+        )}
       </div>
-
-      <div>
-        <p>Teste</p>
-      </div>
-    </div>
+    </section>
   );
 };
 

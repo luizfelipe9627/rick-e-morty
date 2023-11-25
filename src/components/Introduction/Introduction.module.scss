@@ -30,10 +30,12 @@
 
       .themes {
         display: flex;
-
-        button:nth-child(1) {
+        gap: 8px;
+        
+        .buttonDark {
           p {
-            color: var(--dark-gray-color);
+            color: var(--dark-gray-color) !important;
+            background-color: red;
           }
         }
       }

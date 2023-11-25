@@ -1,0 +1,36 @@
+.cardEpisode {
+  background-color: var(--bg-card-color);
+  padding: 16px;
+  border-radius: 16px;
+
+  .name {
+    display: flex;
+    align-items: center;
+    color: #313234;
+    color: var(--dark-gray-color);
+    font-size: 16px;
+    margin-bottom: 8px;
+
+    svg {
+      margin-right: 8px;
+    }
+  }
+
+  .saibaMais {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    a {
+      &:hover {
+        p {
+          color: var(--white-color);
+        }
+      }
+    }
+
+    svg {
+      cursor: pointer;
+    }
+  }
+}

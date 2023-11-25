@@ -1,3 +1,4 @@
+import React from "react";
 import Search from "../Search/Search";
 import styles from "./Character.module.scss";
 import Title from "../Title/Title";
@@ -15,17 +16,39 @@ interface CharacterProps {
   image: string;
 }
 
+// Função para gerar números aleatórios únicos em um intervalo
+const generateRandomNumbers = (count: number, max: number): number[] => {
+  const numbers: number[] = [];
+  while (numbers.length < count) {
+    const randomNumber = Math.floor(Math.random() * max) + 1;
+    if (!numbers.includes(randomNumber)) {
+      numbers.push(randomNumber);
+    }
+  }
+  return numbers;
+};
+
 const Character = () => {
+  const [randomNumbers, setRandomNumbers] = React.useState<number[]>([]);
+
+  React.useEffect(() => {
+    // Gera uma lista de 8 números aleatórios no intervalo de 1 a 826
+    const numbers = generateRandomNumbers(8, 826);
+    setRandomNumbers(numbers);
+  }, []);
+
   const characters = useFetch<CharacterProps[]>(
-    "https://rickandmortyapi.com/api/character/[1,2,3,4,5,6,7,8]",
+    `https://rickandmortyapi.com/api/character/[${randomNumbers.join(",")}]`,
   );
 
   return (
     <section className={`${styles.character} container`}>
       <Search />
-      <Title>Personagens</Title>
+      <Title label="Ver todos" to="characters">Personagens</Title>
 
       <div className={styles.cards}>
+        {characters.loading && <p>Carregando...</p>}
+        
         {characters.data &&
           characters.data.map((character) => (
             <CardCharacter

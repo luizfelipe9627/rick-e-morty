@@ -5,13 +5,24 @@ import SquaresFour from "../../assets/svg/SquaresFour.svg";
 
 interface TitleProps {
   children: React.ReactNode;
+  label: string;
+  to: string;
 }
 
-const Title = ({ children }: TitleProps) => {
+const Title = ({ children, label, to }: TitleProps) => {
   return (
     <div className={styles.container}>
       <h1 className={styles.title}>{children}</h1>
-      <Label toLink="characters" srcImg={SquaresFour} altImg="Quatro quadrados">Ver todos</Label>
+      {label && (
+        <Label
+          toLink={to}
+          srcImg={SquaresFour}
+          altImg="Quatro quadrados"
+          color="#fff"
+        >
+          {label}
+        </Label>
+      )}
     </div>
   );
 };

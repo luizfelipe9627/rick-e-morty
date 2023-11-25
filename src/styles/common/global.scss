@@ -3,8 +3,13 @@
   font-weight: 400;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   background-color: var(--white-color);
+  scroll-behavior: smooth;
 
   &.dark {
     --bg-color: #000000;
@@ -16,6 +21,8 @@ body {
     --line-blue-color: #000000;
     --button-ver-todos: #313234;
     --bg-card-color: #1a1a1a;
+    --bg-color3: #313234;
+    --bg-color4: #1e1e20;
 
     main {
       background-color: #1e1e20;
