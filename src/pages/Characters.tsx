@@ -9,20 +9,28 @@ import useTheme from "../hooks/useTheme";
 import React from "react";
 import styles from "./Characters.module.scss";
 import CardLocation from "../components/Cards/CardLocation";
-interface CharacterProps {
+import CardCharacter from "../components/Cards/CardCharacter";
+import Arrow from "../components/Svg/Arrow";
+
+interface CharacterResultsProps {
+  results: [];
   id: number;
   name: string;
   status: string;
   species: string;
-  location: {
-    name: string;
-  };
   origin: {
     name: string;
   };
+  location: {
+    name: string;
+  };
   image: string;
-  episode: [];
+  episode: string[];
   gender: string;
+}
+
+interface CharacterInfoProps {
+  info: { count: number; pages: number; next: string; prev: string };
 }
 
 const Characters = () => {
@@ -35,16 +43,93 @@ const Characters = () => {
   };
 
   React.useEffect(() => {
-    // Adiciona a classe ao body com base no tema
     document.body.classList.toggle("dark", theme === "dark");
-    // Salva o tema no localStorage
     localStorage.setItem("theme", theme);
   }, [theme]);
 
-  const character = useFetch<CharacterProps>(
+  const character = useFetch<CharacterResultsProps>(
     `https://rickandmortyapi.com/api/character/${id}`,
   );
-  console.log(character.data);
+
+  const characters = useFetch<CharacterResultsProps>(
+    `https://rickandmortyapi.com/api/character`,
+  );
+
+  const charactersInfo = useFetch<CharacterInfoProps>(
+    `https://rickandmortyapi.com/api/character`,
+  );
+
+  const [page, setPage] = React.useState(1);
+  const [active, setActive] = React.useState(1);
+  const pages = charactersInfo.data?.info.pages;
+  const buttonActive = document.querySelector(`.${styles.active}`);
+  const buttons = document.querySelectorAll(`.${styles.numbers} button`);
+  const [totalPages, setTotalPages] = React.useState(1);
+
+  const handlePreviousPage = () => {
+    const previousButton =
+      buttonActive?.previousElementSibling as HTMLButtonElement;
+
+    if (previousButton) {
+      buttonActive?.classList.remove(styles.active);
+      previousButton.classList.add(styles.active);
+      setActive((prevActive) => prevActive - 1);
+      setPage((prevPage) => prevPage - 1);
+    } else {
+      buttons[0].classList.remove(styles.active);
+      buttons[buttons.length - 1].classList.add(styles.active);
+      setActive(buttons.length);
+      setPage(buttons.length);
+    }
+  };
+
+  const handleNextPage = () => {
+    const nextButton = buttonActive?.nextElementSibling as HTMLButtonElement;
+
+    if (nextButton) {
+      buttonActive?.classList.remove(styles.active);
+      nextButton.classList.add(styles.active);
+      setActive((prevActive) => prevActive + 1);
+      if (pages) {
+        setPage((prevPage) => (prevPage + 1) % pages);
+      }
+    } else {
+      buttons[buttons.length - 1].classList.remove(styles.active);
+      buttons[0].classList.add(styles.active);
+      setActive(1);
+      setPage(0);
+    }
+
+    if (!nextButton) {
+      const newButtonTexts = Array.from(buttons).map((button, index) => {
+        if (!pages) return "1";
+        const nextPage = (page + index) % pages;
+        button.textContent = (nextPage + 1).toString(); // Adiciona 1 para exibir como página real
+        return (nextPage + 1).toString();
+      });
+
+      console.log("Novos textos dos botões:", newButtonTexts);
+    }
+  };
+
+  React.useEffect(() => {
+    if (charactersInfo.data) {
+      setTotalPages(charactersInfo.data.info.pages);
+    }
+  }, [charactersInfo.data]);
+
+  const handleActive = (event: React.MouseEvent<HTMLButtonElement>) => {
+    const button = event.currentTarget;
+    buttons.forEach((button) => {
+      button.classList.remove(styles.active);
+    });
+    button.classList.add(styles.active);
+
+    if (button.textContent) {
+      setActive(Number(button.textContent));
+      setPage(Number(button.textContent));
+    }
+  };
 
   return (
     <>
@@ -121,7 +206,41 @@ const Characters = () => {
 
       <section className={`${styles.characters} container`}>
         <h1>Titulo</h1>
-        <div className={styles.cards}></div>
+        <div className={styles.cards}>
+          {characters.loading && <p>Carregando...</p>}
+
+          {characters.data?.results &&
+            characters.data.results.map((character: CharacterResultsProps) => (
+              <CardCharacter
+                key={character.id}
+                id={character.id}
+                image={character.image}
+                name={character.name}
+                status={character.status}
+                species={character.species}
+                origin={character.origin.name}
+              />
+            ))}
+        </div>
+
+        <div className={styles.controls}>
+          <span className={styles.previous} onClick={handlePreviousPage}>
+            <Arrow size="medium" direction="left" />
+          </span>
+
+          <div className={styles.numbers}>
+            <button onClick={handleActive} className={styles.active}>
+              1
+            </button>
+            <button onClick={handleActive}>2</button>
+            <button onClick={handleActive}>3</button>
+            <button onClick={handleActive}>4</button>
+          </div>
+
+          <span className={styles.next} onClick={handleNextPage}>
+            <Arrow size="medium" direction="right" />
+          </span>
+        </div>
       </section>
     </>
   );

@@ -25,7 +25,7 @@ const Character = () => {
   return (
     <section className={`${styles.character} container`}>
       <Search />
-      <Title label="Ver todos" to="characters">
+      <Title label="Ver todos" to="characters/1">
         Personagens
       </Title>
 

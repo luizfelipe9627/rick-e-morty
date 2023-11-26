@@ -18,7 +18,7 @@ const Episode = () => {
 
   return (
     <section className={`${styles.episodes} container`}>
-      <Title label="Ver todos" to="episodes">
+      <Title label="Ver todos" to="episodes/1">
         Episódios
       </Title>
 

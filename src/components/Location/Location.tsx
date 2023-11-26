@@ -19,7 +19,7 @@ const Location = () => {
 
   return (
     <section className={`${styles.location} container`}>
-      <Title label="Ver todos" to="locations">
+      <Title label="Ver todos" to="locations/1">
         Localizações
       </Title>
 
