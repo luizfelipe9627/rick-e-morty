@@ -27,9 +27,6 @@ interface CharacterResultsProps {
   image: string;
   episode: string[];
   gender: string;
-}
-
-interface CharacterInfoProps {
   info: { count: number; pages: number; next: string; prev: string };
 }
 
@@ -37,6 +34,8 @@ const Characters = () => {
   const { id } = useParams();
   const [theme] = useTheme();
   const [isHeartFilled, setHeartFilled] = React.useState(false);
+  const [page, setPage] = React.useState(1);
+  const [active, setActive] = React.useState(1);
 
   const handleClick: React.MouseEventHandler<SVGElement> = () => {
     setHeartFilled(!isHeartFilled);
@@ -52,19 +51,57 @@ const Characters = () => {
   );
 
   const characters = useFetch<CharacterResultsProps>(
-    `https://rickandmortyapi.com/api/character`,
+    `https://rickandmortyapi.com/api/character?page=${page}`,
   );
 
-  const charactersInfo = useFetch<CharacterInfoProps>(
-    `https://rickandmortyapi.com/api/character`,
-  );
-
-  const [page, setPage] = React.useState(1);
-  const [active, setActive] = React.useState(1);
-  const pages = charactersInfo.data?.info.pages;
-  const buttonActive = document.querySelector(`.${styles.active}`);
+  const pages = characters.data?.info.pages || 1;
   const buttons = document.querySelectorAll(`.${styles.numbers} button`);
-  const [totalPages, setTotalPages] = React.useState(1);
+  const buttonActive = document.querySelector(`.${styles.active}`);
+
+  const updatePageNumbersForward = () => {
+    const startPage = Math.min(
+      Math.max(1, active <= pages - 3 ? active : pages - 3),
+      pages - 3,
+    );
+
+    for (let i = 0; i < buttons.length; i++) {
+      const button = buttons[i];
+      const pageNumber = startPage + i;
+
+      if (pageNumber <= pages) {
+        button.textContent = pageNumber.toString();
+        button.classList.remove(styles.active);
+
+        if (pageNumber === active) {
+          button.classList.add(styles.active);
+        }
+      } else {
+        button.textContent = `${startPage + i - (pages - 1)}`;
+        button.classList.remove(styles.active);
+      }
+    }
+  };
+
+  const updatePageNumbersBackward = () => {
+    const startPage = Math.min(Math.max(1, active - 1), pages - 3);
+
+    for (let i = 0; i < buttons.length; i++) {
+      const button = buttons[i];
+      const pageNumber = startPage + i;
+
+      if (pageNumber <= pages) {
+        button.textContent = pageNumber.toString();
+        button.classList.remove(styles.active);
+
+        if (pageNumber === active) {
+          button.classList.add(styles.active);
+        }
+      } else {
+        button.textContent = `${startPage + i - (pages - 1)}`;
+        button.classList.remove(styles.active);
+      }
+    }
+  };
 
   const handlePreviousPage = () => {
     const previousButton =
@@ -75,11 +112,14 @@ const Characters = () => {
       previousButton.classList.add(styles.active);
       setActive((prevActive) => prevActive - 1);
       setPage((prevPage) => prevPage - 1);
-    } else {
-      buttons[0].classList.remove(styles.active);
-      buttons[buttons.length - 1].classList.add(styles.active);
-      setActive(buttons.length);
-      setPage(buttons.length);
+      updatePageNumbersBackward();
+    } else if (active > 1) {
+      const firstButton = buttons[0] as HTMLButtonElement;
+      buttonActive?.classList.remove(styles.active);
+      firstButton.classList.add(styles.active);
+      setActive(1);
+      setPage(1);
+      updatePageNumbersBackward();
     }
   };
 
@@ -90,33 +130,17 @@ const Characters = () => {
       buttonActive?.classList.remove(styles.active);
       nextButton.classList.add(styles.active);
       setActive((prevActive) => prevActive + 1);
-      if (pages) {
-        setPage((prevPage) => (prevPage + 1) % pages);
+      setPage((prevPage) => prevPage + 1);
+
+      if (active >= pages) {
+        updatePageNumbersForward();
       }
-    } else {
-      buttons[buttons.length - 1].classList.remove(styles.active);
-      buttons[0].classList.add(styles.active);
-      setActive(1);
-      setPage(0);
-    }
-
-    if (!nextButton) {
-      const newButtonTexts = Array.from(buttons).map((button, index) => {
-        if (!pages) return "1";
-        const nextPage = (page + index) % pages;
-        button.textContent = (nextPage + 1).toString(); // Adiciona 1 para exibir como página real
-        return (nextPage + 1).toString();
-      });
-
-      console.log("Novos textos dos botões:", newButtonTexts);
+    } else if (active < pages) {
+      setActive((prevActive) => prevActive + 1);
+      setPage((prevPage) => prevPage + 1);
+      updatePageNumbersForward();
     }
   };
-
-  React.useEffect(() => {
-    if (charactersInfo.data) {
-      setTotalPages(charactersInfo.data.info.pages);
-    }
-  }, [charactersInfo.data]);
 
   const handleActive = (event: React.MouseEvent<HTMLButtonElement>) => {
     const button = event.currentTarget;
