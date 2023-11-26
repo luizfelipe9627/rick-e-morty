@@ -9,8 +9,7 @@ html {
 
 body {
   background-color: var(--white-color);
-  scroll-behavior: smooth;
-
+  
   &.dark {
     --bg-color: #000000;
     --bg-color2: #313234;
@@ -30,10 +29,6 @@ body {
   }
 }
 
-main {
-  height: 2000px;
-}
-
 .container {
   width: 80vw;
   margin: 0 auto;
@@ -46,6 +41,10 @@ main {
 .active {
   background-color: var(--blue1-color) !important;
   color: var(--dark-gray-color);
+
+  svg {
+    fill: var(--white-color) !important;
+  }
 
   p {
     color: var(--white-color) !important;

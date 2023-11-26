@@ -2,27 +2,16 @@ import React from "react";
 import styles from "./CardEpisode.module.scss";
 import Label from "../Button/Label";
 import Heart from "../Svg/Heart";
-import Info from "../../assets/svg/Info.svg";
 import Play from "../Svg/Play";
-import useTheme from "../../hooks/useTheme";
-import Information from "../Svg/Info";
+import Info from "../Svg/Info";
 
 interface EpisodeProps {
   id: number;
   name: string;
-  air_date: string;
-  characters: string[];
   episode: string;
 }
 
-const CardEpisode = ({
-  id,
-  name,
-  air_date,
-  characters,
-  episode,
-}: EpisodeProps) => {
-  const [theme] = useTheme();
+const CardEpisode = ({ id, name, episode }: EpisodeProps) => {
   const [isHeartFilled, setHeartFilled] = React.useState(false);
 
   const handleClick: React.MouseEventHandler<SVGElement> = () => {
@@ -32,21 +21,12 @@ const CardEpisode = ({
   return (
     <div className={styles.cardEpisode}>
       <p className={styles.name}>
-        {theme === "light" ? (
-          <Play size="medium" />
-        ) : (
-          <Play size="medium" theme="dark" />
-        )}
+        <Play size="medium" />
         {name} | {episode}
       </p>
 
       <span className={styles.saibaMais}>
-        <Label
-          toLink={`episode/${id}`}
-          componentSvg={
-            theme === "light" ? <Information /> : <Information theme="dark" />
-          }
-        >
+        <Label toLink={`episode/${id}`} componentSvg={<Info />}>
           Saiba mais
         </Label>
         <Heart size="medium" fill={isHeartFilled} onClick={handleClick} />

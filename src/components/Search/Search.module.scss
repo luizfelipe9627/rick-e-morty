@@ -29,6 +29,10 @@
       right: 16px;
       top: 8px;
       cursor: pointer;
+
+      svg {
+        fill: var(--dark-gray-color);
+      }
     }
   }
 
@@ -53,6 +57,11 @@
     align-items: center;
     gap: 8px;
 
+    p {
+      color: var(--dark-gray-color);
+      font-size: 16px;
+    }
+
     @media (max-width: 1200px) {
       flex-direction: column;
     }
@@ -63,11 +72,5 @@
       flex-wrap: wrap;
       gap: 8px;
     }
-
-    p {
-      font-size: 16px;
-    }
-
-   
   }
 }

@@ -1,13 +1,12 @@
 interface PlanetProps {
   color?: string;
-  theme?: "dark";
   size: "small" | "medium" | "big" | "huge";
 }
 
-const Planet = ({ color, theme, size }: PlanetProps) => {
+const Planet = ({ color, size }: PlanetProps) => {
   const commonProps = {
     xmlns: "http://www.w3.org/2000/svg",
-    fill: color ? color : theme === "dark" ? "#ffffff" : "#313234",
+    fill: color ? color : "#313234",
   };
 
   const smallProps = {

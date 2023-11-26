@@ -1,10 +1,9 @@
-import React, { useState } from "react";
+import React from "react";
 import styles from "./CardCharacter.module.scss";
 import Label from "../Button/Label";
 import Alien from "../Svg/Alien";
 import Planet from "../Svg/Planet";
 import Heart from "../Svg/Heart";
-import useTheme from "../../hooks/useTheme";
 import Info from "../Svg/Info";
 import Pulse from "../Svg/Pulse";
 
@@ -25,8 +24,7 @@ const CardCharacter = ({
   species,
   origin,
 }: CardCharacterProps) => {
-  const [theme] = useTheme();
-  const [isHeartFilled, setHeartFilled] = useState(false);
+  const [isHeartFilled, setHeartFilled] = React.useState(false);
 
   const handleClick: React.MouseEventHandler<SVGElement> = () => {
     setHeartFilled(!isHeartFilled);
@@ -53,30 +51,17 @@ const CardCharacter = ({
         </div>
 
         <div className={styles.species}>
-          {theme === "light" ? (
-            <Alien size="small" />
-          ) : (
-            <Alien size="small" theme="dark" />
-          )}
+          <Alien size="small" />
           {species === "Human" ? "Humano" : "Alienígena"}
         </div>
 
         <p className={styles.planet}>
-          {theme === "light" ? (
-            <Planet size="small" />
-          ) : (
-            <Planet theme="dark" size="small" />
-          )}
+          <Planet size="small" />
           {origin}
         </p>
 
         <div className={styles.saibaMais}>
-          <Label
-            toLink={`characters/${id}`}
-            componentSvg={
-              theme === "light" ? <Info /> : <Info theme="dark" />
-            }
-          >
+          <Label toLink={`characters/${id}`} componentSvg={<Info />}>
             Saiba mais
           </Label>
         </div>

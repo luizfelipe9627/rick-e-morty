@@ -1,13 +1,12 @@
 interface LocationProps {
   color?: string;
-  theme?: "dark";
   size: "big";
 }
 
-const Location = ({ color, theme, size }: LocationProps) => {
+const Location = ({ color, size }: LocationProps) => {
   const commonProps = {
     xmlns: "http://www.w3.org/2000/svg",
-    fill: color ? color : theme === "dark" ? "#ffffff" : "#313234",
+    fill: color ? color : "#313234",
   };
 
   const bigProps = {

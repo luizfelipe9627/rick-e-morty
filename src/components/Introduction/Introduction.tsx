@@ -11,6 +11,10 @@ const Introduction = () => {
   // Cria um estado chamado theme e uma função atualizadora chamada setTheme. O valor inicial do estado é o valor do localStorage(caso exista) ou "light"(caso não exista).
   const [theme, updateTheme] = useTheme();
 
+  const handleThemeChange = (newTheme: string) => {
+    updateTheme(newTheme);
+  };
+
   React.useEffect(() => {
     const buttonsTheme = document.querySelectorAll(
       `.${styles.themes} button`,
@@ -35,22 +39,16 @@ const Introduction = () => {
 
           <div className={styles.themes}>
             <Label
-              componentSvg={
-                theme === "dark" ? (
-                  <Moon size="medium" theme="dark" />
-                ) : (
-                  <Moon size="medium" />
-                )
-              }
-              onClick={() => updateTheme("dark")}
-              className="buttonLight"
+              componentSvg={<Moon size="medium" />}
+              onClick={() => handleThemeChange("dark")}
+              className="buttonDark"
             >
               Escuro
             </Label>
 
             <Label
               componentSvg={<Sun size="medium" />}
-              onClick={() => updateTheme("light")}
+              onClick={() => handleThemeChange("light")}
               className="buttonLight"
             >
               Claro

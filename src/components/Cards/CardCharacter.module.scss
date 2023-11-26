@@ -2,7 +2,6 @@
   background-color: var(--bg-card-color);
   padding: 16px;
   border-radius: 8px;
-  height: 100%; /* Set height to 100% to fill the parent container */
 
   .photo {
     img {
@@ -16,6 +15,16 @@
   .infos {
     color: var(--dark-gray-color);
 
+    .alive, .favorite {
+      svg {
+        fill: revert-layer;
+      }
+    }
+
+    svg {
+      fill: var(--dark-gray-color);
+    }
+
     .wrapper {
       position: relative;
 
@@ -24,6 +33,7 @@
         font-size: 16px;
         font-weight: 700;
         margin: 16px 0;
+        max-width: 17ch;
 
         @media (max-width: 1250px) {
           max-width: 10ch;

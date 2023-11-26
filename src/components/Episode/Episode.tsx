@@ -1,25 +1,27 @@
-import React from "react";
 import styles from "./Episode.module.scss";
-import Title from "../Title/Title";
+import Title from "../Title/Title1";
 import CardEpisode from "../Cards/CardEpisode";
 import useFetch from "../../hooks/useFetch";
+import useRandomNumbers from "../../hooks/useRandomNumbers";
 
 interface EpisodeProps {
   id: number;
   name: string;
-  air_date: string;
-  characters: string[];
   episode: string;
 }
 
 const Episode = () => {
+  const randomNumbers = useRandomNumbers(4, 51);
   const episodes = useFetch<EpisodeProps[]>(
-    "https://rickandmortyapi.com/api/episode/1,2,3,4",
+    `https://rickandmortyapi.com/api/episode/[${randomNumbers.join(",")}]`,
   );
-  
+
   return (
     <section className={`${styles.episodes} container`}>
-      <Title label="Ver todos" to="episodes">Episódios</Title>
+      <Title label="Ver todos" to="episodes">
+        Episódios
+      </Title>
+
       <div className={styles.cards}>
         {episodes.loading && <p>Carregando...</p>}
 
@@ -29,8 +31,6 @@ const Episode = () => {
               key={episode.id}
               id={episode.id}
               name={episode.name}
-              air_date={episode.air_date}
-              characters={episode.characters}
               episode={episode.episode}
             />
           ))}

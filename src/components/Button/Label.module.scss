@@ -1,8 +1,10 @@
 button.label {
   background-color: var(--bg-color3);
-}
 
-button.label {
+  svg {
+    fill: var(--dark-gray-color);
+  }
+
   &:hover {
     p {
       color: var(--white-color);

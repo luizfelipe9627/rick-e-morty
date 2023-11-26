@@ -13,6 +13,7 @@
 
     svg {
       margin-right: 8px;
+      fill: var(--dark-gray-color);
     }
   }
 
@@ -22,9 +23,15 @@
     justify-content: space-between;
 
     a {
+      svg {
+        fill: var(--dark-gray-color);
+      }
+
       &:hover {
-        p {
+        p,
+        svg {
           color: var(--white-color);
+          fill: var(--white-color);
         }
       }
     }

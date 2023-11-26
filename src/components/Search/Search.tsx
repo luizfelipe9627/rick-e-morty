@@ -14,8 +14,13 @@ const Search = () => {
 
   const updateTheme = (newTheme: string) => {
     setTheme(newTheme);
-    localStorage.setItem("theme", newTheme);
+  };
 
+  const handleThemeClick = (newTheme: string) => {
+    updateTheme(newTheme);
+  };
+
+  React.useEffect(() => {
     const buttonDark = document.querySelector(
       ".buttonDark",
     ) as HTMLButtonElement;
@@ -23,17 +28,15 @@ const Search = () => {
       ".buttonLight",
     ) as HTMLButtonElement;
 
-    buttonDark?.addEventListener("click", () => {
-      setTheme("dark");
-    });
+    buttonDark?.addEventListener("click", () => handleThemeClick("dark"));
+    buttonLight?.addEventListener("click", () => handleThemeClick("light"));
 
-    buttonLight?.addEventListener("click", () => {
-      setTheme("light");
-    });
-  };
-
-  React.useEffect(() => {
-    updateTheme(theme);
+    return () => {
+      buttonDark?.removeEventListener("click", () => handleThemeClick("dark"));
+      buttonLight?.removeEventListener("click", () =>
+        handleThemeClick("light"),
+      );
+    };
   }, [theme]);
 
   const handleClick: React.MouseEventHandler = (event) => {
@@ -66,18 +69,12 @@ const Search = () => {
           required
         />
         <button>
-          {theme === "dark" ? (
-            <MagnifyingGlass size="medium" theme="dark" />
-          ) : (
-            <MagnifyingGlass size="medium" />
-          )}
+          <MagnifyingGlass size="medium" />
         </button>
       </form>
 
       <div className={styles.filter}>
-        <p style={{ color: `${theme === "dark" ? "#E4F4F4" : "#313234"}` }}>
-          Filtrar por:
-        </p>
+        <p>Filtrar por:</p>
 
         <div className={styles.buttons}>
           <Label
@@ -85,10 +82,7 @@ const Search = () => {
               theme === "dark" ? (
                 <Smiley size="medium" theme="dark" />
               ) : (
-                <Smiley
-                  size="medium"
-                  color={active === "characters" ? "#FFFFFF" : "#313234"}
-                />
+                <Smiley size="medium" />
               )
             }
             altImg="Carinha"
@@ -98,29 +92,14 @@ const Search = () => {
             Personagens
           </Label>
           <Label
-            componentSvg={
-              theme === "dark" ? (
-                <Planet theme="dark" size="medium" />
-              ) : (
-                <Planet
-                  size="medium"
-                  color={active === "locations" ? "#FFFFFF" : "#313234"}
-                />
-              )
-            }
+            componentSvg={<Planet size="medium" />}
             altImg="Planeta"
             onClick={handleClick}
           >
             Localizações
           </Label>
           <Label
-            componentSvg={
-              theme === "dark" || active == "episodes" ? (
-                <Play size="medium" theme="dark" />
-              ) : (
-                <Play size="medium" />
-              )
-            }
+            componentSvg={<Play size="medium" />}
             altImg="Play"
             onClick={handleClick}
           >

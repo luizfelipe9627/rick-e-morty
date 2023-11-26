@@ -1,13 +1,12 @@
 interface GenderProps {
   color?: string;
-  theme?: "dark";
   size: "small" | "medium" | "big";
 }
 
-const Gender = ({ color, theme, size }: GenderProps) => {
+const Gender = ({ color, size }: GenderProps) => {
   const commonProps = {
     xmlns: "http://www.w3.org/2000/svg",
-    fill: color ? color : theme === "dark" ? "#ffffff" : "#313234",
+    fill: color ? color : "#313234",
   };
 
   const smallProps = {

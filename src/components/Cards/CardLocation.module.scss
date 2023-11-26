@@ -1,0 +1,59 @@
+.cardLocation {
+  background-color: var(--bg-card-color);
+  padding: 24px 16px 16px;
+  border-radius: 16px;
+  position: relative;
+  margin-top: 20px;
+
+  .icon {
+    position: absolute;
+    top: 0px;
+    /* Centraliza na horizontal e vertical */
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    svg {
+      fill: var(--dark-gray-color);
+    }
+  }
+
+  .type,
+  .name {
+    text-align: center;
+    font-size: 16px;
+  }
+
+  .type {
+    color: var(--dark-gray-color);
+  }
+
+  .name {
+    color: #11b0c8;
+  }
+
+  .wrapper {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+
+    a {
+      margin: 16px 0 14px 0;
+
+      svg {
+        fill: var(--dark-gray-color);
+      }
+
+      &:hover {
+        p,
+        svg {
+          color: var(--white-color);
+          fill: var(--white-color);
+        }
+      }
+    }
+
+    svg {
+      cursor: pointer;
+    }
+  }
+}
