@@ -69,9 +69,6 @@ const Characters = () => {
     buttonNext.classList.add("clicked");
     buttonPrevious.classList.remove("clicked");
 
-    const heightBody = document.body.scrollHeight;
-    window.scrollTo(0, heightBody);
-
     if (page < pages) {
       setPage(page + 1);
       setActive(active + 1);
@@ -84,9 +81,6 @@ const Characters = () => {
   const handlePreviousPage = () => {
     buttonPrevious.classList.add("clicked");
     buttonNext.classList.remove("clicked");
-
-    const heightBody = document.body.scrollHeight;
-    window.scrollTo(0, heightBody);
 
     if (page > 1) {
       setPage(page - 1);
@@ -115,7 +109,7 @@ const Characters = () => {
     let end = Math.min(pages, start + maxVisibleButtons - 1);
 
     const renderButtons = () => {
-      buttons.length = 0;
+      
 
       if (buttonPrevious?.classList.contains("clicked")) {
         start = Math.max(1, active);

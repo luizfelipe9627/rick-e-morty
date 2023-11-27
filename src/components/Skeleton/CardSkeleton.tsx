@@ -7,7 +7,7 @@ const CardSkeleton = () => {
     <SkeletonTheme baseColor="#202020" highlightColor="#444">
       <div className={styles.cardCharacter}>
         <div className={styles.photo}>
-          <Skeleton height={200} width="100%" />
+          <Skeleton height="226px" width="100%" />
         </div>
 
         <div className={styles.infos}>
@@ -21,25 +21,27 @@ const CardSkeleton = () => {
             </span>
           </div>
 
-          <div className={styles.alive}>
-            <Skeleton circle={true} height={20} width={20} />
-            <Skeleton height={20} width={130} />
+          <div className={styles.identity}>
+            <p className={styles.alive}>
+              <Skeleton circle={true} height={20} width={20} />
+              <Skeleton height={20} width={130} />
+            </p>
+
+            <p className={styles.species}>
+              <Skeleton circle={true} height={20} width={20} />
+              <Skeleton height={20} width={130} />
+            </p>
+
+            <p className={styles.planet}>
+              <Skeleton circle={true} height={20} width={20} />
+              <Skeleton height={20} width={130} />
+            </p>
           </div>
 
-          <div className={styles.species}>
-            <Skeleton circle={true} height={20} width={20} />
-            <Skeleton height={20} width={130} />
-          </div>
-
-          <p className={styles.planet}>
-            <Skeleton circle={true} height={20} width={20} />
-            <Skeleton height={20} width={130} />
-          </p>
-
-          <div className={styles.saibaMais}>
+          <span className={styles.saibaMais}>
             <Skeleton circle={true} height={20} width={20} />
             <Skeleton height={20} width={80} style={{ marginLeft: "4px" }} />
-          </div>
+          </span>
         </div>
       </div>
     </SkeletonTheme>
