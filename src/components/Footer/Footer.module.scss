@@ -2,6 +2,7 @@
   .top {
     display: flex;
     justify-content: space-between;
+    user-select: none;
 
     .backTop {
       display: flex;

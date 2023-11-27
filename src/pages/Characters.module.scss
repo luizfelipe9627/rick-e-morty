@@ -124,6 +124,7 @@
     .numbers {
       display: flex;
       gap: 16px;
+      user-select: none;
 
       .active {
         border: none;
