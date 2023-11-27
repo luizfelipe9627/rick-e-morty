@@ -14,8 +14,13 @@
 
   .infos {
     color: var(--dark-gray-color);
+    height: 220px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 
-    .alive, .favorite {
+    .alive,
+    .favorite {
       svg {
         fill: revert-layer;
       }
@@ -27,12 +32,13 @@
 
     .wrapper {
       position: relative;
+      margin: 16px 0;
 
       .name {
         color: var(--dark-gray-color);
         font-size: 16px;
         font-weight: 700;
-        margin: 16px 0;
+
         max-width: 17ch;
 
         @media (max-width: 1250px) {
@@ -42,7 +48,7 @@
 
       .favorite {
         position: absolute;
-        top: 0;
+        top: -4px;
         right: 0;
         cursor: pointer;
       }
@@ -52,13 +58,14 @@
     .species,
     .planet {
       display: flex;
-      align-items: center;
       gap: 4px;
       margin-bottom: 8px;
     }
 
     .planet {
       margin-bottom: 24px;
+      height: 100%;
+      text-align: start;
     }
 
     .saibaMais {

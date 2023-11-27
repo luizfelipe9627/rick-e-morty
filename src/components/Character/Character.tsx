@@ -4,6 +4,7 @@ import Title from "../Title/Title1";
 import CardCharacter from "../Cards/CardCharacter";
 import useFetch from "../../hooks/useFetch";
 import useRandomNumbers from "../../hooks/useRandomNumbers";
+import CardSkeleton from "../Cards/CardSkeleton";
 
 interface CharacterProps {
   id: number;
@@ -21,7 +22,6 @@ const Character = () => {
   const characters = useFetch<CharacterProps[]>(
     `https://rickandmortyapi.com/api/character/[${randomNumbers.join(",")}]`,
   );
-
   return (
     <section className={`${styles.character} container`}>
       <Search />
@@ -30,20 +30,23 @@ const Character = () => {
       </Title>
 
       <div className={styles.cards}>
-        {characters.loading && <p>Carregando...</p>}
-
-        {characters.data &&
-          characters.data.map((character) => (
-            <CardCharacter
-              key={character.id}
-              id={character.id}
-              image={character.image}
-              name={character.name}
-              status={character.status}
-              species={character.species}
-              origin={character.origin.name}
-            />
-          ))}
+        {characters.loading
+          ? // Display skeletons while data is loading
+            Array.from({ length: 10 }).map((_, index) => (
+              <CardSkeleton key={index} />
+            ))
+          : // Display character cards when data is available
+            characters.data?.map((character: CharacterProps) => (
+              <CardCharacter
+                key={character.id}
+                id={character.id}
+                image={character.image}
+                name={character.name}
+                status={character.status}
+                species={character.species}
+                origin={character.origin.name}
+              />
+            ))}
       </div>
     </section>
   );

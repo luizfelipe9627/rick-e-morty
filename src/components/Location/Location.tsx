@@ -15,7 +15,6 @@ const Location = () => {
   const locations = useFetch<LocationProps[]>(
     `https://rickandmortyapi.com/api/location/[${randomNumbers.join(",")}]`,
   );
-  console.log(locations.data);
 
   return (
     <section className={`${styles.location} container`}>

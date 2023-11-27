@@ -11,7 +11,7 @@ import styles from "./Characters.module.scss";
 import CardLocation from "../components/Cards/CardLocation";
 import CardCharacter from "../components/Cards/CardCharacter";
 import Arrow from "../components/Svg/Arrow";
-import { render } from "react-dom";
+import CardSkeleton from "../components/Cards/CardSkeleton";
 
 interface CharacterResultsProps {
   results: [];
@@ -53,27 +53,47 @@ const Characters = () => {
 
   const characters = useFetch<CharacterResultsProps>(
     `https://rickandmortyapi.com/api/character?page=${page}`,
+    {
+      cache: "force-cache",
+    },
   );
 
   const pages = characters.data?.info.pages || 1;
+  const buttonPrevious = document.querySelector(
+    `.${styles.previous}`,
+  ) as HTMLButtonElement;
+  const buttonNext = document.querySelector(
+    `.${styles.next}`,
+  ) as HTMLButtonElement;
 
   const handleNextPage = () => {
+    buttonNext.classList.add("clicked");
+    buttonPrevious.classList.remove("clicked");
+
+    const cardsSection = document.querySelector(`.${styles.cards}`);
+
+    if (cardsSection) {
+      const scrollHeight = document.body.scrollHeight;
+      window.scrollTo(0, scrollHeight);
+    }
+
     if (page < pages) {
       setPage(page + 1);
       setActive(active + 1);
     } else {
-      // Se estiver no último botão, volte ao primeiro
       setPage(1);
       setActive(1);
     }
   };
 
   const handlePreviousPage = () => {
+    buttonPrevious.classList.add("clicked");
+    buttonNext.classList.remove("clicked");
+
     if (page > 1) {
       setPage(page - 1);
       setActive(active - 1);
     } else {
-      // Se estiver no primeiro botão, vá para o último
       setPage(pages);
       setActive(pages);
     }
@@ -93,24 +113,16 @@ const Characters = () => {
     const buttons = [] as any;
     const maxVisibleButtons = 4;
 
-    // Inicializa start e end
     let start = Math.max(1, active - maxVisibleButtons + 1);
     let end = Math.min(pages, start + maxVisibleButtons - 1);
 
-    // Se o botão "anterior" foi clicado, inverte a ordem
-    const buttonPrevious = document.querySelector(
-      `.${styles.previous}`,
-    ) as HTMLSpanElement;
-
     const renderButtons = () => {
-      buttons.length = 0; // Limpa o array antes de renderizar novamente
+      buttons.length = 0;
 
-      buttonPrevious?.addEventListener("click", () => {
+      if (buttonPrevious?.classList.contains("clicked")) {
         start = Math.max(1, active);
         end = Math.min(pages, start + maxVisibleButtons - 1);
-
-        renderButtons();
-      });
+      }
 
       for (let i = start; i <= end; i++) {
         buttons.push(
@@ -124,7 +136,6 @@ const Characters = () => {
         );
       }
     };
-
     renderButtons();
 
     return buttons;
@@ -134,7 +145,7 @@ const Characters = () => {
     <>
       <section className={styles.charactersIntro}>
         <div className={`${styles.wrapper} container`}>
-          {character.loading && <p>Carregando...</p>}
+          {character.loading && <p className="loading">Carregando...</p>}
 
           {character.data && id && (
             <>
@@ -206,20 +217,25 @@ const Characters = () => {
       <section className={`${styles.characters} container`}>
         <h1>Titulo</h1>
         <div className={styles.cards}>
-          {characters.loading && <p>Carregando...</p>}
-
-          {characters.data?.results &&
-            characters.data.results.map((character: CharacterResultsProps) => (
-              <CardCharacter
-                key={character.id}
-                id={character.id}
-                image={character.image}
-                name={character.name}
-                status={character.status}
-                species={character.species}
-                origin={character.origin.name}
-              />
-            ))}
+          {characters.loading
+            ? // Display skeletons while data is loading
+              Array.from({ length: 10 }).map((_, index) => (
+                <CardSkeleton key={index} />
+              ))
+            : // Display character cards when data is available
+              characters.data?.results?.map(
+                (character: CharacterResultsProps) => (
+                  <CardCharacter
+                    key={character.id}
+                    id={character.id}
+                    image={character.image}
+                    name={character.name}
+                    status={character.status}
+                    species={character.species}
+                    origin={character.origin.name}
+                  />
+                ),
+              )}
         </div>
 
         <div className={styles.controls}>

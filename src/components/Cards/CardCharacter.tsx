@@ -6,6 +6,8 @@ import Planet from "../Svg/Planet";
 import Heart from "../Svg/Heart";
 import Info from "../Svg/Info";
 import Pulse from "../Svg/Pulse";
+import Skeleton from "react-loading-skeleton";
+import "react-loading-skeleton/dist/skeleton.css";
 
 interface CardCharacterProps {
   id: number;
