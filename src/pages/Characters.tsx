@@ -11,6 +11,7 @@ import styles from "./Characters.module.scss";
 import CardLocation from "../components/Cards/CardLocation";
 import CardCharacter from "../components/Cards/CardCharacter";
 import Arrow from "../components/Svg/Arrow";
+import { render } from "react-dom";
 
 interface CharacterResultsProps {
   results: [];
@@ -55,104 +56,78 @@ const Characters = () => {
   );
 
   const pages = characters.data?.info.pages || 1;
-  const buttons = document.querySelectorAll(`.${styles.numbers} button`);
-  const buttonActive = document.querySelector(`.${styles.active}`);
 
-  const updatePageNumbersForward = () => {
-    const startPage = Math.min(
-      Math.max(1, active <= pages - 3 ? active : pages - 3),
-      pages - 3,
-    );
-
-    for (let i = 0; i < buttons.length; i++) {
-      const button = buttons[i];
-      const pageNumber = startPage + i;
-
-      if (pageNumber <= pages) {
-        button.textContent = pageNumber.toString();
-        button.classList.remove(styles.active);
-
-        if (pageNumber === active) {
-          button.classList.add(styles.active);
-        }
-      } else {
-        button.textContent = `${startPage + i - (pages - 1)}`;
-        button.classList.remove(styles.active);
-      }
-    }
-  };
-
-  const updatePageNumbersBackward = () => {
-    const startPage = Math.min(Math.max(1, active - 1), pages - 3);
-
-    for (let i = 0; i < buttons.length; i++) {
-      const button = buttons[i];
-      const pageNumber = startPage + i;
-
-      if (pageNumber <= pages) {
-        button.textContent = pageNumber.toString();
-        button.classList.remove(styles.active);
-
-        if (pageNumber === active) {
-          button.classList.add(styles.active);
-        }
-      } else {
-        button.textContent = `${startPage + i - (pages - 1)}`;
-        button.classList.remove(styles.active);
-      }
+  const handleNextPage = () => {
+    if (page < pages) {
+      setPage(page + 1);
+      setActive(active + 1);
+    } else {
+      // Se estiver no último botão, volte ao primeiro
+      setPage(1);
+      setActive(1);
     }
   };
 
   const handlePreviousPage = () => {
-    const previousButton =
-      buttonActive?.previousElementSibling as HTMLButtonElement;
+    if (page > 1) {
+      setPage(page - 1);
+      setActive(active - 1);
+    } else {
+      // Se estiver no primeiro botão, vá para o último
+      setPage(pages);
+      setActive(pages);
+    }
+  };
 
-    if (previousButton) {
-      buttonActive?.classList.remove(styles.active);
-      previousButton.classList.add(styles.active);
-      setActive((prevActive) => prevActive - 1);
-      setPage((prevPage) => prevPage - 1);
-      updatePageNumbersBackward();
-    } else if (active > 1) {
-      const firstButton = buttons[0] as HTMLButtonElement;
-      buttonActive?.classList.remove(styles.active);
-      firstButton.classList.add(styles.active);
-      setActive(1);
+  const handleActive = (pageNumber: number) => {
+    if (pageNumber === pages) {
+      setActive(pages);
       setPage(1);
-      updatePageNumbersBackward();
+    } else {
+      setActive(pageNumber);
+      setPage(pageNumber);
     }
   };
 
-  const handleNextPage = () => {
-    const nextButton = buttonActive?.nextElementSibling as HTMLButtonElement;
+  const renderPageButtons = () => {
+    const buttons = [] as any;
+    const maxVisibleButtons = 4;
 
-    if (nextButton) {
-      buttonActive?.classList.remove(styles.active);
-      nextButton.classList.add(styles.active);
-      setActive((prevActive) => prevActive + 1);
-      setPage((prevPage) => prevPage + 1);
+    // Inicializa start e end
+    let start = Math.max(1, active - maxVisibleButtons + 1);
+    let end = Math.min(pages, start + maxVisibleButtons - 1);
 
-      if (active >= pages) {
-        updatePageNumbersForward();
+    // Se o botão "anterior" foi clicado, inverte a ordem
+    const buttonPrevious = document.querySelector(
+      `.${styles.previous}`,
+    ) as HTMLSpanElement;
+
+    const renderButtons = () => {
+      buttons.length = 0; // Limpa o array antes de renderizar novamente
+
+      buttonPrevious?.addEventListener("click", () => {
+        start = Math.max(1, active);
+        end = Math.min(pages, start + maxVisibleButtons - 1);
+
+        renderButtons();
+      });
+
+      for (let i = start; i <= end; i++) {
+        buttons.push(
+          <button
+            onClick={() => handleActive(i)}
+            key={i}
+            className={active === i ? styles.active : ""}
+          >
+            {i}
+          </button>,
+        );
       }
-    } else if (active < pages) {
-      setActive((prevActive) => prevActive + 1);
-      setPage((prevPage) => prevPage + 1);
-      updatePageNumbersForward();
-    }
-  };
+    };
 
-  const handleActive = (event: React.MouseEvent<HTMLButtonElement>) => {
-    const button = event.currentTarget;
-    buttons.forEach((button) => {
-      button.classList.remove(styles.active);
-    });
-    button.classList.add(styles.active);
+    renderButtons();
 
-    if (button.textContent) {
-      setActive(Number(button.textContent));
-      setPage(Number(button.textContent));
-    }
+    return buttons;
   };
 
   return (
@@ -252,14 +227,7 @@ const Characters = () => {
             <Arrow size="medium" direction="left" />
           </span>
 
-          <div className={styles.numbers}>
-            <button onClick={handleActive} className={styles.active}>
-              1
-            </button>
-            <button onClick={handleActive}>2</button>
-            <button onClick={handleActive}>3</button>
-            <button onClick={handleActive}>4</button>
-          </div>
+          <div className={styles.numbers}>{renderPageButtons()}</div>
 
           <span className={styles.next} onClick={handleNextPage}>
             <Arrow size="medium" direction="right" />
