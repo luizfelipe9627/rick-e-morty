@@ -1,4 +1,4 @@
-import styles from "./CardCharacter.module.scss";
+import styles from "../Cards/CardCharacter.module.scss";
 import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
 

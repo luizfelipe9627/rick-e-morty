@@ -47,26 +47,28 @@ const CardCharacter = ({
           </span>
         </div>
 
-        <div className={styles.alive}>
-          <Pulse size="small" />
-          {status === "Alive" ? "Vivo" : "Morto"}
+        <div className={styles.identity}>
+          <p className={styles.alive}>
+            <Pulse size="small" />
+            {status === "Alive" ? "Vivo" : "Morto"}
+          </p>
+
+          <p className={styles.species}>
+            <Alien size="small" />
+            {species === "Human" ? "Humano" : "Alienígena"}
+          </p>
+
+          <p className={styles.planet}>
+            <Planet size="small" />
+            {origin}
+          </p>
         </div>
 
-        <div className={styles.species}>
-          <Alien size="small" />
-          {species === "Human" ? "Humano" : "Alienígena"}
-        </div>
-
-        <p className={styles.planet}>
-          <Planet size="small" />
-          {origin}
-        </p>
-
-        <div className={styles.saibaMais}>
+        <span className={styles.saibaMais}>
           <Label toLink={`characters/${id}`} componentSvg={<Info />}>
             Saiba mais
           </Label>
-        </div>
+        </span>
       </div>
     </div>
   );

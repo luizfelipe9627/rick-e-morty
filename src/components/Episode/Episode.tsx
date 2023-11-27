@@ -1,5 +1,5 @@
 import styles from "./Episode.module.scss";
-import Title from "../Title/Title1";
+import Title from "../Title/Title";
 import CardEpisode from "../Cards/CardEpisode";
 import useFetch from "../../hooks/useFetch";
 import useRandomNumbers from "../../hooks/useRandomNumbers";
@@ -18,7 +18,7 @@ const Episode = () => {
 
   return (
     <section className={`${styles.episodes} container`}>
-      <Title label="Ver todos" to="episodes/1">
+      <Title type="primary" label="Ver todos" to="episodes/1">
         Episódios
       </Title>
 

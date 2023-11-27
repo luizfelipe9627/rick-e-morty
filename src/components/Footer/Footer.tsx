@@ -1,32 +1,58 @@
-import React from "react";
 import styles from "./Footer.module.scss";
+import LogoFooter from "../../assets/svg/LogoFooter.svg";
+import ArrowY from "../Svg/ArrowY";
+import PaintingBoard from "../../assets/svg/PaintingBoard.svg";
+import Code from "../../assets/svg/Code.svg";
+import { Link } from "react-router-dom";
 
 const Footer = () => {
+  function handleClick() {
+    window.scrollTo(0, 0);
+  }
+
   return (
-    <footer className={`${styles.footer} container`}>
-      <div>
-        <div>
-          <img src="" alt="" />
+    <footer className={styles.footer}>
+      <div className={`${styles.container} container`}>
+        <div className={styles.top}>
+          <div className={styles.logo}>
+            <Link to="/">
+              <img src={LogoFooter} alt="Logo Rick e Morty" />
+            </Link>
+          </div>
+
+          <div className={styles.backTop}>
+            <p onClick={handleClick}>Voltar ao topo</p>
+
+            <button onClick={handleClick}>
+              <ArrowY size="big" />
+            </button>
+          </div>
         </div>
 
-        <div>
-          <p>Voltar ao topo</p>
-          <img src="" alt="" />
-        </div>
-      </div>
+        <div className={styles.bottom}>
+          <p className={styles.year}>©2023</p>
 
-      <div className={styles.copyright}>
-        <p className={styles.year}>©2023</p>
+          <div className={styles.createdBy}>
+            <div className={styles.creator}>
+              <img src={PaintingBoard} alt="Tábua de pintura" />
+              <p className={styles.paragraph}>
+                Layout criado por <a href="https://www.figma.com/@hsousadev" target="_blank">Henrique Souza</a>
+              </p>
+            </div>
 
-        <div className={styles.createdBy}>
-          <p>
-            <img src="" alt="" />
-            Layout criado por <span>Henrique Souza</span>
-          </p>
-          <p>
-            <img src="" alt="" />
-            Desenvolvido por <span>Luiz Felipe Silva</span>
-          </p>
+            <div className={styles.creator}>
+              <img src={Code} alt="Código" />
+              <p className={styles.paragraph}>
+                Desenvolvido por{" "}
+                <a
+                  href="https://www.linkedin.com/in/luizfelipe9627"
+                  target="_blank"
+                >
+                  Luiz Felipe Silva
+                </a>
+              </p>
+            </div>
+          </div>
         </div>
       </div>
     </footer>

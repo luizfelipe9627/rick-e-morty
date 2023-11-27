@@ -1,10 +1,10 @@
-interface ArrowProps {
+interface ArrowXProps {
   color?: string;
   size: "medium";
   direction: "left" | "right";
 }
 
-const Arrow = ({ color, size, direction }: ArrowProps) => {
+const ArrowX = ({ color, size, direction }: ArrowXProps) => {
   const commonProps = {
     xmlns: "http://www.w3.org/2000/svg",
     fill: "transparent",
@@ -46,4 +46,4 @@ const Arrow = ({ color, size, direction }: ArrowProps) => {
   );
 };
 
-export default Arrow;
+export default ArrowX;

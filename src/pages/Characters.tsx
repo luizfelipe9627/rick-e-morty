@@ -10,8 +10,10 @@ import React from "react";
 import styles from "./Characters.module.scss";
 import CardLocation from "../components/Cards/CardLocation";
 import CardCharacter from "../components/Cards/CardCharacter";
-import Arrow from "../components/Svg/Arrow";
-import CardSkeleton from "../components/Cards/CardSkeleton";
+import Arrow from "../components/Svg/ArrowX";
+import CardSkeleton from "../components/Skeleton/CardSkeleton";
+import Title from "../components/Title/Title";
+import Smiley from "../components/Svg/Smiley";
 
 interface CharacterResultsProps {
   results: [];
@@ -53,9 +55,6 @@ const Characters = () => {
 
   const characters = useFetch<CharacterResultsProps>(
     `https://rickandmortyapi.com/api/character?page=${page}`,
-    {
-      cache: "force-cache",
-    },
   );
 
   const pages = characters.data?.info.pages || 1;
@@ -69,13 +68,6 @@ const Characters = () => {
   const handleNextPage = () => {
     buttonNext.classList.add("clicked");
     buttonPrevious.classList.remove("clicked");
-
-    const cardsSection = document.querySelector(`.${styles.cards}`);
-
-    if (cardsSection) {
-      const scrollHeight = document.body.scrollHeight;
-      window.scrollTo(0, scrollHeight);
-    }
 
     if (page < pages) {
       setPage(page + 1);
@@ -215,11 +207,23 @@ const Characters = () => {
       </section>
 
       <section className={`${styles.characters} container`}>
-        <h1>Titulo</h1>
+        <Title
+          type="secondary"
+          componentSvg={
+            theme === "dark" ? (
+              <Smiley size="big" theme="dark" />
+            ) : (
+              <Smiley size="big" />
+            )
+          }
+        >
+          Mais personagens
+        </Title>
+
         <div className={styles.cards}>
           {characters.loading
             ? // Display skeletons while data is loading
-              Array.from({ length: 10 }).map((_, index) => (
+              Array.from({ length: 20 }).map((_, index) => (
                 <CardSkeleton key={index} />
               ))
             : // Display character cards when data is available

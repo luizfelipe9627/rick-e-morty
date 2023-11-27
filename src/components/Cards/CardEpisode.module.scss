@@ -3,24 +3,33 @@
   padding: 16px;
   border-radius: 16px;
 
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
   .name {
     display: flex;
-    align-items: center;
-    color: #313234;
-    color: var(--dark-gray-color);
-    font-size: 16px;
-    margin-bottom: 8px;
+   
+
+    p {
+      color: #313234;
+      color: var(--dark-gray-color);
+      font-size: 16px;
+      margin-bottom: 8px;
+    }
 
     svg {
       margin-right: 8px;
       fill: var(--dark-gray-color);
+      width: 48px;
     }
   }
 
   .saibaMais {
     display: flex;
-    align-items: center;
+    align-items: flex-end;
     justify-content: space-between;
+    height: 100%;
 
     a {
       svg {

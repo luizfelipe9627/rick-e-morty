@@ -7,7 +7,7 @@ interface LabelProps {
   altImg?: string;
   srcImg?: string;
   componentSvg?: React.ReactNode;
-  children: React.ReactNode;
+  children?: React.ReactNode;
   style?: React.CSSProperties;
   onClick?: React.MouseEventHandler<HTMLElement>;
   fontSize?: string;
@@ -53,7 +53,7 @@ const Label = ({
   return (
     <CustomComponent
       to={toLink ? `/${toLink}` : ""}
-      className={`${styles.label} ${className} ${active ? "active" : ""}`}
+      className={`${styles.label} ${active ? "active" : ""}`}
       style={labelStyle}
       onClick={onClick}
     >

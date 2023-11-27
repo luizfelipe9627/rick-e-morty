@@ -1,7 +1,7 @@
 import useFetch from "../../hooks/useFetch";
 import useRandomNumbers from "../../hooks/useRandomNumbers";
 import CardLocation from "../Cards/CardLocation";
-import Title from "../Title/Title1";
+import Title from "../Title/Title";
 import styles from "./Location.module.scss";
 
 interface LocationProps {
@@ -18,7 +18,7 @@ const Location = () => {
 
   return (
     <section className={`${styles.location} container`}>
-      <Title label="Ver todos" to="locations/1">
+      <Title type="primary" label="Ver todos" to="locations/1">
         Localizações
       </Title>
 

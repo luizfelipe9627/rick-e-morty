@@ -1,10 +1,10 @@
 import Search from "../Search/Search";
 import styles from "./Character.module.scss";
-import Title from "../Title/Title1";
+import Title from "../Title/Title";
 import CardCharacter from "../Cards/CardCharacter";
 import useFetch from "../../hooks/useFetch";
 import useRandomNumbers from "../../hooks/useRandomNumbers";
-import CardSkeleton from "../Cards/CardSkeleton";
+import CardSkeleton from "../Skeleton/CardSkeleton";
 
 interface CharacterProps {
   id: number;
@@ -25,7 +25,7 @@ const Character = () => {
   return (
     <section className={`${styles.character} container`}>
       <Search />
-      <Title label="Ver todos" to="characters/1">
+      <Title type="primary" label="Ver todos" to="characters/1">
         Personagens
       </Title>
 

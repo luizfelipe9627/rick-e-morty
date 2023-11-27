@@ -20,10 +20,12 @@ const CardEpisode = ({ id, name, episode }: EpisodeProps) => {
 
   return (
     <div className={styles.cardEpisode}>
-      <p className={styles.name}>
+      <div className={styles.name}>
         <Play size="medium" />
-        {name} | {episode}
-      </p>
+        <p>
+          {name} | {episode}
+        </p>
+      </div>
 
       <span className={styles.saibaMais}>
         <Label toLink={`episode/${id}`} componentSvg={<Info />}>
