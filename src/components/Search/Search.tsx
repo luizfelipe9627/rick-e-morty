@@ -48,8 +48,8 @@ const Search = () => {
     });
 
     element.classList.add("active");
-
     const buttonText = element.innerText;
+    console.log(active);
 
     if (buttonText === "Personagens") {
       setActive("characters");
