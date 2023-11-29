@@ -112,6 +112,7 @@
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 16px;
+    /* Serve para que o footer suba quando os cards forem carregados. */
   }
 
   .controls {
@@ -122,10 +123,29 @@
     padding: 64px 0;
     height: 175px;
 
+    button {
+      background-color: transparent;
+      border: none;
+
+      &:hover {
+        path {
+          stroke: var(--blue1-color);
+        }
+      }
+
+      &:disabled {
+        cursor: not-allowed;
+        path {
+          stroke: #a9a9a9;
+        }
+      }
+    }
+
     .numbers {
       display: flex;
       gap: 16px;
       user-select: none;
+      width: 236px;
 
       .active {
         border: none;

@@ -6,7 +6,7 @@ import useTheme from "./hooks/useTheme";
 
 function App() {
   const [theme] = useTheme();
-  
+
   if (theme) {
     const isDarkTheme = theme === "dark";
     document.body.classList.toggle("dark", isDarkTheme);

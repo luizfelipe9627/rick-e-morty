@@ -40,19 +40,9 @@ const Characters = () => {
   const [page, setPage] = React.useState(1);
   const [active, setActive] = React.useState(1);
 
-  const handleClick: React.MouseEventHandler<SVGElement> = () => {
-    setHeartFilled(!isHeartFilled);
-  };
-
-  React.useEffect(() => {
-    document.body.classList.toggle("dark", theme === "dark");
-    localStorage.setItem("theme", theme);
-  }, [theme]);
-
   const character = useFetch<CharacterResultsProps>(
     `https://rickandmortyapi.com/api/character/${id}`,
   );
-
   const characters = useFetch<CharacterResultsProps>(
     `https://rickandmortyapi.com/api/character?page=${page}`,
   );
@@ -64,17 +54,52 @@ const Characters = () => {
   const buttonNext = document.querySelector(
     `.${styles.next}`,
   ) as HTMLButtonElement;
+  const cards = document.querySelector(`.${styles.cards}`) as HTMLDivElement;
+
+  React.useEffect(() => {
+    document.body.classList.toggle("dark", theme === "dark");
+    localStorage.setItem("theme", theme);
+  }, [theme]);
+
+  React.useEffect(() => {
+    if (buttonPrevious && buttonNext) {
+      if (page === pages) {
+        buttonNext.disabled = true;
+      } else {
+        buttonNext.disabled = false;
+      }
+
+      if (page === 1) {
+        buttonPrevious.disabled = true;
+      } else {
+        buttonPrevious.disabled = false;
+      }
+    }
+  }, [page, pages]);
+
+  const handleClick: React.MouseEventHandler<SVGElement> = () => {
+    setHeartFilled(!isHeartFilled);
+  };
 
   const handleNextPage = () => {
     buttonNext.classList.add("clicked");
     buttonPrevious.classList.remove("clicked");
 
+    const buttonActive = document.querySelector(
+      `.${styles.active}`,
+    ) as HTMLButtonElement;
+
+    if (cards && buttonActive) {
+      if (page === pages - 1) {
+        cards.style.height = "auto";
+      } else {
+        cards.style.height = "2464px";
+      }
+    }
+
     if (page < pages) {
       setPage(page + 1);
       setActive(active + 1);
-    } else {
-      setPage(1);
-      setActive(1);
     }
   };
 
@@ -82,19 +107,29 @@ const Characters = () => {
     buttonPrevious.classList.add("clicked");
     buttonNext.classList.remove("clicked");
 
+    if (cards) {
+      if (page === pages - 1) {
+        cards.style.height = "auto";
+      } else {
+        cards.style.height = "2464px";
+      }
+    }
+
     if (page > 1) {
       setPage(page - 1);
       setActive(active - 1);
-    } else {
-      setPage(pages);
-      setActive(pages);
     }
   };
 
+  const buttonActive = document.querySelector(
+    `.${styles.active}`,
+  ) as HTMLButtonElement;
+
   const handleActive = (pageNumber: number) => {
-    if (pageNumber === pages) {
+    if (pageNumber === pages && buttonActive) {
       setActive(pages);
       setPage(1);
+      buttonActive.disabled = true;
     } else {
       setActive(pageNumber);
       setPage(pageNumber);
@@ -109,8 +144,6 @@ const Characters = () => {
     let end = Math.min(pages, start + maxVisibleButtons - 1);
 
     const renderButtons = () => {
-      
-
       if (buttonPrevious?.classList.contains("clicked")) {
         start = Math.max(1, active);
         end = Math.min(pages, start + maxVisibleButtons - 1);
@@ -222,12 +255,10 @@ const Characters = () => {
 
         <div className={styles.cards}>
           {characters.loading
-            ? // Display skeletons while data is loading
-              Array.from({ length: 20 }).map((_, index) => (
+            ? Array.from({ length: 20 }).map((_, index) => (
                 <CardSkeleton key={index} />
               ))
-            : // Display character cards when data is available
-              characters.data?.results?.map(
+            : characters.data?.results?.map(
                 (character: CharacterResultsProps) => (
                   <CardCharacter
                     key={character.id}
@@ -243,15 +274,15 @@ const Characters = () => {
         </div>
 
         <div className={styles.controls}>
-          <span className={styles.previous} onClick={handlePreviousPage}>
+          <button className={styles.previous} onClick={handlePreviousPage}>
             <Arrow size="medium" direction="left" />
-          </span>
+          </button>
 
           <div className={styles.numbers}>{renderPageButtons()}</div>
 
-          <span className={styles.next} onClick={handleNextPage}>
+          <button className={styles.next} onClick={handleNextPage}>
             <Arrow size="medium" direction="right" />
-          </span>
+          </button>
         </div>
       </section>
     </>
