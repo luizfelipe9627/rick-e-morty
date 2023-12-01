@@ -4,7 +4,7 @@ import Title from "../Title/Title";
 import CardCharacter from "../Cards/CardCharacter";
 import useFetch from "../../hooks/useFetch";
 import useRandomNumbers from "../../hooks/useRandomNumbers";
-import CardSkeleton from "../Skeleton/CardSkeleton";
+import SkeletonCardCharacter from "../Skeleton/SkeletonCardCharacter";
 
 interface CharacterProps {
   id: number;
@@ -31,12 +31,10 @@ const Character = () => {
 
       <div className={styles.cards}>
         {characters.loading
-          ? // Display skeletons while data is loading
-            Array.from({ length: 10 }).map((_, index) => (
-              <CardSkeleton key={index} />
+          ? Array.from({ length: 8 }).map((_, index) => (
+              <SkeletonCardCharacter key={index} />
             ))
-          : // Display character cards when data is available
-            characters.data?.map((character: CharacterProps) => (
+          : characters.data?.map((character: CharacterProps) => (
               <CardCharacter
                 key={character.id}
                 id={character.id}

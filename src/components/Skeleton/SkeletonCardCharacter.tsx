@@ -2,7 +2,7 @@ import styles from "../Cards/CardCharacter.module.scss";
 import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
 
-const CardSkeleton = () => {
+const SkeletonCardCharacter = () => {
   return (
     <SkeletonTheme baseColor="#202020" highlightColor="#444">
       <div className={styles.cardCharacter}>
@@ -48,4 +48,4 @@ const CardSkeleton = () => {
   );
 };
 
-export default CardSkeleton;
+export default SkeletonCardCharacter;

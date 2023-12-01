@@ -11,9 +11,9 @@ import styles from "./Characters.module.scss";
 import CardLocation from "../components/Cards/CardLocation";
 import CardCharacter from "../components/Cards/CardCharacter";
 import Arrow from "../components/Svg/ArrowX";
-import CardSkeleton from "../components/Skeleton/CardSkeleton";
 import Title from "../components/Title/Title";
 import Smiley from "../components/Svg/Smiley";
+import SkeletonCharacter from "../components/Skeleton/SkeletonCardCharacter";
 
 interface CharacterResultsProps {
   results: [];
@@ -256,7 +256,7 @@ const Characters = () => {
         <div className={styles.cards}>
           {characters.loading
             ? Array.from({ length: 20 }).map((_, index) => (
-                <CardSkeleton key={index} />
+                <SkeletonCharacter key={index} />
               ))
             : characters.data?.results?.map(
                 (character: CharacterResultsProps) => (

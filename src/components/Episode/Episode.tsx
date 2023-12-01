@@ -3,6 +3,7 @@ import Title from "../Title/Title";
 import CardEpisode from "../Cards/CardEpisode";
 import useFetch from "../../hooks/useFetch";
 import useRandomNumbers from "../../hooks/useRandomNumbers";
+import SkeletonCardEpisode from "../Skeleton/SkeletonCardEpisode";
 
 interface EpisodeProps {
   id: number;
@@ -23,17 +24,18 @@ const Episode = () => {
       </Title>
 
       <div className={styles.cards}>
-        {episodes.loading && <p>Carregando...</p>}
-
-        {episodes.data &&
-          episodes.data.map((episode) => (
-            <CardEpisode
-              key={episode.id}
-              id={episode.id}
-              name={episode.name}
-              episode={episode.episode}
-            />
-          ))}
+        {episodes.loading
+          ? Array.from({ length: 4 }).map((_, index) => (
+              <SkeletonCardEpisode key={index} />
+            ))
+          : episodes.data?.map((episode) => (
+              <CardEpisode
+                key={episode.id}
+                id={episode.id}
+                name={episode.name}
+                episode={episode.episode}
+              />
+            ))}
       </div>
     </section>
   );
