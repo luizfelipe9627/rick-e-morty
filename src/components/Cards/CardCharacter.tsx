@@ -47,20 +47,20 @@ const CardCharacter = ({
         </div>
 
         <div className={styles.identity}>
-          <p className={styles.alive}>
+          <div className={styles.alive}>
             <Pulse size="small" />
-            {status === "Alive" ? "Vivo" : "Morto"}
-          </p>
+            <p>{status === "Alive" ? "Vivo" : "Morto"}</p>
+          </div>
 
-          <p className={styles.species}>
+          <div className={styles.species}>
             <Alien size="small" />
-            {species === "Human" ? "Humano" : "Alienígena"}
-          </p>
+            <p>{species === "Human" ? "Humano" : "Alienígena"}</p>
+          </div>
 
-          <p className={styles.planet}>
+          <div className={styles.planet}>
             <Planet size="small" />
-            {origin}
-          </p>
+            <p>{origin}</p>
+          </div>
         </div>
 
         <span className={styles.saibaMais}>

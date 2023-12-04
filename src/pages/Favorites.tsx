@@ -1,7 +1,7 @@
-const Favorites = () => {
-  return (
-    <section>Favoritos</section>
-  )
-}
+import React from "react";
 
-export default Favorites
+const Favorites = () => {
+  return <div>Favorites</div>;
+};
+
+export default Favorites;

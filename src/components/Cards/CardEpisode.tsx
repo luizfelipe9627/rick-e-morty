@@ -5,13 +5,13 @@ import Heart from "../Svg/Heart";
 import Play from "../Svg/Play";
 import Info from "../Svg/Info";
 
-interface EpisodeProps {
+interface CardEpisodeProps {
   id: number;
   name: string;
   episode: string;
 }
 
-const CardEpisode = ({ id, name, episode }: EpisodeProps) => {
+const CardEpisode = ({ id, name, episode }: CardEpisodeProps) => {
   const [isHeartFilled, setHeartFilled] = React.useState(false);
 
   const handleClick: React.MouseEventHandler<SVGElement> = () => {

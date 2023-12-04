@@ -53,7 +53,9 @@ const Label = ({
   return (
     <CustomComponent
       to={toLink ? `/${toLink}` : ""}
-      className={`${styles.label} ${active ? "active" : ""}`}
+      className={`${styles.label} ${className ? className : ""} ${
+        active ? "active" : ""
+      }`}
       style={labelStyle}
       onClick={onClick}
     >

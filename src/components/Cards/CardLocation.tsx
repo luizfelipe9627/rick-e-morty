@@ -20,15 +20,15 @@ const CardLocation = ({ id, name, type }: LocationProps) => {
   };
 
   return (
-    <div
-      className={styles.cardLocation}
-    >
+    <div className={styles.cardLocation}>
       <span className={styles.icon}>
         {type === "Planet" ? <Planet size="big" /> : <Location size="big" />}
       </span>
 
-      <h1 className={styles.type}>{type}</h1>
-      <p className={styles.name}>{name}</p>
+      <div>
+        <h1 className={styles.type}>{type}</h1>
+        <p className={styles.name}>{name}</p>
+      </div>
 
       <div className={styles.wrapper}>
         <Label componentSvg={<Info />} toLink={`location/${id}`}>

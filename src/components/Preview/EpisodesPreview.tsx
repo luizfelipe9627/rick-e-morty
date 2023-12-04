@@ -1,24 +1,24 @@
-import styles from "./Episode.module.scss";
+import styles from "./EpisodesPreview.module.scss";
 import Title from "../Title/Title";
 import CardEpisode from "../Cards/CardEpisode";
 import useFetch from "../../hooks/useFetch";
 import useRandomNumbers from "../../hooks/useRandomNumbers";
 import SkeletonCardEpisode from "../Skeleton/SkeletonCardEpisode";
 
-interface EpisodeProps {
+interface EpisodesPreviewProps {
   id: number;
   name: string;
   episode: string;
 }
 
-const Episode = () => {
+const EpisodesPreview = () => {
   const randomNumbers = useRandomNumbers(4, 51);
-  const episodes = useFetch<EpisodeProps[]>(
+  const episodes = useFetch<EpisodesPreviewProps[]>(
     `https://rickandmortyapi.com/api/episode/[${randomNumbers.join(",")}]`,
   );
 
   return (
-    <section className={`${styles.episodes} container`}>
+    <section className={`${styles.episodesPreview} container`}>
       <Title type="primary" label="Ver todos" to="episodes/1">
         Episódios
       </Title>
@@ -41,4 +41,4 @@ const Episode = () => {
   );
 };
 
-export default Episode;
+export default EpisodesPreview;

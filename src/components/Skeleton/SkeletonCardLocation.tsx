@@ -11,10 +11,10 @@ const SkeletonCardLocation = () => {
         </span>
 
         <h1 className={styles.type} style={{ margin: "10px 0 5px 0" }}>
-          <Skeleton width={150} />
+          <Skeleton width="100%" />
         </h1>
         <p className={styles.name}>
-          <Skeleton width={100} />
+          <Skeleton width="50%" />
         </p>
 
         <div className={styles.wrapper}>

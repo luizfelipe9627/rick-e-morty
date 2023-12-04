@@ -1,7 +1,11 @@
+import EpisodesIntroduction from "../components/Introduction/EpisodesIntroduction";
+
 const Episodes = () => {
   return (
-    <section>Episodes</section>
-  )
-}
+    <>
+      <EpisodesIntroduction />
+    </>
+  );
+};
 
-export default Episodes
+export default Episodes;

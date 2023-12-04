@@ -27,6 +27,7 @@ const Search = () => {
     const buttonLight = document.querySelector(
       ".buttonLight",
     ) as HTMLButtonElement;
+    console.log(buttonDark, buttonLight);
 
     buttonDark?.addEventListener("click", () => handleThemeClick("dark"));
     buttonLight?.addEventListener("click", () => handleThemeClick("light"));
@@ -80,9 +81,9 @@ const Search = () => {
           <Label
             componentSvg={
               theme === "dark" ? (
-                <Smiley size="medium" theme="dark" />
+                <Smiley size="small" theme="dark" />
               ) : (
-                <Smiley size="medium" />
+                <Smiley size="small" />
               )
             }
             altImg="Carinha"

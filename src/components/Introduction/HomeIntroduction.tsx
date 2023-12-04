@@ -1,13 +1,13 @@
 import React from "react";
 import HomeImgLight from "../../assets/img/HomeImgLight.png";
 import HomeImgDark from "../../assets/img/HomeImgDark.png";
-import styles from "./Introduction.module.scss";
+import styles from "./HomeIntroduction.module.scss";
 import Label from "../Button/Label";
 import useTheme from "../../hooks/useTheme";
 import Moon from "../Svg/Moon";
 import Sun from "../Svg/Sun";
 
-const Introduction = () => {
+const HomeIntroduction = () => {
   // Cria um estado chamado theme e uma função atualizadora chamada setTheme. O valor inicial do estado é o valor do localStorage(caso exista) ou "light"(caso não exista).
   const [theme, updateTheme] = useTheme();
 
@@ -27,7 +27,7 @@ const Introduction = () => {
   }, [theme]);
 
   return (
-    <section className={styles.introduction}>
+    <section className={styles.homeIntroduction}>
       <div className={`${styles.wrapper} container`}>
         <div className={`${styles.content} `}>
           <p className={styles.title}>
@@ -72,4 +72,4 @@ const Introduction = () => {
   );
 };
 
-export default Introduction;
+export default HomeIntroduction;

@@ -5,12 +5,6 @@ import SkeletonCardLocation from "../Skeleton/SkeletonCardLocation";
 import Title from "../Title/Title";
 import styles from "./Location.module.scss";
 
-interface LocationProps {
-  id: number;
-  name: string;
-  type: string;
-}
-
 const Location = () => {
   const randomNumbers = useRandomNumbers(5, 126);
   const locations = useFetch<LocationProps[]>(

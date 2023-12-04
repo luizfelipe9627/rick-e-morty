@@ -1,0 +1,63 @@
+.controls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  padding: 64px 0;
+  height: 175px;
+
+  button {
+    background-color: transparent;
+    border: none;
+
+    &:hover {
+      path {
+        stroke: var(--blue1-color);
+      }
+    }
+
+    &:disabled {
+      cursor: not-allowed;
+      path {
+        stroke: #a9a9a9;
+      }
+    }
+  }
+
+  .numbers {
+    display: flex;
+    gap: 16px;
+    user-select: none;
+
+    .active {
+      border: none;
+      background-color: var(--blue1-color);
+      color: var(--white-color);
+    }
+
+    button {
+      background-color: transparent;
+      border: 1px solid var(--dark-gray-color);
+      color: var(--dark-gray-color);
+      border-radius: 50%;
+      width: 47px;
+      height: 47px;
+      cursor: pointer;
+      font-size: 16px;
+
+      &:hover {
+        background-color: #11b0c8;
+        color: var(--white-color);
+        border: none;
+      }
+    }
+  }
+
+  .previous,
+  .next {
+    cursor: pointer;
+    path {
+      stroke: var(--dark-gray-color);
+    }
+  }
+}

@@ -1,0 +1,58 @@
+.episodesIntroduction {
+  border-bottom: 2px solid #11b0c8;
+
+  .wrapper {
+    margin-bottom: 210px;
+
+    .icon {
+      svg {
+        fill: var(--dark-gray-color);
+      }
+    }
+
+    .title {
+      display: flex;
+      align-items: center;
+      padding: 24px 0;
+      color: var(--dark-gray-color);
+
+      font-size: 42px;
+
+      font-weight: 700;
+
+      svg {
+        cursor: pointer;
+        margin-left: 16px;
+      }
+    }
+
+    .infos {
+      display: flex;
+      gap: 24px;
+      margin-bottom: 72px;
+
+      .airDate,
+      .episode {
+        display: flex;
+        align-items: center;
+        font-size: 24px;
+        color: var(--dark-gray-color);
+
+        svg {
+          margin-right: 8px;
+        }
+      }
+    }
+    
+    .statistic {
+      display: flex;
+      align-items: center;
+      font-size: 24px;
+      color: var(--dark-gray-color);
+
+      svg {
+        margin-right: 8px;
+      }
+    }
+  }
+}

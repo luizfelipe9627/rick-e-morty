@@ -1,14 +1,14 @@
-import Introduction from "../components/Introduction/Introduction";
-import Character from "../components/Character/Character";
-import Episode from "../components/Episode/Episode";
+import HomeIntroduction from "../components/Introduction/HomeIntroduction";
+import CharactersPreview from "../components/Preview/CharactersPreview";
+import EpisodesPreview from "../components/Preview/EpisodesPreview";
 import Location from "../components/Location/Location";
 
 const Home = () => {
   return (
     <>
-      <Introduction />
-      <Character />
-      <Episode />
+      <HomeIntroduction />
+      <CharactersPreview />
+      <EpisodesPreview />
       <Location />
     </>
   );

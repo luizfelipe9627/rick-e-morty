@@ -4,6 +4,7 @@ import Favorites from "./pages/Favorites";
 import Characters from "./pages/Characters";
 import Episodes from "./pages/Episodes";
 import React from "react";
+import NotFound from "./pages/NotFound";
 
 export default function AppRoutes() {
   const { pathname } = useLocation();
@@ -18,6 +19,7 @@ export default function AppRoutes() {
       <Route path="/favorites" element={<Favorites />} />
       <Route path="/characters/:id" element={<Characters />} />
       <Route path="/episodes/:id" element={<Episodes />} />
+      <Route path="*" element={<NotFound />} />
     </Routes>
   );
 }
