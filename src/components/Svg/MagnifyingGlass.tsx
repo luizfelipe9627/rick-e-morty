@@ -6,7 +6,7 @@ interface MagnifyingGlassProps {
 const MagnifyingGlass = ({ color, size }: MagnifyingGlassProps) => {
   const commonProps = {
     xmlns: "http://www.w3.org/2000/svg",
-    fill: color ? color : "#313234",
+    fill: color ? color : "var(--dark-gray-color)",
   };
 
   const mediumProps = {

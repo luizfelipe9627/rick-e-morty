@@ -2,6 +2,8 @@
   background-color: var(--bg-card-color);
   padding: 16px;
   border-radius: 8px;
+  display: flex;
+  flex-direction: column;
 
   .photo {
     img {
@@ -14,45 +16,28 @@
 
   .infos {
     color: var(--dark-gray-color);
-    height: 220px;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
-
-    .alive,
-    .favorite {
-      svg {
-        fill: revert-layer;
-      }
-    }
-
-    svg {
-      fill: var(--dark-gray-color);
-    }
+    justify-content: space-around;
+    height: 100%;
 
     .wrapper {
-      position: relative;
+      display: flex;
       margin: 16px 0;
       justify-content: space-between;
-      display: flex;
+
+      svg {
+        cursor: pointer;
+      }
 
       .name {
         color: var(--dark-gray-color);
         font-size: 16px;
         font-weight: 700;
 
-        max-width: 17ch;
-
         @media (max-width: 1250px) {
           max-width: 10ch;
         }
-      }
-
-      .favorite {
-        position: absolute;
-        top: -4px;
-        right: 0;
-        cursor: pointer;
       }
     }
 
@@ -68,9 +53,6 @@
 
       .planet {
         margin-bottom: 24px;
-        height: 100%;
-        text-align: start;
-        align-items: flex-start;
       }
     }
 

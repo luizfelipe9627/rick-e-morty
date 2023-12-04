@@ -15,31 +15,28 @@ const SkeletonCardCharacter = () => {
             <h1 className={styles.name}>
               <Skeleton height={20} width={150} />
             </h1>
-
-            <span className={styles.favorite}>
-              <Skeleton circle={true} height={40} width={40} />
-            </span>
+            <Skeleton circle height={48} width={48} />
           </div>
 
           <div className={styles.identity}>
             <p className={styles.alive}>
-              <Skeleton circle={true} height={20} width={20} />
+              <Skeleton circle height={20} width={20} />
               <Skeleton height={20} width={130} />
             </p>
 
             <p className={styles.species}>
-              <Skeleton circle={true} height={20} width={20} />
+              <Skeleton circle height={20} width={20} />
               <Skeleton height={20} width={130} />
             </p>
 
             <p className={styles.planet}>
-              <Skeleton circle={true} height={20} width={20} />
+              <Skeleton circle height={20} width={20} />
               <Skeleton height={20} width={130} />
             </p>
           </div>
 
           <span className={styles.saibaMais}>
-            <Skeleton circle={true} height={20} width={20} />
+            <Skeleton circle height={32} width={32} />
             <Skeleton height={20} width={80} style={{ marginLeft: "4px" }} />
           </span>
         </div>

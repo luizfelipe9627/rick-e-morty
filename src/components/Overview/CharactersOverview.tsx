@@ -37,14 +37,17 @@ const CharactersOverview = () => {
     ) as HTMLButtonElement;
 
     if (buttonActive && active === pages) {
-      cards.style.height = "auto";
+      //cards.style.height = "auto";
     } else {
-      cards.style.height = "2464px";
+      //cards.style.height = "auto";
     }
   }, [active, page]);
 
   return (
-    <section className={`${styles.charactersOverview} container`} ref={charactersRef}>
+    <section
+      className={`${styles.charactersOverview} container`}
+      ref={charactersRef}
+    >
       <Title
         type="secondary"
         componentSvg={
@@ -63,19 +66,17 @@ const CharactersOverview = () => {
           ? Array.from({ length: 20 }).map((_, index) => (
               <SkeletonCardCharacter key={index} />
             ))
-          : characters.data?.results?.map(
-              (character: CharacterProps) => (
-                <CardCharacter
-                  key={character.id}
-                  id={character.id}
-                  image={character.image}
-                  name={character.name}
-                  status={character.status}
-                  species={character.species}
-                  origin={character.origin.name}
-                />
-              ),
-            )}
+          : characters.data?.results?.map((character: CharacterProps) => (
+              <CardCharacter
+                key={character.id}
+                id={character.id}
+                image={character.image}
+                name={character.name}
+                status={character.status}
+                species={character.species}
+                origin={character.origin.name}
+              />
+            ))}
       </div>
 
       {controls}

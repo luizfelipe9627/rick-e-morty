@@ -40,10 +40,7 @@ const CardCharacter = ({
       <div className={styles.infos}>
         <div className={styles.wrapper}>
           <h1 className={styles.name}>{name}</h1>
-
-          <span className={styles.favorite}>
-            <Heart size="big" fill={isHeartFilled} onClick={handleClick} />
-          </span>
+          <Heart size="big" fill={isHeartFilled} onClick={handleClick} />
         </div>
 
         <div className={styles.identity}>
