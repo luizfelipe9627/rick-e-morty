@@ -17,7 +17,7 @@ const CharactersOverview = () => {
 
   const pages = charactersPages.data?.info.pages || 1;
 
-  const { page, active, controls } = usePagination(1, pages);
+  const { page, controls } = usePagination(1, pages);
 
   const characters = useFetch<CharacterProps>(
     `https://rickandmortyapi.com/api/character?page=${page}`,
@@ -28,25 +28,9 @@ const CharactersOverview = () => {
     localStorage.setItem("theme", theme);
   }, [theme]);
 
-  const charactersRef = React.useRef<HTMLDivElement>(null);
-
-  React.useEffect(() => {
-    const cards = document.querySelector(`.${styles.cards}`) as HTMLDivElement;
-    const buttonActive = document.querySelector(
-      `.${styles.active}`,
-    ) as HTMLButtonElement;
-
-    if (buttonActive && active === pages) {
-      cards.style.height = "auto";
-    } else {
-      cards.style.height = "1000px";
-    }
-  }, [active, page]);
-
   return (
     <section
       className={`${styles.charactersOverview} container`}
-      ref={charactersRef}
     >
       <Title
         type="secondary"

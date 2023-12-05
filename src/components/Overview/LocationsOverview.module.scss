@@ -4,8 +4,8 @@
     grid-template-columns: repeat(4, 1fr);
     gap: 16px;
     overflow-y: scroll;
-    max-height: 430px;
-    padding-top: 1px;
+    max-height: 410px;
+    padding-top: 4px;
 
     &::-webkit-scrollbar {
       width: 4px;
