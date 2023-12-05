@@ -19,6 +19,9 @@ const CharactersIntroduction = () => {
   const character = useFetch<CharacterProps>(
     `https://rickandmortyapi.com/api/character/${id}`,
   );
+  const location = useFetch<LocationProps>(
+    `https://rickandmortyapi.com/api/location`,
+  );
 
   React.useEffect(() => {
     document.body.classList.toggle("dark", theme === "dark");
@@ -28,6 +31,7 @@ const CharactersIntroduction = () => {
   const handleClick: React.MouseEventHandler<SVGElement> = () => {
     setHeartFilled(!isHeartFilled);
   };
+
   return (
     <section className={styles.charactersIntroduction}>
       <div className={`${styles.wrapper} container`}>
@@ -90,16 +94,20 @@ const CharactersIntroduction = () => {
                   </div>
 
                   <div className={styles.location}>
-                    <CardLocation
-                      id={character.data.id}
-                      type="Planet"
-                      name={character.data.origin.name}
-                    />
-                    <CardLocation
-                      type=""
-                      id={character.data.id}
-                      name={character.data.location.name}
-                    />
+                    {character.data?.origin.name !== "unknown" && (
+                      <>
+                        <CardLocation
+                          id={character.data.id}
+                          type="Planet"
+                          name={character.data?.origin.name}
+                        />
+                        <CardLocation
+                          id={character.data.id}
+                          type=""
+                          name={character.data.location.name}
+                        />
+                      </>
+                    )}
                   </div>
                 </div>
               </div>

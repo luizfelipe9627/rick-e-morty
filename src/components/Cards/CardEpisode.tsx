@@ -28,7 +28,7 @@ const CardEpisode = ({ id, name, episode }: CardEpisodeProps) => {
       </div>
 
       <span className={styles.saibaMais}>
-        <Label toLink={`episode/${id}`} componentSvg={<Info />}>
+        <Label toLink={`episodes/${id}`} componentSvg={<Info />}>
           Saiba mais
         </Label>
         <Heart size="medium" fill={isHeartFilled} onClick={handleClick} />

@@ -30,10 +30,6 @@
         cursor: pointer;
         animation: floating 2s infinite;
 
-        path {
-          stroke: var(--dark-gray-color);
-        }
-
         &:hover {
           animation: none;
         }

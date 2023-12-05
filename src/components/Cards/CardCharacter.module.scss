@@ -34,10 +34,6 @@
         color: var(--dark-gray-color);
         font-size: 16px;
         font-weight: 700;
-
-        @media (max-width: 1250px) {
-          max-width: 10ch;
-        }
       }
     }
 
@@ -58,11 +54,13 @@
 
     .saibaMais {
       display: flex;
+      align-items: center;
       justify-content: flex-end;
 
       &:hover {
-        p {
+        p, svg {
           color: var(--white-color);
+          fill: var(--white-color);
         }
       }
     }

@@ -31,13 +31,6 @@
       .themes {
         display: flex;
         gap: 8px;
-        
-        .buttonDark {
-          p {
-            color: var(--dark-gray-color) !important;
-            background-color: red;
-          }
-        }
       }
 
       .phrase {

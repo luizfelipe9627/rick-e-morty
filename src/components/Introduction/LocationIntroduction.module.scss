@@ -1,4 +1,4 @@
-.episodesIntroduction {
+.locationsIntroduction {
   border-bottom: 2px solid #11b0c8;
 
   .wrapper {
@@ -26,8 +26,8 @@
       gap: 24px;
       margin-bottom: 72px;
 
-      .airDate,
-      .episode {
+      .type,
+      .location {
         display: flex;
         align-items: center;
         font-size: 24px;
@@ -38,7 +38,7 @@
         }
       }
     }
-    
+
     .statistic {
       display: flex;
       align-items: center;

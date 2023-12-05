@@ -50,10 +50,6 @@
         font-size: 20px;
         margin: 40px 0 52px 0;
         gap: 8px;
-
-        svg {
-          fill: var(--dark-gray-color);
-        }
       }
     }
 
@@ -75,12 +71,6 @@
         svg {
           margin-right: 8px;
         }
-
-        &:not(:first-child) {
-          svg {
-            fill: var(--dark-gray-color);
-          }
-        }
       }
     }
   }
@@ -95,14 +85,10 @@
       max-width: 150px;
 
       &:nth-child(2) {
-        p {
-          color: var(--dark-gray-color);
-        }
-
-        a {
-          &:hover {
+        div {
+          &:nth-child(2) {
             p {
-              color: var(--white-color);
+              color: var(--dark-gray-color);
             }
           }
         }

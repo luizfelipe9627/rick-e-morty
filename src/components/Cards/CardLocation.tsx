@@ -9,7 +9,7 @@ import Planet from "../Svg/Planet";
 interface LocationProps {
   id?: number;
   name?: string;
-  type: string;
+  type?: string;
 }
 
 const CardLocation = ({ id, name, type }: LocationProps) => {
@@ -22,7 +22,7 @@ const CardLocation = ({ id, name, type }: LocationProps) => {
   return (
     <div className={styles.cardLocation}>
       <span className={styles.icon}>
-        {type === "Planet" ? <Planet size="big" /> : <Location size="big" />}
+        {type !== "Planet" ? <Location size="big" /> : <Planet size="big" />}
       </span>
 
       <div>
@@ -31,7 +31,7 @@ const CardLocation = ({ id, name, type }: LocationProps) => {
       </div>
 
       <div className={styles.wrapper}>
-        <Label componentSvg={<Info />} toLink={`location/${id}`}>
+        <Label componentSvg={<Info />} toLink={`locations/${id}`}>
           Saiba mais
         </Label>
         <Heart size="medium" fill={isHeartFilled} onClick={handleClick} />

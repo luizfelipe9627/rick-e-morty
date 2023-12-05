@@ -13,15 +13,13 @@ function App() {
   }
 
   return (
-    <div className="App">
-      <BrowserRouter>
-        <Header />
-        <main className="AppBody">
-          <AppRoutes />
-        </main>
-        <Footer />
-      </BrowserRouter>
-    </div>
+    <BrowserRouter>
+      <Header />
+      <main>
+        <AppRoutes />
+      </main>
+      <Footer />
+    </BrowserRouter>
   );
 }
 

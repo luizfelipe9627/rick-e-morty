@@ -37,9 +37,9 @@ const CharactersOverview = () => {
     ) as HTMLButtonElement;
 
     if (buttonActive && active === pages) {
-      //cards.style.height = "auto";
+      cards.style.height = "auto";
     } else {
-      //cards.style.height = "auto";
+      cards.style.height = "1000px";
     }
   }, [active, page]);
 

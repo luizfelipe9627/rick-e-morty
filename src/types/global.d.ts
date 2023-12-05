@@ -4,6 +4,7 @@ interface CharacterProps {
   name: string;
   status: string;
   species: string;
+  type: string;
   origin: {
     name: string;
   };

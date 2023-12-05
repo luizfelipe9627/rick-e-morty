@@ -14,24 +14,22 @@
     /* Centraliza na horizontal e vertical */
     left: 50%;
     transform: translate(-50%, -50%);
+  }
 
-    svg {
-      fill: var(--dark-gray-color);
+  div {
+    .type,
+    .name {
+      text-align: center;
+      font-size: 16px;
     }
-  }
 
-  .type,
-  .name {
-    text-align: center;
-    font-size: 16px;
-  }
+    .type {
+      color: var(--dark-gray-color);
+    }
 
-  .type {
-    color: var(--dark-gray-color);
-  }
-
-  .name {
-    color: #11b0c8;
+    .name {
+      color: var(--blue1-color);
+    }
   }
 
   .wrapper {
@@ -41,10 +39,6 @@
 
     a {
       margin: 16px 0 14px 0;
-
-      svg {
-        fill: var(--dark-gray-color);
-      }
 
       &:hover {
         p,

@@ -18,7 +18,6 @@ html {
 
 .active {
   background-color: var(--blue1-color) !important;
-  color: var(--dark-gray-color);
 
   svg {
     fill: var(--white-color) !important;
@@ -27,20 +26,4 @@ html {
   p {
     color: var(--white-color) !important;
   }
-}
-
-.loading {
-  color: var(--dark-gray-color);
-}
-
-.App {
-  display: flex;
-  flex-direction: column;
-  /* Faz o calculo pegando a altura total da tela mais a altura do footer para a altura. */
-  min-height: calc(100vh + 271px);
-}
-
-.AppBody {
-  /* O flex 1 faz com que o footer fique sempre no final da página. */
-  flex: 1;
 }
