@@ -5,19 +5,19 @@ import Heart from "../Svg/Heart";
 import styles from "./CardLocation.module.scss";
 import Location from "../Svg/Location";
 import Planet from "../Svg/Planet";
+import useFavorite from "../../hooks/useFavorite";
 
 interface LocationProps {
-  id?: number;
+  id: number;
   name?: string;
   type?: string;
 }
 
 const CardLocation = ({ id, name, type }: LocationProps) => {
-  const [isHeartFilled, setHeartFilled] = React.useState(false);
-
-  const handleClick: React.MouseEventHandler<SVGElement> = () => {
-    setHeartFilled(!isHeartFilled);
-  };
+  const { isHeartFilled, toggleFavorite } = useFavorite({
+    id: id,
+    localStorageName: "favoritesLocations",
+  });
 
   return (
     <div className={styles.cardLocation}>
@@ -34,7 +34,7 @@ const CardLocation = ({ id, name, type }: LocationProps) => {
         <Label componentSvg={<Info />} toLink={`locations/${id}`}>
           Saiba mais
         </Label>
-        <Heart size="medium" fill={isHeartFilled} onClick={handleClick} />
+        <Heart size="medium" fill={isHeartFilled} onClick={toggleFavorite} />
       </div>
     </div>
   );

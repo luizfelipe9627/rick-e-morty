@@ -10,11 +10,17 @@ import React from "react";
 import { useParams } from "react-router-dom";
 import useFetch from "../../hooks/useFetch";
 import useTheme from "../../hooks/useTheme";
+import useFavorite from "../../hooks/useFavorite";
 
 const CharactersIntroduction = () => {
   const { id } = useParams();
   const [theme] = useTheme();
-  const [isHeartFilled, setHeartFilled] = React.useState(false);
+
+  const { checkIfFavorite, toggleFavorite } = useFavorite({
+    id: Number(id),
+    localStorageName: "favoritesCharacters",
+  });
+
 
   const character = useFetch<CharacterProps>(
     `https://rickandmortyapi.com/api/character/${id}`,
@@ -24,10 +30,6 @@ const CharactersIntroduction = () => {
     document.body.classList.toggle("dark", theme === "dark");
     localStorage.setItem("theme", theme);
   }, [theme]);
-
-  const handleClick: React.MouseEventHandler<SVGElement> = () => {
-    setHeartFilled(!isHeartFilled);
-  };
 
   return (
     <section className={styles.charactersIntroduction}>
@@ -46,11 +48,7 @@ const CharactersIntroduction = () => {
                 <div className={styles.content}>
                   <div className={styles.name}>
                     <h1>{character.data.name}</h1>
-                    <Heart
-                      size="huge"
-                      fill={isHeartFilled}
-                      onClick={handleClick}
-                    />
+                    <Heart size="huge" fill={checkIfFavorite()} onClick={toggleFavorite}/>
                   </div>
 
                   <div className={styles.episode}>

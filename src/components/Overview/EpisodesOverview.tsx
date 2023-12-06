@@ -32,6 +32,7 @@ const EpisodesOverview = () => {
             ))
           : episodes.data?.results?.map((episode: EpisodeProps) => (
               <CardEpisode
+                key={episode.id}
                 id={episode.id}
                 name={episode.name}
                 episode={episode.episode}

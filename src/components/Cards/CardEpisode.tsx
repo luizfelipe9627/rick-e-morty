@@ -4,6 +4,7 @@ import Label from "../Button/Label";
 import Heart from "../Svg/Heart";
 import Play from "../Svg/Play";
 import Info from "../Svg/Info";
+import useFavorite from "../../hooks/useFavorite";
 
 interface CardEpisodeProps {
   id: number;
@@ -12,11 +13,10 @@ interface CardEpisodeProps {
 }
 
 const CardEpisode = ({ id, name, episode }: CardEpisodeProps) => {
-  const [isHeartFilled, setHeartFilled] = React.useState(false);
-
-  const handleClick: React.MouseEventHandler<SVGElement> = () => {
-    setHeartFilled(!isHeartFilled);
-  };
+  const { isHeartFilled, toggleFavorite } = useFavorite({
+    id: id,
+    localStorageName: "favoritesEpisodes",
+  });
 
   return (
     <div className={styles.cardEpisode}>
@@ -31,7 +31,7 @@ const CardEpisode = ({ id, name, episode }: CardEpisodeProps) => {
         <Label toLink={`episodes/${id}`} componentSvg={<Info />}>
           Saiba mais
         </Label>
-        <Heart size="medium" fill={isHeartFilled} onClick={handleClick} />
+        <Heart size="medium" fill={isHeartFilled} onClick={toggleFavorite} />
       </span>
     </div>
   );

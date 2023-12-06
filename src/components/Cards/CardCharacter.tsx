@@ -1,4 +1,3 @@
-import React from "react";
 import styles from "./CardCharacter.module.scss";
 import Label from "../Button/Label";
 import Alien from "../Svg/Alien";
@@ -7,6 +6,8 @@ import Heart from "../Svg/Heart";
 import Info from "../Svg/Info";
 import Pulse from "../Svg/Pulse";
 import "react-loading-skeleton/dist/skeleton.css";
+import useFavorite from "../../hooks/useFavorite";
+import React from "react";
 
 interface CardCharacterProps {
   id: number;
@@ -25,11 +26,10 @@ const CardCharacter = ({
   species,
   origin,
 }: CardCharacterProps) => {
-  const [isHeartFilled, setHeartFilled] = React.useState(false);
-
-  const handleClick: React.MouseEventHandler<SVGElement> = () => {
-    setHeartFilled(!isHeartFilled);
-  };
+  const { isHeartFilled, toggleFavorite } = useFavorite({
+    id: id,
+    localStorageName: "favoritesCharacters",
+  });
 
   return (
     <div className={styles.cardCharacter} key={id}>
@@ -40,7 +40,7 @@ const CardCharacter = ({
       <div className={styles.infos}>
         <div className={styles.wrapper}>
           <h1 className={styles.name}>{name}</h1>
-          <Heart size="big" fill={isHeartFilled} onClick={handleClick} />
+          <Heart size="big" fill={isHeartFilled} onClick={toggleFavorite} />
         </div>
 
         <div className={styles.identity}>
