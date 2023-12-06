@@ -9,19 +9,20 @@ import Smiley from "../Svg/Smiley";
 import Calendar from "../Svg/Calendar";
 import Queue from "../Svg/Queue";
 import SkeletonEpisode from "../Skeleton/SkeletonEpisode";
+import useFavorite from "../../hooks/useFavorite";
 
 const EpisodesIntroduction = () => {
   const [theme] = useTheme();
-  const [isHeartFilled, setHeartFilled] = React.useState(false);
   const { id } = useParams();
+
+  const { checkIfFavorite, toggleFavorite } = useFavorite({
+    id: Number(id),
+    localStorageName: "favoritesEpisodes",
+  });
 
   const episode = useFetch<EpisodeProps>(
     `https://rickandmortyapi.com/api/episode/${id}`,
   );
-
-  const handleClick: React.MouseEventHandler<SVGElement> = () => {
-    setHeartFilled(!isHeartFilled);
-  };
 
   return (
     <section className={styles.episodesIntroduction}>
@@ -37,7 +38,11 @@ const EpisodesIntroduction = () => {
 
               <div className={styles.title}>
                 <h1>{episode.data?.name}</h1>
-                <Heart size="huge" fill={isHeartFilled} onClick={handleClick} />
+                <Heart
+                  size="huge"
+                  fill={checkIfFavorite()}
+                  onClick={toggleFavorite}
+                />
               </div>
 
               <div className={styles.infos}>

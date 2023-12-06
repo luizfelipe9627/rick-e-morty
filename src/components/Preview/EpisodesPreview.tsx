@@ -18,7 +18,7 @@ const EpisodesPreview = () => {
   );
 
   return (
-    <section className={`${styles.episodesPreview} container`}>
+    <div className={`${styles.episodesPreview} container`}>
       <Title type="primary" label="Ver todos" to="episodes/1">
         Episódios
       </Title>
@@ -37,7 +37,7 @@ const EpisodesPreview = () => {
               />
             ))}
       </div>
-    </section>
+    </div>
   );
 };
 

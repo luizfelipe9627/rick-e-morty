@@ -27,11 +27,12 @@ const LocationOverview = () => {
 
       <div className={styles.cards}>
         {locations.loading
-          ? Array.from({ length: 20 }).map((_, index) => (
+          ? Array.from({ length: 12 }).map((_, index) => (
               <SkeletonCardLocation key={index} />
             ))
           : locations.data?.results?.map((location: LocationProps) => (
               <CardLocation
+                key={location.id}
                 id={location.id}
                 name={location.name}
                 type={location.type}

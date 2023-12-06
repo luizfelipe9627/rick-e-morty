@@ -6,13 +6,13 @@ import Title from "../Title/Title";
 import styles from "./LocationsPreview.module.scss";
 
 const LocationsPreview = () => {
-  const randomNumbers = useRandomNumbers(5, 126);
+  const randomNumbers = useRandomNumbers(6, 126);
   const locations = useFetch<LocationProps[]>(
     `https://rickandmortyapi.com/api/location/[${randomNumbers.join(",")}]`,
   );
 
   return (
-    <section className={`${styles.locationPreview} container`}>
+    <div className={`${styles.locationPreview} container`}>
       <Title type="primary" label="Ver todos" to="locations/1">
         Localizações
       </Title>
@@ -31,7 +31,7 @@ const LocationsPreview = () => {
               />
             ))}
       </div>
-    </section>
+    </div>
   );
 };
 

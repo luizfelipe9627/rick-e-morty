@@ -1,4 +1,3 @@
-import React from "react";
 import { useParams } from "react-router-dom";
 import useFetch from "../../hooks/useFetch";
 import Heart from "../Svg/Heart";
@@ -8,19 +7,21 @@ import styles from "./LocationsIntroduction.module.scss";
 import useTheme from "../../hooks/useTheme";
 import Cube from "../Svg/Cube";
 import SkeletonLocation from "../Skeleton/SkeletonLocation";
+import useFavorite from "../../hooks/useFavorite";
+import React from "react";
 
 const LocationsIntroduction = () => {
   const [theme] = useTheme();
-  const [isHeartFilled, setHeartFilled] = React.useState(false);
   const { id } = useParams();
 
+  const { checkIfFavorite, toggleFavorite } = useFavorite({
+    id: Number(id),
+    localStorageName: "favoritesLocations",
+  });
+  
   const location = useFetch<LocationProps>(
     `https://rickandmortyapi.com/api/location/${id}`,
   );
-
-  const handleClick: React.MouseEventHandler<SVGElement> = () => {
-    setHeartFilled(!isHeartFilled);
-  };
 
   return (
     <section className={styles.locationsIntroduction}>
@@ -36,7 +37,11 @@ const LocationsIntroduction = () => {
 
               <div className={styles.title}>
                 <h1>{location.data?.name}</h1>
-                <Heart size="huge" fill={isHeartFilled} onClick={handleClick} />
+                <Heart
+                  size="huge"
+                  fill={checkIfFavorite()}
+                  onClick={toggleFavorite}
+                />
               </div>
 
               <div className={styles.infos}>

@@ -1,5 +1,4 @@
-import { useState } from "react";
-import { useParams } from "react-router-dom";
+import React from "react";
 
 interface UseFavoriteProps {
   id: number;
@@ -7,7 +6,7 @@ interface UseFavoriteProps {
 }
 
 const useFavorite = ({ id, localStorageName }: UseFavoriteProps) => {
-  const [isHeartFilled, setHeartFilled] = useState(
+  const [isHeartFilled, setHeartFilled] = React.useState<boolean>(
     () =>
       JSON.parse(localStorage.getItem(localStorageName) || "{}")[id] || false,
   );
@@ -27,7 +26,6 @@ const useFavorite = ({ id, localStorageName }: UseFavoriteProps) => {
   };
 
   const checkIfFavorite = () => {
-    const { id } = useParams();
     const localStorageFavorites = localStorage.getItem(localStorageName);
 
     if (!localStorageFavorites) return false;

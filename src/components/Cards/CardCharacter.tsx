@@ -7,7 +7,6 @@ import Info from "../Svg/Info";
 import Pulse from "../Svg/Pulse";
 import "react-loading-skeleton/dist/skeleton.css";
 import useFavorite from "../../hooks/useFavorite";
-import React from "react";
 
 interface CardCharacterProps {
   id: number;

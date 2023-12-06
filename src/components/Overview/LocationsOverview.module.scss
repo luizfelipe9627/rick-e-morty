@@ -1,10 +1,10 @@
 .locationsOverview {
   .cards {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(6, 1fr);
     gap: 16px;
     overflow-y: scroll;
-    max-height: 410px;
+    max-height: 450px;
     padding-top: 4px;
 
     &::-webkit-scrollbar {
@@ -20,8 +20,8 @@
       }
     }
 
-    @media (max-width: 1024px) {
-      grid-template-columns: repeat(3, 1fr);
+    @media (max-width: 1200px) {
+      grid-template-columns: repeat(4, 1fr);
     }
 
     @media (max-width: 768px) {
