@@ -19,9 +19,6 @@ const CharactersIntroduction = () => {
   const character = useFetch<CharacterProps>(
     `https://rickandmortyapi.com/api/character/${id}`,
   );
-  const location = useFetch<LocationProps>(
-    `https://rickandmortyapi.com/api/location`,
-  );
 
   React.useEffect(() => {
     document.body.classList.toggle("dark", theme === "dark");

@@ -1,4 +1,4 @@
-import LocationIntroduction from "../components/Introduction/LocationIntroduction";
+import LocationIntroduction from "../components/Introduction/LocationsIntroduction";
 import LocationOverview from "../components/Overview/LocationsOverview";
 
 const Locations = () => {

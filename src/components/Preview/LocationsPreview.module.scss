@@ -1,14 +1,10 @@
-.episodesPreview {
-  margin-bottom: 60px;
+.locationPreview {
+  padding-bottom: 80px;
 
   .cards {
     display: grid;
     gap: 16px;
-    grid-template-columns: repeat(4, 1fr);
-
-    p {
-      color: var(--dark-gray-color);
-    }
+    grid-template-columns: repeat(5, 1fr);
 
     @media (max-width: 1024px) {
       grid-template-columns: repeat(3, 1fr);

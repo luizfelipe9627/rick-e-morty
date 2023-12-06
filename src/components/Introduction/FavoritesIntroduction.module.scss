@@ -1,0 +1,27 @@
+.favoritesIntroduction {
+  border-bottom: 2px solid #11b0c8;
+
+  .wrapper {
+    display: flex;
+    justify-content: space-between;
+
+    .info {
+      max-width: 40ch;
+
+      h1,
+      span {
+        color: var(--dark-gray-color);
+        font-size: 48px;
+        font-weight: 700;
+      }
+
+      span {
+        color: var(--blue1-color);
+      }
+
+      svg {
+        margin-bottom: 16px;
+      }
+    }
+  }
+}

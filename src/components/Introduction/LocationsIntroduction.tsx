@@ -1,22 +1,21 @@
 import React from "react";
-import styles from "./EpisodesIntroduction.module.scss";
-import Play from "../Svg/Play";
-import useTheme from "../../hooks/useTheme";
-import Heart from "../Svg/Heart";
 import { useParams } from "react-router-dom";
 import useFetch from "../../hooks/useFetch";
+import Heart from "../Svg/Heart";
+import Planet from "../Svg/Planet";
 import Smiley from "../Svg/Smiley";
-import Calendar from "../Svg/Calendar";
-import Queue from "../Svg/Queue";
-import SkeletonEpisode from "../Skeleton/SkeletonEpisode";
+import styles from "./LocationsIntroduction.module.scss";
+import useTheme from "../../hooks/useTheme";
+import Cube from "../Svg/Cube";
+import SkeletonLocation from "../Skeleton/SkeletonLocation";
 
-const EpisodesIntroduction = () => {
+const LocationsIntroduction = () => {
   const [theme] = useTheme();
   const [isHeartFilled, setHeartFilled] = React.useState(false);
   const { id } = useParams();
 
-  const episode = useFetch<EpisodeProps>(
-    `https://rickandmortyapi.com/api/episode/${id}`,
+  const location = useFetch<LocationProps>(
+    `https://rickandmortyapi.com/api/location/${id}`,
   );
 
   const handleClick: React.MouseEventHandler<SVGElement> = () => {
@@ -24,31 +23,31 @@ const EpisodesIntroduction = () => {
   };
 
   return (
-    <section className={styles.episodesIntroduction}>
-      {episode.loading ? (
-        <SkeletonEpisode />
+    <section className={styles.locationsIntroduction}>
+      {location.loading ? (
+        <SkeletonLocation />
       ) : (
-        episode.data && (
+        location.data && (
           <>
             <div className={`${styles.wrapper} container`}>
               <span className={styles.icon}>
-                <Play size="veryHuge" />
+                <Planet size="huge" />
               </span>
 
               <div className={styles.title}>
-                <h1>{episode.data?.name}</h1>
+                <h1>{location.data?.name}</h1>
                 <Heart size="huge" fill={isHeartFilled} onClick={handleClick} />
               </div>
 
               <div className={styles.infos}>
-                <div className={styles.airDate}>
-                  <Calendar size="medium" />
-                  <p>{episode.data?.air_date}</p>
+                <div className={styles.type}>
+                  <Planet size="medium" />
+                  <p>{location.data?.type}</p>
                 </div>
 
-                <div className={styles.episode}>
-                  <Queue size="medium" />
-                  <p>{episode.data?.episode}</p>
+                <div className={styles.location}>
+                  <Cube size="medium" />
+                  <p>{location.data?.dimension}</p>
                 </div>
               </div>
 
@@ -59,11 +58,11 @@ const EpisodesIntroduction = () => {
                   <Smiley size="medium" />
                 )}
                 <p>
-                  {episode.data?.characters.length}{" "}
-                  {episode.data && episode.data?.characters.length > 1
+                  {location.data?.residents.length}{" "}
+                  {location.data && location.data?.residents.length > 1
                     ? "Personagens"
                     : "Personagem"}{" "}
-                  participaram deste episódio
+                  localizados aqui
                 </p>
               </div>
             </div>
@@ -74,4 +73,4 @@ const EpisodesIntroduction = () => {
   );
 };
 
-export default EpisodesIntroduction;
+export default LocationsIntroduction;

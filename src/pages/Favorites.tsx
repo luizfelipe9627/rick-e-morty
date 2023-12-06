@@ -1,7 +1,13 @@
-import React from "react";
+import FavoritesIntroduction from "../components/Introduction/FavoritesIntroduction";
+import FavoritesOverview from "../components/Overview/FavoritesOverview";
 
 const Favorites = () => {
-  return <div>Favorites</div>;
+  return (
+    <>
+      <FavoritesIntroduction />
+      <FavoritesOverview />
+    </>
+  );
 };
 
 export default Favorites;

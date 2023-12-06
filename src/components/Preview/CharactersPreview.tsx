@@ -1,4 +1,4 @@
-import Search from "../Search/Search";
+import Search from "../SearchWithFilter/SearchWithFilter";
 import styles from "./CharactersPreview.module.scss";
 import Title from "../Title/Title";
 import CardCharacter from "../Cards/CardCharacter";
@@ -13,8 +13,6 @@ const CharactersPreview = () => {
   );
   return (
     <section className={`${styles.charactersPreview} container`}>
-      <Search />
-
       <Title type="primary" label="Ver todos" to="characters/1">
         Personagens
       </Title>
