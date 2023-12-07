@@ -5,7 +5,7 @@
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
-    margin-bottom: 10px;
+    margin-bottom: 70px;
 
     .input {
       display: flex;
@@ -26,13 +26,12 @@
         }
       }
 
-      button {
+      .searchIcon {
         border: none;
         background-color: transparent;
         position: absolute;
         right: 16px;
         top: 8px;
-        cursor: pointer;
 
         svg {
           fill: var(--dark-gray-color);
@@ -70,5 +69,9 @@
         flex-direction: column;
       }
     }
+  }
+
+  .charactersResult {
+    color: var(--dark-gray-color);
   }
 }

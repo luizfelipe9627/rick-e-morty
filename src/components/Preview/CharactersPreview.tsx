@@ -10,6 +10,7 @@ const CharactersPreview = () => {
   const characters = useFetch<CharacterProps[]>(
     `https://rickandmortyapi.com/api/character/[${randomNumbers.join(",")}]`,
   );
+  
   return (
     <div className={`${styles.charactersPreview} container`}>
       <Title type="primary" label="Ver todos" to="characters/1">

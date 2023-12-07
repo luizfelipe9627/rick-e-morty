@@ -6,8 +6,8 @@ import Smiley from "../components/Svg/Smiley";
 import useTheme from "./useTheme";
 import styles from "./useFilter.module.scss";
 
-const useFilter = () => {
-  const [activeFilter, setActiveFilter] = React.useState("");
+const useFilter = (active?: string) => {
+  const [activeFilter, setActiveFilter] = React.useState(`${active || ""}`);
   const [theme] = useTheme();
 
   const handleClick = (filterValue: string) => {
