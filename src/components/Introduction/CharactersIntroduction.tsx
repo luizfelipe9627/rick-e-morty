@@ -25,6 +25,12 @@ const CharactersIntroduction = () => {
     `https://rickandmortyapi.com/api/character/${id}`,
   );
 
+  const originUrl = character.data?.origin.url;
+  const idOrigin = originUrl?.split("/")[originUrl.split("/").length - 1];
+
+  const locationUrl = character.data?.location.url;
+  const idLocation = locationUrl?.split("/")[locationUrl.split("/").length - 1];
+
   React.useEffect(() => {
     document.body.classList.toggle("dark", theme === "dark");
     localStorage.setItem("theme", theme);
@@ -92,19 +98,20 @@ const CharactersIntroduction = () => {
                   </div>
 
                   <div className={styles.location}>
-                    {character.data?.origin.name !== "unknown" && (
-                      <>
-                        <CardLocation
-                          id={character.data.id}
-                          type="Planet"
-                          name={character.data?.origin.name}
-                        />
-                        <CardLocation
-                          id={character.data.id}
-                          type=""
-                          name={character.data.location.name}
-                        />
-                      </>
+                    {idOrigin && (
+                      <CardLocation
+                        id={idOrigin ? Number(idOrigin) : 0}
+                        type="Planet"
+                        name={character.data?.origin.name}
+                      />
+                    )}
+
+                    {idLocation && (
+                      <CardLocation
+                        id={idLocation ? Number(idLocation) : 0}
+                        type=""
+                        name={character.data.location.name}
+                      />
                     )}
                   </div>
                 </div>

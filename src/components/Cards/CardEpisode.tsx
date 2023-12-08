@@ -21,7 +21,7 @@ const CardEpisode = ({ id, name, episode }: CardEpisodeProps) => {
 
   const { isCardClicked, handleCardClick } = useViewed({
     id: id,
-    localStorageName: "clickedEpisodes",
+    localStorageName: "viewedsEpisodes",
   });
 
   return (

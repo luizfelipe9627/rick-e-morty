@@ -22,7 +22,7 @@ const CardLocation = ({ id, name, type }: LocationProps) => {
 
   const { isCardClicked, handleCardClick } = useViewed({
     id: id,
-    localStorageName: "clickedLocations",
+    localStorageName: "viewedsLocations",
   });
 
   return (

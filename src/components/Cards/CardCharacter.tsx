@@ -34,7 +34,7 @@ const CardCharacter = ({
 
   const { isCardClicked, handleCardClick } = useViewed({
     id: id,
-    localStorageName: "clickedCharacters",
+    localStorageName: "viewedsCharacters",
   });
 
   return (

@@ -7,7 +7,6 @@
     .backTop {
       display: flex;
       align-items: center;
-      margin-bottom: 80px;
 
       p {
         color: var(--dark-gray-color);
@@ -37,6 +36,35 @@
     }
   }
 
+  .clearData {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 56px 0 24px 0;
+
+    .options {
+      display: flex;
+      gap: 16px;
+    }
+
+    h1 {
+      font-size: 16px;
+      color: var(--dark-gray-color);
+      margin-bottom: 10px;
+    }
+
+    p {
+      font-size: 14px;
+      color: var(--dark-gray-color);
+      margin: 5px 0;
+
+      &:hover {
+        text-decoration: underline;
+        cursor: pointer;
+      }
+    }
+  }
+
   .bottom {
     display: flex;
     justify-content: space-between;
@@ -51,7 +79,6 @@
 
     .createdBy {
       display: flex;
-      flex-direction: column;
       gap: 10px;
 
       .creator {

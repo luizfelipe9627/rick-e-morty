@@ -6,9 +6,21 @@ import Code from "../../assets/svg/Code.svg";
 import { Link } from "react-router-dom";
 
 const Footer = () => {
-  function handleClick() {
+  const handleClick = () => {
     window.scrollTo(0, 0);
-  }
+  };
+
+  const clearFavorites = () => {
+    localStorage.removeItem("favoritesCharacters");
+    localStorage.removeItem("favoritesEpisodes");
+    localStorage.removeItem("favoritesLocations");
+  };
+
+  const clearViewed = () => {
+    localStorage.removeItem("viewedsCharacters");
+    localStorage.removeItem("viewedsEpisodes");
+    localStorage.removeItem("viewedsLocations");
+  };
 
   return (
     <footer className={styles.footer}>
@@ -29,17 +41,21 @@ const Footer = () => {
           </div>
         </div>
 
+        <div className={styles.clearData}>
+          <div className={styles.title}>
+            <h1>Reset de dados:</h1>
+          </div>
+
+          <div className={styles.options}>
+            <p onClick={clearFavorites}>Limpar favoritados</p>
+            <p onClick={clearViewed}>Limpar visualizados</p>
+          </div>
+        </div>
+
         <div className={styles.bottom}>
           <p className={styles.year}>©2023</p>
 
           <div className={styles.createdBy}>
-            <div className={styles.creator}>
-              <img src={PaintingBoard} alt="Tábua de pintura" />
-              <p className={styles.paragraph}>
-                Layout criado por <a href="https://www.figma.com/@hsousadev" target="_blank">Henrique Souza</a>
-              </p>
-            </div>
-
             <div className={styles.creator}>
               <img src={Code} alt="Código" />
               <p className={styles.paragraph}>
@@ -49,6 +65,16 @@ const Footer = () => {
                   target="_blank"
                 >
                   Luiz Felipe Silva
+                </a>
+              </p>
+            </div>
+
+            <div className={styles.creator}>
+              <img src={PaintingBoard} alt="Tábua de pintura" />
+              <p className={styles.paragraph}>
+                Layout criado por{" "}
+                <a href="https://www.figma.com/@hsousadev" target="_blank">
+                  Henrique Souza
                 </a>
               </p>
             </div>

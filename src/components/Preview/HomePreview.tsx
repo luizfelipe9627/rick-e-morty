@@ -27,7 +27,7 @@ const HomePreview = () => {
   return (
     <section className={styles.homePreview}>
       <div className={`${styles.wrapper} container`}>
-        <form className={styles.form}>
+        <form className={styles.form} onSubmit={(e) => e.preventDefault()}>
           <input
             type="text"
             placeholder="Personagem, episódio, localização..."
@@ -43,19 +43,20 @@ const HomePreview = () => {
             </span>
           )}
 
-          <div className={styles.searchIcon}>
+          <button className={styles.searchIcon}>
             <MagnifyingGlass size="medium" />
-          </div>
+          </button>
         </form>
 
         <div className={styles.filter}>
-          {searchEmpty && (
-            <span className={styles.arrow}>
-              <img src={ArrowRight} alt="Seta para direita" />
-            </span>
-          )}
-
-          <p>Filtrar por:</p>
+          <p className={styles.title}>
+            {searchEmpty && (
+              <span className={styles.arrow}>
+                <img src={ArrowRight} alt="Seta para direita" />
+              </span>
+            )}
+            Filtrar por:
+          </p>
 
           <Filter />
         </div>

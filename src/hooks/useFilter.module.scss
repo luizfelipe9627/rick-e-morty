@@ -3,4 +3,9 @@
   justify-content: end;
   flex-wrap: wrap;
   gap: 8px;
+
+  p {
+    color: var(--dark-gray-color);
+    font-size: 16px;
+  }
 }
