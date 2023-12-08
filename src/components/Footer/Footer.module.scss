@@ -1,8 +1,15 @@
 .footer {
   .top {
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-between;
     user-select: none;
+
+    @media (max-width: 500px) {
+      flex-direction: column;
+      align-items: center;
+      gap: 24px;
+    }
 
     .backTop {
       display: flex;
@@ -45,23 +52,32 @@
     .options {
       display: flex;
       gap: 16px;
+
+      @media (max-width: 330px) {
+        text-align: center;
+      }
     }
 
     h1 {
       font-size: 16px;
       color: var(--dark-gray-color);
-      margin-bottom: 10px;
     }
 
     p {
       font-size: 14px;
       color: var(--dark-gray-color);
-      margin: 5px 0;
 
       &:hover {
         text-decoration: underline;
         cursor: pointer;
       }
+    }
+
+    @media (max-width: 550px) {
+      margin-top: 40px;
+      flex-direction: column;
+      align-items: center;
+      gap: 18px;
     }
   }
 
@@ -75,11 +91,27 @@
     .year {
       color: var(--dark-gray-color);
       font-size: 14px;
+
+      @media (max-width: 750px) {
+        justify-self: center;
+      }
+    }
+
+    @media (max-width: 750px) {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 20px;
+      justify-items: center;
     }
 
     .createdBy {
       display: flex;
       gap: 10px;
+
+      @media (max-width: 750px) {
+        display: grid;
+        grid-template-columns: 1fr;
+      }
 
       .creator {
         display: flex;

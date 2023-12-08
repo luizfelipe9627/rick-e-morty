@@ -8,6 +8,7 @@
     justify-content: space-between;
 
     .content {
+      margin-bottom: 32px;
       .title {
         color: var(--dark-gray-color);
         font-size: 3rem;
@@ -38,6 +39,34 @@
         color: var(--blue1-color);
         font-size: 16px;
         margin-top: 24px;
+      }
+
+      @media (max-width: 768px) {
+        margin-bottom: 32px;
+
+        .title {
+          font-size: 2rem;
+          margin-bottom: 16px;
+        }
+
+        .subtitle {
+          margin-bottom: 32px;
+          max-width: 24ch;
+        }
+
+        .phrase {
+          max-width: 24ch;
+        }
+      }
+    }
+
+    img {
+      width: 50%;
+    }
+
+    @media (max-width: 500px) {
+      img {
+        display: none;
       }
     }
   }

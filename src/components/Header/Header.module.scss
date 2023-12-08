@@ -9,17 +9,6 @@
     align-items: center;
     justify-content: space-between;
 
-    .favorites {
-      display: flex;
-      align-items: center;
-      height: 32px;
-      border-radius: 32px;
-      border: none;
-      padding: 0 4px;
-      background-color: var(--blue1-color);
-      color: var(--white-color);
-    }
-
     @media (max-width: 550px) {
       gap: 16px;
     }
