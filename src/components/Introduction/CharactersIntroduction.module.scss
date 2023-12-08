@@ -91,11 +91,21 @@
   gap: 32px;
 
   @media (max-width: 900px) {
-    justify-content: initial;
+    justify-content: space-between;
+  }
+
+  @media (max-width: 500px) {
+    flex-direction: column;
+    align-items: center;
   }
 
   div {
     max-width: 150px;
+
+    @media (max-width: 900px) {
+      max-width: initial;
+      width: 100%;
+    }
 
     &:nth-child(2) {
       div {

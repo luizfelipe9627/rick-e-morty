@@ -38,7 +38,7 @@
         }
       }
     }
-    
+
     .statistic {
       display: flex;
       align-items: center;
@@ -47,6 +47,28 @@
 
       svg {
         margin-right: 8px;
+      }
+    }
+  }
+}
+
+@media (max-width: 500px) {
+  .wrapper {
+    .infos {
+      flex-direction: column;
+    }
+
+    .statistic {
+      p {
+        font-size: 20px;
+      }
+    }
+
+    .title {
+      h1 {
+        @media (max-width: 500px) {
+          font-size: 38px;
+        }
       }
     }
   }

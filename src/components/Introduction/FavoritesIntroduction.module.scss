@@ -24,4 +24,14 @@
       }
     }
   }
+
+  @media (max-width: 768px) {
+    .wrapper {
+      flex-direction: column;
+
+      .info {
+        margin-bottom: 32px;
+      }
+    }
+  }
 }

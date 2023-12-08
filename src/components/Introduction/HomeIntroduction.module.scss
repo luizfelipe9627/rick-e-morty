@@ -41,22 +41,9 @@
         margin-top: 24px;
       }
 
-      @media (max-width: 768px) {
+      @media (max-width: 600px) {
         margin-bottom: 32px;
-
-        .title {
-          font-size: 2rem;
-          margin-bottom: 16px;
-        }
-
-        .subtitle {
-          margin-bottom: 32px;
-          max-width: 24ch;
-        }
-
-        .phrase {
-          max-width: 24ch;
-        }
+        width: 100%;
       }
     }
 
@@ -64,9 +51,11 @@
       width: 50%;
     }
 
-    @media (max-width: 500px) {
+    @media (max-width: 600px) {
+      flex-direction: column;
+
       img {
-        display: none;
+        width: 100%;
       }
     }
   }

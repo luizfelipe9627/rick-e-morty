@@ -4,10 +4,6 @@
   flex-wrap: wrap;
   gap: 8px;
 
-  @media (max-width: 425px) {
-    justify-content: center;
-  }
-
   p {
     color: var(--dark-gray-color);
     font-size: 16px;

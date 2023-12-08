@@ -51,3 +51,27 @@
     }
   }
 }
+
+@media (max-width: 500px) {
+  .locationsIntroduction {
+    .wrapper {
+      .title {
+        justify-content: space-between;
+
+        h1 {
+          font-size: 38px;
+        }
+      }
+
+      .infos {
+        flex-direction: column;
+      }
+
+      .statistic {
+        p {
+          font-size: 20px;
+        }
+      }
+    }
+  }
+}
