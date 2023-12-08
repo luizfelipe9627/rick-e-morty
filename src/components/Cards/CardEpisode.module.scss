@@ -6,6 +6,20 @@
   padding: 16px;
   border-radius: 16px;
 
+  &.clicked {
+    background-color: var(--bg-clicked);
+
+    a {
+      background-color: var(--blue1-color);
+
+      p,
+      svg {
+        color: var(--white-color);
+        fill: var(--white-color);
+      }
+    }
+  }
+
   .name {
     display: flex;
 

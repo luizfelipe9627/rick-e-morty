@@ -6,6 +6,7 @@ import styles from "./CardLocation.module.scss";
 import Location from "../Svg/Location";
 import Planet from "../Svg/Planet";
 import useFavorite from "../../hooks/useFavorite";
+import useViewed from "../../hooks/useViewed";
 
 interface LocationProps {
   id: number;
@@ -19,8 +20,17 @@ const CardLocation = ({ id, name, type }: LocationProps) => {
     localStorageName: "favoritesLocations",
   });
 
+  const { isCardClicked, handleCardClick } = useViewed({
+    id: id,
+    localStorageName: "clickedLocations",
+  });
+
   return (
-    <div className={styles.cardLocation}>
+    <div
+      className={`${styles.cardLocation} ${
+        isCardClicked ? styles.clicked : ""
+      }`}
+    >
       <span className={styles.icon}>
         {type !== "Planet" ? <Location size="big" /> : <Planet size="big" />}
       </span>
@@ -31,7 +41,11 @@ const CardLocation = ({ id, name, type }: LocationProps) => {
       </div>
 
       <div className={styles.wrapper}>
-        <Label componentSvg={<Info />} toLink={`locations/${id}`}>
+        <Label
+          componentSvg={<Info />}
+          toLink={`locations/${id}`}
+          onClick={handleCardClick}
+        >
           Saiba mais
         </Label>
         <Heart size="medium" fill={isHeartFilled} onClick={toggleFavorite} />

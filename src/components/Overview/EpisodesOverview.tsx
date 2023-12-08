@@ -13,7 +13,7 @@ const EpisodesOverview = () => {
 
   const pages = episodesPages.data?.info.pages || 1;
 
-  const { page, controls } = usePagination(1, pages);
+  const { page, Controls } = usePagination(1, pages);
 
   const episodes = useFetch<EpisodeProps>(
     `https://rickandmortyapi.com/api/episode?page=${page}`,
@@ -40,7 +40,7 @@ const EpisodesOverview = () => {
             ))}
       </div>
 
-      {controls}
+      <Controls />
     </section>
   );
 };

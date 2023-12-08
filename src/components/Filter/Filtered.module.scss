@@ -1,0 +1,46 @@
+.cardsCharacters,
+.cardsEpisodes {
+  display: grid;
+  gap: 16px;
+  grid-template-columns: repeat(4, 1fr);
+
+  p {
+    color: var(--dark-gray-color);
+  }
+
+  @media (max-width: 1024px) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  @media (max-width: 768px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @media (max-width: 425px) {
+    grid-template-columns: repeat(1, 1fr);
+  }
+}
+
+.cardsLocations {
+  display: grid;
+  gap: 16px;
+  grid-template-columns: repeat(6, 1fr);
+
+  @media (max-width: 1200px) {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  @media (max-width: 768px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @media (max-width: 425px) {
+    grid-template-columns: repeat(1, 1fr);
+  }
+}
+
+.title {
+  font-size: 32px;
+  font-weight: 700;
+  margin-bottom: 16px;
+}

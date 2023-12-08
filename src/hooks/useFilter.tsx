@@ -8,7 +8,7 @@ import styles from "./useFilter.module.scss";
 
 const useFilter = (active?: string) => {
   const [activeFilter, setActiveFilter] = React.useState(`${active || ""}`);
-  const [theme] = useTheme();
+  const { theme } = useTheme();
 
   const handleClick = (filterValue: string) => {
     setActiveFilter((prevFilter) =>

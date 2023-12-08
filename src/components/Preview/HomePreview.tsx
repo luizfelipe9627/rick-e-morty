@@ -5,17 +5,29 @@ import LocationsPreview from "./LocationsPreview";
 import useFilter from "../../hooks/useFilter";
 import MagnifyingGlass from "../Svg/MagnifyingGlass";
 import styles from "./HomePreview.module.scss";
-import Characters from "../Characters/Characters";
+import FilteredCharacters from "../Filter/FilteredCharacters";
+import FilteredEpisodes from "../Filter/FilteredEpisodes";
+import ArrowRight from "../../assets/svg/ArrowRight.svg";
+import FilteredLocations from "../Filter/FilteredLocations";
+import ExclamationTriangle from "../../assets/svg/ExclamationTriangle.svg";
 
 const HomePreview = () => {
   const { activeFilter, Filter } = useFilter();
   const [inputValue, setInputValue] = React.useState("");
+  const [searchEmpty, setSearchEmpty] = React.useState(false);
 
-  console.log(activeFilter);
+  React.useEffect(() => {
+    if (activeFilter === "" && inputValue !== "") {
+      setSearchEmpty(true);
+    } else {
+      setSearchEmpty(false);
+    }
+  }, [activeFilter, inputValue]);
+
   return (
     <section className={styles.homePreview}>
       <div className={`${styles.wrapper} container`}>
-        <form className={styles.input}>
+        <form className={styles.form}>
           <input
             type="text"
             placeholder="Personagem, episódio, localização..."
@@ -23,27 +35,81 @@ const HomePreview = () => {
             onChange={(e) => setInputValue(e.target.value)}
             required
           />
+
+          {searchEmpty && (
+            <span className={styles.filterEmpty}>
+              <img src={ExclamationTriangle} alt="Triângulo  de Exclamação" />
+              Escolha o filtro.
+            </span>
+          )}
+
           <div className={styles.searchIcon}>
             <MagnifyingGlass size="medium" />
           </div>
         </form>
 
         <div className={styles.filter}>
+          {searchEmpty && (
+            <span className={styles.arrow}>
+              <img src={ArrowRight} alt="Seta para direita" />
+            </span>
+          )}
+
           <p>Filtrar por:</p>
 
           <Filter />
         </div>
       </div>
 
-      {activeFilter === "characters" && (
-        <div className={`${styles.charactersResult} container`}>
-          {inputValue === "" ? (
-            <h1>Digite o nome do personagem.</h1>
-          ) : (
-            <Characters inputValue={inputValue} />
-          )}
-        </div>
-      )}
+      <div className={`${styles.charactersResult} container`}>
+        {activeFilter === "characters" && (
+          <>
+            {inputValue === "" ? (
+              <>
+                <h1 className={styles.title}>Digite o nome do personagem.</h1>
+                <p className={styles.paragraph}>
+                  Ou para retornar às categorias iniciais, basta clicar
+                  novamente no filtro "Personagens".
+                </p>
+              </>
+            ) : (
+              <FilteredCharacters inputValue={inputValue} />
+            )}
+          </>
+        )}
+
+        {activeFilter === "episodes" && (
+          <>
+            {inputValue === "" ? (
+              <>
+                <h1 className={styles.title}>Digite o nome do episódio.</h1>
+                <p className={styles.paragraph}>
+                  Ou para retornar às categorias iniciais, basta clicar
+                  novamente no filtro "Episódios".
+                </p>
+              </>
+            ) : (
+              <FilteredEpisodes inputValue={inputValue} />
+            )}
+          </>
+        )}
+
+        {activeFilter === "locations" && (
+          <>
+            {inputValue === "" ? (
+              <>
+                <h1 className={styles.title}>Digite o nome da localização.</h1>
+                <p className={styles.paragraph}>
+                  Ou para retornar às categorias iniciais, basta clicar
+                  novamente no filtro "Localizações".
+                </p>
+              </>
+            ) : (
+              <FilteredLocations inputValue={inputValue} />
+            )}
+          </>
+        )}
+      </div>
 
       {activeFilter === "" && (
         <>

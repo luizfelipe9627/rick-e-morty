@@ -12,6 +12,10 @@
 
   a {
     background-color: var(--button-ver-todos);
+
+    &:hover {
+      background-color: var(--gray-color);
+    }
   }
 }
 

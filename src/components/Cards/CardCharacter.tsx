@@ -1,3 +1,4 @@
+import React from "react";
 import styles from "./CardCharacter.module.scss";
 import Label from "../Button/Label";
 import Alien from "../Svg/Alien";
@@ -7,6 +8,7 @@ import Info from "../Svg/Info";
 import Pulse from "../Svg/Pulse";
 import "react-loading-skeleton/dist/skeleton.css";
 import useFavorite from "../../hooks/useFavorite";
+import useViewed from "../../hooks/useViewed";
 
 interface CardCharacterProps {
   id: number;
@@ -30,8 +32,18 @@ const CardCharacter = ({
     localStorageName: "favoritesCharacters",
   });
 
+  const { isCardClicked, handleCardClick } = useViewed({
+    id: id,
+    localStorageName: "clickedCharacters",
+  });
+
   return (
-    <div className={styles.cardCharacter} key={id}>
+    <div
+      className={`${styles.cardCharacter} ${
+        isCardClicked ? styles.clicked : ""
+      }`}
+      key={id}
+    >
       <div className={styles.photo}>
         <img src={image} alt={name} />
       </div>
@@ -60,7 +72,11 @@ const CardCharacter = ({
         </div>
 
         <span className={styles.saibaMais}>
-          <Label toLink={`characters/${id}`} componentSvg={<Info />}>
+          <Label
+            toLink={`characters/${id}`}
+            componentSvg={<Info />}
+            onClick={handleCardClick}
+          >
             Saiba mais
           </Label>
         </span>

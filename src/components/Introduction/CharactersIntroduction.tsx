@@ -14,13 +14,12 @@ import useFavorite from "../../hooks/useFavorite";
 
 const CharactersIntroduction = () => {
   const { id } = useParams();
-  const [theme] = useTheme();
+  const { theme } = useTheme();
 
   const { checkIfFavorite, toggleFavorite } = useFavorite({
     id: Number(id),
     localStorageName: "favoritesCharacters",
   });
-
 
   const character = useFetch<CharacterProps>(
     `https://rickandmortyapi.com/api/character/${id}`,
@@ -48,7 +47,11 @@ const CharactersIntroduction = () => {
                 <div className={styles.content}>
                   <div className={styles.name}>
                     <h1>{character.data.name}</h1>
-                    <Heart size="huge" fill={checkIfFavorite()} onClick={toggleFavorite}/>
+                    <Heart
+                      size="huge"
+                      fill={checkIfFavorite()}
+                      onClick={toggleFavorite}
+                    />
                   </div>
 
                   <div className={styles.episode}>

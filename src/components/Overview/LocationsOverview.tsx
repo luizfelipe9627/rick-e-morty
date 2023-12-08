@@ -13,7 +13,7 @@ const LocationOverview = () => {
 
   const pages = locationsPages.data?.info.pages || 1;
 
-  const { page, controls } = usePagination(1, pages);
+  const { page, Controls } = usePagination(1, pages);
 
   const locations = useFetch<LocationProps>(
     `https://rickandmortyapi.com/api/location?page=${page}`,
@@ -40,7 +40,7 @@ const LocationOverview = () => {
             ))}
       </div>
 
-      {controls}
+      <Controls />
     </section>
   );
 };

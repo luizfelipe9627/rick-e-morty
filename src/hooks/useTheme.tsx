@@ -30,7 +30,7 @@ const useTheme = () => {
     };
   }, []);
 
-  return [theme, updateTheme] as const;
+  return { theme, updateTheme };
 };
 
 export default useTheme;

@@ -5,7 +5,7 @@ import Header from "./components/Header/Header";
 import useTheme from "./hooks/useTheme";
 
 function App() {
-  const [theme] = useTheme();
+  const { theme } = useTheme();
 
   if (theme) {
     const isDarkTheme = theme === "dark";

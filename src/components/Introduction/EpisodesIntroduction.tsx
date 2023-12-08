@@ -12,7 +12,7 @@ import SkeletonEpisode from "../Skeleton/SkeletonEpisode";
 import useFavorite from "../../hooks/useFavorite";
 
 const EpisodesIntroduction = () => {
-  const [theme] = useTheme();
+  const { theme } = useTheme();
   const { id } = useParams();
 
   const { checkIfFavorite, toggleFavorite } = useFavorite({

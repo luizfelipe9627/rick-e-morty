@@ -7,23 +7,35 @@
     flex-wrap: wrap;
     margin-bottom: 70px;
 
-    .input {
+    .form {
       display: flex;
+      flex-direction: column;
       position: relative;
       width: 405px;
 
       input {
         width: 405px;
         background-color: var(--black1-color);
-        padding: 16px 64px 16px 12px;
+        padding: 16px;
         border-radius: 32px;
         border: 1px solid #313234;
-        color: var(--gray-color);
         font-size: 16px;
+        color: var(--dark-gray-color);
 
         &::placeholder {
           color: var(--gray-color);
         }
+      }
+
+      .filterEmpty {
+        display: flex;
+        justify-content: end;
+        font-weight: 700;
+        letter-spacing: 0.5px;
+        gap: 8px;
+        color: var(--blue1-color);
+        font-size: 14px;
+        margin-top: 8px;
       }
 
       .searchIcon {
@@ -42,7 +54,7 @@
     @media (max-width: 1200px) {
       justify-content: center;
 
-      .input {
+      .form {
         width: 100%;
         margin-bottom: 12px;
         flex-wrap: wrap;
@@ -60,6 +72,10 @@
       align-items: center;
       gap: 8px;
 
+      .arrow {
+        animation: moveArrow 1.5s linear infinite;
+      }
+
       p {
         color: var(--dark-gray-color);
         font-size: 16px;
@@ -73,5 +89,23 @@
 
   .charactersResult {
     color: var(--dark-gray-color);
+
+    .title {
+      font-size: 32px;
+      font-weight: 700;
+      margin-bottom: 16px;
+    }
+  }
+}
+
+@keyframes moveArrow {
+  0% {
+    transform: translateX(0);
+  }
+  50% {
+    transform: translateX(8px);
+  }
+  100% {
+    transform: translateX(0);
   }
 }

@@ -14,6 +14,9 @@ button.label {
 
 a.label,
 button.label {
+  background-color: var(--bg-saiba-mais);
+
+  
   &:hover {
     background-color: #11b0c8;
     color: #fff;

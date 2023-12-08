@@ -1,14 +1,14 @@
 import React from "react";
-import styles from "./Characters.module.scss";
+import styles from "./Filtered.module.scss";
 import CardCharacter from "../Cards/CardCharacter";
 import useFetch from "../../hooks/useFetch";
 import SkeletonCardCharacter from "../Skeleton/SkeletonCardCharacter";
 
-interface CharactersProps {
+interface FilteredCharactersProps {
   inputValue: string;
 }
 
-const Characters = ({ inputValue }: CharactersProps) => {
+const FilteredCharacters = ({ inputValue }: FilteredCharactersProps) => {
   const [page, setPage] = React.useState(1);
   const [charactersList, setCharactersList] = React.useState<CharacterProps[]>(
     [],
@@ -33,19 +33,21 @@ const Characters = ({ inputValue }: CharactersProps) => {
     }
   }, [page, totalPages]);
 
-  // Filtra os personagens com base no inputValue
   const filteredCharacters = charactersList.filter((character) =>
-    character.name.toLowerCase().includes(inputValue.toLowerCase()),
+    character.name.toLowerCase().includes(inputValue.trim().toLowerCase()),
   );
 
-  return (
-    <div className={`${styles.characters} container`}>
-      <div className={styles.cards}>
-        {characters.loading
+  const isLastPage = page === totalPages;
+
+  return filteredCharacters.length > 0 ? (
+    <div className="container">
+      <div className={styles.cardsCharacters}>
+        {!isLastPage
           ? Array.from({ length: 20 }).map((_, index) => (
               <SkeletonCardCharacter key={index} />
             ))
-          : filteredCharacters.map((character: CharacterProps) => (
+          : isLastPage &&
+            filteredCharacters.map((character: CharacterProps) => (
               <CardCharacter
                 key={character.id}
                 id={character.id}
@@ -58,7 +60,15 @@ const Characters = ({ inputValue }: CharactersProps) => {
             ))}
       </div>
     </div>
+  ) : (
+    <>
+      <h1 className={styles.title}>Nenhum personagem encontrado.</h1>
+      <p>
+        Para retornar às categorias iniciais, basta clicar novamente no filtro
+        "Personagens".
+      </p>
+    </>
   );
 };
 
-export default Characters;
+export default FilteredCharacters;

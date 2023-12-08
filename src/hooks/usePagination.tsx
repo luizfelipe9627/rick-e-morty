@@ -9,7 +9,7 @@ interface PaginationControls {
   handleNextPage: () => void;
   handlePreviousPage: () => void;
   renderPageButtons: () => JSX.Element[];
-  controls: JSX.Element;
+  Controls: React.FC;
 }
 
 const usePagination = (
@@ -81,28 +81,30 @@ const usePagination = (
     return buttons;
   };
 
-  const controls = (
-    <div className={styles.controls} ref={containerControls}>
-      <button
-        className={styles.previous}
-        onClick={handlePreviousPage}
-        disabled={visibleButtons <= 1}
-      >
-        <ArrowX size="medium" direction="left" />
-      </button>
+  const Controls: React.FC = () => {
+    return (
+      <div className={styles.controls} ref={containerControls}>
+        <button
+          className={styles.previous}
+          onClick={handlePreviousPage}
+          disabled={visibleButtons <= 1}
+        >
+          <ArrowX size="medium" direction="left" />
+        </button>
 
-      <div className={styles.numbers}>{renderPageButtons()}</div>
+        <div className={styles.numbers}>{renderPageButtons()}</div>
 
-      <button
-        className={styles.next}
-        onClick={handleNextPage}
-        disabled={visibleButtons + maxVisibleButtons > totalPages}
-        ref={nextButton}
-      >
-        <ArrowX size="medium" direction="right" />
-      </button>
-    </div>
-  );
+        <button
+          className={styles.next}
+          onClick={handleNextPage}
+          disabled={visibleButtons + maxVisibleButtons > totalPages}
+          ref={nextButton}
+        >
+          <ArrowX size="medium" direction="right" />
+        </button>
+      </div>
+    );
+  };
 
   return {
     page,
@@ -111,7 +113,7 @@ const usePagination = (
     handleNextPage,
     handlePreviousPage,
     renderPageButtons,
-    controls,
+    Controls,
   };
 };
 

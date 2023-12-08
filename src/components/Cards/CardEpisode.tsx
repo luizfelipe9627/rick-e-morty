@@ -5,6 +5,7 @@ import Heart from "../Svg/Heart";
 import Play from "../Svg/Play";
 import Info from "../Svg/Info";
 import useFavorite from "../../hooks/useFavorite";
+import useViewed from "../../hooks/useViewed";
 
 interface CardEpisodeProps {
   id: number;
@@ -18,8 +19,15 @@ const CardEpisode = ({ id, name, episode }: CardEpisodeProps) => {
     localStorageName: "favoritesEpisodes",
   });
 
+  const { isCardClicked, handleCardClick } = useViewed({
+    id: id,
+    localStorageName: "clickedEpisodes",
+  });
+
   return (
-    <div className={styles.cardEpisode}>
+    <div
+      className={`${styles.cardEpisode} ${isCardClicked ? styles.clicked : ""}`}
+    >
       <div className={styles.name}>
         <Play size="medium" />
         <p>
@@ -28,7 +36,11 @@ const CardEpisode = ({ id, name, episode }: CardEpisodeProps) => {
       </div>
 
       <span className={styles.saibaMais}>
-        <Label toLink={`episodes/${id}`} componentSvg={<Info />}>
+        <Label
+          toLink={`episodes/${id}`}
+          componentSvg={<Info />}
+          onClick={handleCardClick}
+        >
           Saiba mais
         </Label>
         <Heart size="medium" fill={isHeartFilled} onClick={toggleFavorite} />

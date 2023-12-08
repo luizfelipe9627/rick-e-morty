@@ -8,6 +8,20 @@
   flex-direction: column;
   justify-content: space-between;
 
+  &.clicked {
+    background-color: var(--bg-clicked);
+
+    a {
+      background-color: var(--blue1-color);
+
+      p,
+      svg {
+        color: var(--white-color);
+        fill: var(--white-color);
+      }
+    }
+  }
+
   .icon {
     position: absolute;
     top: 0px;

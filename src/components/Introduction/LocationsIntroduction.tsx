@@ -11,14 +11,14 @@ import useFavorite from "../../hooks/useFavorite";
 import React from "react";
 
 const LocationsIntroduction = () => {
-  const [theme] = useTheme();
+  const { theme } = useTheme();
   const { id } = useParams();
 
   const { checkIfFavorite, toggleFavorite } = useFavorite({
     id: Number(id),
     localStorageName: "favoritesLocations",
   });
-  
+
   const location = useFetch<LocationProps>(
     `https://rickandmortyapi.com/api/location/${id}`,
   );

@@ -9,15 +9,15 @@ import usePagination from "../../hooks/usePagination";
 import SkeletonCardCharacter from "../../components/Skeleton/SkeletonCardCharacter";
 
 const CharactersOverview = () => {
-  const [theme] = useTheme();
+  const { theme } = useTheme();
 
   const charactersPages = useFetch<CharacterProps>(
     `https://rickandmortyapi.com/api/character`,
   );
 
-  const pages = charactersPages.data?.info.pages || 1;
+  const pages = charactersPages.data?.info.pages;
 
-  const { page, active, controls } = usePagination(1, pages);
+  const { page, active, Controls } = usePagination(1, pages);
 
   const characters = useFetch<CharacterProps>(
     `https://rickandmortyapi.com/api/character?page=${page}`,
@@ -27,15 +27,11 @@ const CharactersOverview = () => {
     document.body.classList.toggle("dark", theme === "dark");
     localStorage.setItem("theme", theme);
   }, [theme]);
-  const charactersRef = React.useRef<HTMLDivElement>(null);
 
   React.useEffect(() => {
     const cards = document.querySelector(`.${styles.cards}`) as HTMLDivElement;
-    const buttonActive = document.querySelector(
-      `.${styles.active}`,
-    ) as HTMLButtonElement;
 
-    if (buttonActive && active === pages) {
+    if (active === pages) {
       cards.style.height = "auto";
     } else {
       cards.style.height = "1640px";
@@ -43,10 +39,7 @@ const CharactersOverview = () => {
   }, [active, page]);
 
   return (
-    <section
-      className={`${styles.charactersOverview} container`}
-      ref={charactersRef}
-    >
+    <section className={`${styles.charactersOverview} container`}>
       <Title
         type="secondary"
         componentSvg={
@@ -78,7 +71,7 @@ const CharactersOverview = () => {
             ))}
       </div>
 
-      {controls}
+      <Controls />
     </section>
   );
 };
