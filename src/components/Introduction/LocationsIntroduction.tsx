@@ -8,7 +8,6 @@ import useTheme from "../../hooks/useTheme";
 import Cube from "../Svg/Cube";
 import SkeletonLocation from "../Skeleton/SkeletonLocation";
 import useFavorite from "../../hooks/useFavorite";
-import React from "react";
 
 const LocationsIntroduction = () => {
   const { theme } = useTheme();

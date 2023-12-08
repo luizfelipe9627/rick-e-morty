@@ -1,4 +1,3 @@
-import React from "react";
 import styles from "./CardCharacter.module.scss";
 import Label from "../Button/Label";
 import Alien from "../Svg/Alien";

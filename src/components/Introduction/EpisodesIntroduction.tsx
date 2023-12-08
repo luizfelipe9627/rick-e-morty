@@ -1,4 +1,3 @@
-import React from "react";
 import styles from "./EpisodesIntroduction.module.scss";
 import Play from "../Svg/Play";
 import useTheme from "../../hooks/useTheme";

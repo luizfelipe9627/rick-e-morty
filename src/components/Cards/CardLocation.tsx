@@ -1,4 +1,3 @@
-import React from "react";
 import Label from "../Button/Label";
 import Info from "../Svg/Info";
 import Heart from "../Svg/Heart";

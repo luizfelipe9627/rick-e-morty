@@ -1,4 +1,3 @@
-import React from "react";
 import styles from "./CardEpisode.module.scss";
 import Label from "../Button/Label";
 import Heart from "../Svg/Heart";
