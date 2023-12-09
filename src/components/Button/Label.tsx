@@ -37,13 +37,11 @@ const Label = ({
 }: LabelProps) => {
   const CustomComponent = toLink ? Link : "button";
 
-  // Estilos do componente(pai) personalizado.
   const labelStyle: React.CSSProperties = {
     backgroundColor,
     ...props,
   };
 
-  // Estilos do parágrafo(filho) personalizado.
   const paragraphStyle: React.CSSProperties = {
     fontSize,
     fontWeight,

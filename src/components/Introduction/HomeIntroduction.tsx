@@ -8,7 +8,6 @@ import Moon from "../Svg/Moon";
 import Sun from "../Svg/Sun";
 
 const HomeIntroduction = () => {
-  // Cria um estado chamado theme e uma função atualizadora chamada setTheme. O valor inicial do estado é o valor do localStorage(caso exista) ou "light"(caso não exista).
   const { theme, updateTheme } = useTheme();
 
   const handleThemeChange = (newTheme: string) => {
