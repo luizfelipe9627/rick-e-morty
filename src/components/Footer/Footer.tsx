@@ -14,12 +14,14 @@ const Footer = () => {
     localStorage.removeItem("favoritesCharacters");
     localStorage.removeItem("favoritesEpisodes");
     localStorage.removeItem("favoritesLocations");
+    window.location.reload();
   };
 
   const clearViewed = () => {
     localStorage.removeItem("viewedsCharacters");
     localStorage.removeItem("viewedsEpisodes");
     localStorage.removeItem("viewedsLocations");
+    window.location.reload();
   };
 
   return (
