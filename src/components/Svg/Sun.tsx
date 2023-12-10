@@ -6,7 +6,7 @@ interface SunProps {
 const Sun = ({ color, size }: SunProps) => {
   const commonProps = {
     xmlns: "http://www.w3.org/2000/svg",
-    fill: color ? color : "var(--dark-gray-color)",
+    fill: color ? color : "var(--color11)",
   };
 
   const mediumProps = {

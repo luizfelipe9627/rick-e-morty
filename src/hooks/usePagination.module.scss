@@ -11,7 +11,7 @@
 
     &:hover {
       path {
-        stroke: var(--blue1-color);
+        stroke: var(--color8);
       }
     }
 
@@ -30,14 +30,14 @@
 
     .active {
       border: none;
-      background-color: var(--blue1-color);
-      color: var(--white-color);
+      background-color: var(--color8);
+      color: #ffffff;
     }
 
     button {
       background-color: transparent;
-      border: 1px solid var(--dark-gray-color);
-      color: var(--dark-gray-color);
+      border: 1px solid var(--color11);
+      color: var(--color11);
       border-radius: 50%;
       width: 47px;
       height: 47px;
@@ -46,7 +46,7 @@
 
       &:hover {
         background-color: #11b0c8;
-        color: var(--white-color);
+        color: #ffffff;
         border: none;
       }
     }
@@ -56,7 +56,7 @@
   .next {
     cursor: pointer;
     path {
-      stroke: var(--dark-gray-color);
+      stroke: var(--color11);
     }
   }
 }

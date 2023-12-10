@@ -1,24 +1,24 @@
 button.label {
-  background-color: var(--bg-color3);
+  background-color: var(--color5);
 
   &:hover {
     p {
-      color: var(--white-color);
+      color: #ffffff;
     }
 
     svg {
-      fill: var(--white-color);
+      fill: #ffffff;
     }
   }
 }
 
 a.label,
 button.label {
-  background-color: var(--bg-saiba-mais);
+  background-color: var(--color6);
 
   &:hover {
     background-color: #11b0c8;
-    color: var(--white-color);
+    color: #ffffff;
   }
 }
 
@@ -31,7 +31,7 @@ button.label {
   cursor: pointer;
 
   p {
-    color: var(--dark-gray-color);
+    color: var(--color11);
     font-size: 0.875rem;
   }
 

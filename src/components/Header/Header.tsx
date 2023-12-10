@@ -12,7 +12,7 @@ const Header = () => {
     <header
       className={`${styles.header}`}
       style={{
-        backgroundColor: isRootPath ? "var(--bg-color)" : "var(--bg-color4)",
+        backgroundColor: isRootPath ? "var(--color3)" : "var(--color17)",
       }}
     >
       <div className={`${styles.wrapper} container`}>
@@ -22,8 +22,8 @@ const Header = () => {
 
         <Label
           toLink="favorites"
-          backgroundColor="var(--blue1-color)"
-          color="var(--white-color)"
+          backgroundColor="var(--color8)"
+          color="#ffffff"
           componentSvg={<Heart size="small" color="#fff" />}
         >
           Lista de favoritos

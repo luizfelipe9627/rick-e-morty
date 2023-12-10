@@ -24,7 +24,7 @@ const ArrowX = ({ color, size, direction }: ArrowXProps) => {
           <svg {...mediumProps} aria-label="Seta">
             <path
               d="M11 21L1 11L11 1"
-              stroke={color ? color : "var(--dark-gray-color)"}
+              stroke={color ? color : "var(--color11)"}
               strokeWidth="2"
               strokeLinecap="round"
               strokeLinejoin="round"
@@ -34,7 +34,7 @@ const ArrowX = ({ color, size, direction }: ArrowXProps) => {
           <svg {...mediumProps} aria-label="Seta">
             <path
               d="M1 1L11 11L1 21"
-              stroke={color ? color : "var(--dark-gray-color)"}
+              stroke={color ? color : "var(--color11)"}
               strokeWidth="2"
               strokeLinecap="round"
               strokeLinejoin="round"

@@ -7,13 +7,13 @@
     grid-template-columns: repeat(4, 1fr);
 
     p {
-      color: var(--dark-gray-color);
+      color: var(--color11);
     }
 
     .error {
       font-size: 1.125rem;
       letter-spacing: 0.0625rem;
-      color: var(--text-color-light);
+      color: var(--color15);
     }
 
     @media (max-width: 1024px) {

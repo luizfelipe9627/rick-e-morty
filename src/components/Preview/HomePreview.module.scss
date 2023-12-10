@@ -19,15 +19,15 @@
 
       input {
         width: 25.3125rem;
-        background-color: var(--black1-color);
+        background-color: var(--color7);
         padding: 1rem;
         border-radius: 2rem;
         border: 0.0625rem solid #313234;
         font-size: 1rem;
-        color: var(--dark-gray-color);
+        color: var(--color11);
 
         &::placeholder {
-          color: var(--placeholder-color);
+          color: var(--color14);
         }
 
         @media (max-width: 31.25rem) {
@@ -41,7 +41,7 @@
         font-weight: 700;
         letter-spacing: 0.0313rem;
         gap: 0.5rem;
-        color: var(--blue1-color);
+        color: var(--color8);
         font-size: 0.875rem;
         margin-top: 0.5rem;
       }
@@ -55,7 +55,7 @@
         cursor: pointer;
 
         svg {
-          fill: var(--dark-gray-color);
+          fill: var(--color11);
 
           @media (max-width: 500px) {
             display: none;
@@ -101,7 +101,7 @@
       .title {
         display: flex;
         align-items: center;
-        color: var(--dark-gray-color);
+        color: var(--color11);
         font-size: 1rem;
         gap: 0.5rem;
       }
@@ -109,7 +109,7 @@
   }
 
   .charactersResult {
-    color: var(--dark-gray-color);
+    color: var(--color11);
 
     .title {
       font-size: 2rem;

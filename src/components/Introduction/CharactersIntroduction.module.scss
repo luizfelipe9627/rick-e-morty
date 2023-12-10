@@ -58,7 +58,7 @@
     .name {
       display: flex;
       align-items: center;
-      color: var(--dark-gray-color);
+      color: var(--color11);
       font-size: 1.75rem;
       font-weight: 700;
       gap: 1.25rem;
@@ -72,7 +72,7 @@
     .episode {
       display: flex;
       align-items: center;
-      color: var(--dark-gray-color);
+      color: var(--color11);
       font-size: 1.25rem;
       margin: 2.5rem 0 3.25rem 0;
       gap: 0.5rem;
@@ -81,7 +81,7 @@
     .error {
       font-size: 1.125rem;
       letter-spacing: 0.0625rem;
-      color: var(--text-color-light);
+      color: var(--color15);
     }
   }
 
@@ -102,7 +102,7 @@
         display: flex;
         align-items: center;
 
-        color: var(--dark-gray-color);
+        color: var(--color11);
         font-size: 1.125rem;
       }
 
@@ -139,7 +139,7 @@
         div {
           &:nth-child(2) {
             p {
-              color: var(--dark-gray-color);
+              color: var(--color11);
             }
           }
         }

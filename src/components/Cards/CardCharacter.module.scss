@@ -1,20 +1,20 @@
 .cardCharacter {
-  background-color: var(--bg-card-color);
+  background-color: var(--color1);
   padding: 1rem;
   border-radius: 0.5rem;
   display: flex;
   flex-direction: column;
 
   &.clicked {
-    background-color: var(--bg-clicked);
+    background-color: var(--color2);
 
     a {
-      background-color: var(--blue1-color);
+      background-color: var(--color8);
 
       p,
       svg {
-        color: var(--white-color);
-        fill: var(--white-color);
+        color: #ffffff;
+        fill: #ffffff;
       }
     }
   }
@@ -29,7 +29,7 @@
   }
 
   .infos {
-    color: var(--dark-gray-color);
+    color: var(--color11);
     display: flex;
     flex-direction: column;
     justify-content: space-around;
@@ -46,7 +46,7 @@
       }
 
       .name {
-        color: var(--dark-gray-color);
+        color: var(--color11);
         font-size: 1rem;
         font-weight: 700;
       }
@@ -76,8 +76,8 @@
         &:hover {
           p,
           svg {
-            color: var(--white-color);
-            fill: var(--white-color);
+            color: #ffffff;
+            fill: #ffffff;
           }
         }
       }

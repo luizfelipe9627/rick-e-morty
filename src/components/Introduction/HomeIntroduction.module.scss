@@ -1,6 +1,6 @@
 .homeIntroduction {
-  background-color: var(--bg-color);
-  border-bottom: 0.125rem solid var(--line-blue-color);
+  background-color: var(--color3);
+  border-bottom: 0.125rem solid var(--color13);
   height: calc(100vh - 128px);
 
   @media (max-width: 600px) {
@@ -25,7 +25,7 @@
       }
 
       .title {
-        color: var(--dark-gray-color);
+        color: var(--color11);
         font-size: 48px;
         font-weight: 700;
         line-height: normal;
@@ -33,7 +33,7 @@
         max-width: 12ch;
 
         span {
-          color: var(--blue1-color);
+          color: var(--color8);
           font-weight: 700;
         }
       }
@@ -41,7 +41,7 @@
       .subtitle {
         margin-bottom: 4rem;
         font-size: 16px;
-        color: var(--dark-gray-color);
+        color: var(--color11);
       }
 
       .themes {
@@ -51,7 +51,7 @@
 
       .phrase {
         display: block;
-        color: var(--blue1-color);
+        color: var(--color8);
         font-size: 1rem;
         margin-top: 1.5rem;
       }

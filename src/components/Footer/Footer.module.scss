@@ -16,7 +16,7 @@
       align-items: center;
 
       p {
-        color: var(--dark-gray-color);
+        color: var(--color11);
         font-size: 1rem;
 
         &:hover {
@@ -60,12 +60,12 @@
 
     h1 {
       font-size: 1rem;
-      color: var(--dark-gray-color);
+      color: var(--color11);
     }
 
     p {
       font-size: 0.875rem;
-      color: var(--dark-gray-color);
+      color: var(--color11);
 
       &:hover {
         text-decoration: underline;
@@ -89,7 +89,7 @@
     border-top: 0.125rem solid #d9d9d9;
 
     .year {
-      color: var(--dark-gray-color);
+      color: var(--color11);
       font-size: 0.875rem;
 
       @media (max-width: 750px) {
@@ -118,7 +118,7 @@
         align-items: center;
 
         .paragraph {
-          color: var(--dark-gray-color);
+          color: var(--color11);
           font-size: 0.875rem;
           margin-left: 0.3125rem;
 
