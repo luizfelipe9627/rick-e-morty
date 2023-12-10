@@ -12,7 +12,7 @@ const Header = () => {
     <header
       className={`${styles.header}`}
       style={{
-        backgroundColor: isRootPath ? "var(--color3)" : "var(--color17)",
+        backgroundColor: isRootPath ? "var(--color3)" : "var(--color16)",
       }}
     >
       <div className={`${styles.wrapper} container`}>

@@ -90,9 +90,7 @@
     gap: 1.5rem;
 
     @media (max-width: 500px) {
-      .statistics {
-        flex-direction: column;
-      }
+      flex-direction: column;
     }
 
     div {
