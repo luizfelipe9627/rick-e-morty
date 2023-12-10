@@ -1,5 +1,5 @@
 import styles from "./CardEpisode.module.scss";
-import Label from "../Button/Label";
+import Label from "../Label/Label";
 import Heart from "../Svg/Heart";
 import Play from "../Svg/Play";
 import Info from "../Svg/Info";

@@ -37,7 +37,9 @@ const FilteredEpisodes = ({ inputValue }: FilteredEpisodesProps) => {
 
   const isLastPage = page === totalPages;
 
-  return filteredEpisodes.length > 0 ? (
+  return episodes.error ? (
+    <p className={styles.error}>{episodes.error}</p>
+  ) : filteredEpisodes.length > 0 ? (
     <div className="container">
       <div className={styles.cardsEpisodes}>
         {!isLastPage

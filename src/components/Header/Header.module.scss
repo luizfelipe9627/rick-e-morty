@@ -1,6 +1,5 @@
 .header {
-  background-color: var(--bg-color);
-  padding: 32px 0;
+  padding: 2rem 0;
   border: none;
 
   .wrapper {
@@ -10,7 +9,7 @@
     justify-content: space-between;
 
     @media (max-width: 550px) {
-      gap: 16px;
+      gap: 1rem;
     }
   }
 }

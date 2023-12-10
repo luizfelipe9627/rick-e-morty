@@ -26,7 +26,7 @@ const Footer = () => {
 
   return (
     <footer className={styles.footer}>
-      <div className={`${styles.container} container`}>
+      <div className={`${styles.wrapper} container`}>
         <div className={styles.top}>
           <div className={styles.logo}>
             <Link to="/">

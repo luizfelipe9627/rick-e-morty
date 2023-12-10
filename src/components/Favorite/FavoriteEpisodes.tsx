@@ -26,7 +26,9 @@ const FavoriteEpisodes = () => {
       </Title>
 
       <div className={styles.cards}>
-        {episodes.loading ? (
+        {episodes.error ? (
+          <p className={styles.error}>{episodes.error}</p>
+        ) : episodes.loading ? (
           Array.from({ length: 4 }).map((_, index) => (
             <SkeletonCardEpisode key={index} />
           ))

@@ -2,7 +2,7 @@ import React from "react";
 import HomeImgLight from "../../assets/img/HomeImgLight.png";
 import HomeImgDark from "../../assets/img/HomeImgDark.png";
 import styles from "./HomeIntroduction.module.scss";
-import Label from "../Button/Label";
+import Label from "../Label/Label";
 import useTheme from "../../hooks/useTheme";
 import Moon from "../Svg/Moon";
 import Sun from "../Svg/Sun";
@@ -28,7 +28,7 @@ const HomeIntroduction = () => {
   return (
     <section className={styles.homeIntroduction}>
       <div className={`${styles.wrapper} container`}>
-        <div className={`${styles.content} `}>
+        <div className={styles.content}>
           <p className={styles.title}>
             Saiba tudo em um só <span>lugar.</span>
           </p>
@@ -61,11 +61,13 @@ const HomeIntroduction = () => {
           </p>
         </div>
 
-        <img
-          src={theme === "dark" ? HomeImgDark : HomeImgLight}
-          alt="Foto do Rick e do Morty"
-          className={styles.img}
-        />
+        <div className={styles.img}>
+          <img
+            src={theme === "dark" ? HomeImgDark : HomeImgLight}
+            alt="Foto do Rick e do Morty"
+            className={styles.img}
+          />
+        </div>
       </div>
     </section>
   );

@@ -1,4 +1,4 @@
-import styles from "./EpisodesOverview.module.scss";
+import styles from "./Overview.module.scss";
 import Title from "../Title/Title";
 import Play from "../Svg/Play";
 import useFetch from "../../hooks/useFetch";
@@ -7,15 +7,15 @@ import SkeletonCardEpisode from "../Skeleton/SkeletonCardEpisode";
 import CardEpisode from "../Cards/CardEpisode";
 
 const EpisodesOverview = () => {
-  const episodesPages = useFetch<EpisodeProps>(
+  const episodes = useFetch<EpisodeProps>(
     `https://rickandmortyapi.com/api/episode`,
   );
 
-  const pages = episodesPages.data?.info.pages || 1;
+  const pages = episodes.data?.info.pages;
 
   const { page, Controls } = usePagination(1, pages);
 
-  const episodes = useFetch<EpisodeProps>(
+  const episodesPages = useFetch<EpisodeProps>(
     `https://rickandmortyapi.com/api/episode?page=${page}`,
   );
 
@@ -25,22 +25,27 @@ const EpisodesOverview = () => {
         Mais episódios
       </Title>
 
-      <div className={styles.cards}>
-        {episodes.loading
-          ? Array.from({ length: 20 }).map((_, index) => (
-              <SkeletonCardEpisode key={index} />
-            ))
-          : episodes.data?.results?.map((episode: EpisodeProps) => (
-              <CardEpisode
-                key={episode.id}
-                id={episode.id}
-                name={episode.name}
-                episode={episode.episode}
-              />
-            ))}
-      </div>
-
-      <Controls />
+      {episodes.error ? (
+        <p className={styles.error}>{episodes.error}</p>
+      ) : (
+        <>
+          <div className={styles.cards}>
+            {episodesPages.loading
+              ? Array.from({ length: 20 }).map((_, index) => (
+                  <SkeletonCardEpisode key={index} />
+                ))
+              : episodesPages.data?.results?.map((episode: EpisodeProps) => (
+                  <CardEpisode
+                    key={episode.id}
+                    id={episode.id}
+                    name={episode.name}
+                    episode={episode.episode}
+                  />
+                ))}
+          </div>
+          <Controls />
+        </>
+      )}
     </section>
   );
 };

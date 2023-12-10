@@ -1,4 +1,4 @@
-import styles from "./LocationsOverview.module.scss";
+import styles from "./Overview.module.scss";
 import useFetch from "../../hooks/useFetch";
 import usePagination from "../../hooks/usePagination";
 import Title from "../Title/Title";
@@ -7,15 +7,15 @@ import CardLocation from "../Cards/CardLocation";
 import SkeletonCardLocation from "../Skeleton/SkeletonCardLocation";
 
 const LocationOverview = () => {
-  const locationsPages = useFetch<LocationProps>(
+  const locations = useFetch<LocationProps>(
     `https://rickandmortyapi.com/api/location`,
   );
 
-  const pages = locationsPages.data?.info.pages || 1;
+  const pages = locations.data?.info.pages;
 
   const { page, Controls } = usePagination(1, pages);
 
-  const locations = useFetch<LocationProps>(
+  const locationsPages = useFetch<LocationProps>(
     `https://rickandmortyapi.com/api/location?page=${page}`,
   );
 
@@ -25,22 +25,27 @@ const LocationOverview = () => {
         Mais localizações
       </Title>
 
-      <div className={styles.cards}>
-        {locations.loading
-          ? Array.from({ length: 12 }).map((_, index) => (
-              <SkeletonCardLocation key={index} />
-            ))
-          : locations.data?.results?.map((location: LocationProps) => (
-              <CardLocation
-                key={location.id}
-                id={location.id}
-                name={location.name}
-                type={location.type}
-              />
-            ))}
-      </div>
-
-      <Controls />
+      {locations.error ? (
+        <p className={styles.error}>{locations.error}</p>
+      ) : (
+        <>
+          <div className={styles.cards}>
+            {locationsPages.loading
+              ? Array.from({ length: 12 }).map((_, index) => (
+                  <SkeletonCardLocation key={index} />
+                ))
+              : locationsPages.data?.results?.map((location: LocationProps) => (
+                  <CardLocation
+                    key={location.id}
+                    id={location.id}
+                    name={location.name}
+                    type={location.type}
+                  />
+                ))}
+          </div>
+          <Controls />
+        </>
+      )}
     </section>
   );
 };

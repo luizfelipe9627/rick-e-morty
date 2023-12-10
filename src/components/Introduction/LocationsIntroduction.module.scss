@@ -1,19 +1,28 @@
 .locationsIntroduction {
-  border-bottom: 2px solid #11b0c8;
+  border-bottom: 0.125rem solid #11b0c8;
+  height: calc(100vh - 128px);
 
   .wrapper {
-    margin-bottom: 210px;
+    margin-bottom: 13.125rem;
 
     .title {
       display: flex;
       align-items: center;
-      padding: 24px 0;
+      padding: 1.5rem 0;
+
+      @media (max-width: 500px) {
+        justify-content: space-between;
+      }
 
       h1 {
         color: var(--dark-gray-color);
-        font-size: 42px;
+        font-size: 2.625rem;
         font-weight: 700;
-        margin-right: 16px;
+        margin-right: 1rem;
+
+        @media (max-width: 500px) {
+          font-size: 2.375rem;
+        }
       }
 
       svg {
@@ -23,18 +32,22 @@
 
     .infos {
       display: flex;
-      gap: 24px;
-      margin-bottom: 72px;
+      gap: 1.5rem;
+      margin-bottom: 4.5rem;
+
+      @media (max-width: 500px) {
+        flex-direction: column;
+      }
 
       .type,
       .location {
         display: flex;
         align-items: center;
-        font-size: 24px;
+        font-size: 1.5rem;
         color: var(--dark-gray-color);
 
         svg {
-          margin-right: 8px;
+          margin-right: 0.5rem;
         }
       }
     }
@@ -42,36 +55,22 @@
     .statistic {
       display: flex;
       align-items: center;
-      font-size: 24px;
+      font-size: 1.5rem;
       color: var(--dark-gray-color);
 
+      @media (max-width: 500px) {
+        font-size: 1.25rem;
+      }
+
       svg {
-        margin-right: 8px;
+        margin-right: 0.5rem;
       }
     }
-  }
-}
 
-@media (max-width: 500px) {
-  .locationsIntroduction {
-    .wrapper {
-      .title {
-        justify-content: space-between;
-
-        h1 {
-          font-size: 38px;
-        }
-      }
-
-      .infos {
-        flex-direction: column;
-      }
-
-      .statistic {
-        p {
-          font-size: 20px;
-        }
-      }
+    .error {
+      font-size: 1.125rem;
+      letter-spacing: 0.0625rem;
+      color: var(--text-color-light);
     }
   }
 }

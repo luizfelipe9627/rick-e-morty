@@ -1,5 +1,4 @@
 import styles from "./CardCharacter.module.scss";
-import Label from "../Button/Label";
 import Alien from "../Svg/Alien";
 import Planet from "../Svg/Planet";
 import Heart from "../Svg/Heart";
@@ -8,6 +7,7 @@ import Pulse from "../Svg/Pulse";
 import "react-loading-skeleton/dist/skeleton.css";
 import useFavorite from "../../hooks/useFavorite";
 import useViewed from "../../hooks/useViewed";
+import Label from "../Label/Label";
 
 interface CardCharacterProps {
   id: number;

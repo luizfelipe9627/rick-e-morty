@@ -1,5 +1,5 @@
 import React from "react";
-import Label from "../components/Button/Label";
+import Label from "../components/Label/Label";
 import Planet from "../components/Svg/Planet";
 import Play from "../components/Svg/Play";
 import Smiley from "../components/Svg/Smiley";

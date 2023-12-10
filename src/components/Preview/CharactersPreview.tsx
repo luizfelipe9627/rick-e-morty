@@ -1,4 +1,4 @@
-import styles from "./CharactersPreview.module.scss";
+import styles from "./Preview.module.scss";
 import Title from "../Title/Title";
 import CardCharacter from "../Cards/CardCharacter";
 import useFetch from "../../hooks/useFetch";
@@ -10,7 +10,7 @@ const CharactersPreview = () => {
   const characters = useFetch<CharacterProps[]>(
     `https://rickandmortyapi.com/api/character/[${randomNumbers.join(",")}]`,
   );
-  
+
   return (
     <div className={`${styles.charactersPreview} container`}>
       <Title type="primary" label="Ver todos" to="characters/1">
@@ -33,6 +33,7 @@ const CharactersPreview = () => {
                 origin={character.origin.name}
               />
             ))}
+        {characters.error && <p className={styles.error}>{characters.error}</p>}
       </div>
     </div>
   );

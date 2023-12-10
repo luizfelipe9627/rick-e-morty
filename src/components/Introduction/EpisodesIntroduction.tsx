@@ -25,12 +25,12 @@ const EpisodesIntroduction = () => {
 
   return (
     <section className={styles.episodesIntroduction}>
-      {episode.loading ? (
-        <SkeletonEpisode />
-      ) : (
-        episode.data && (
-          <>
-            <div className={`${styles.wrapper} container`}>
+      <div className={`${styles.wrapper} container`}>
+        {episode.loading ? (
+          <SkeletonEpisode />
+        ) : (
+          episode.data && (
+            <>
               <span className={styles.icon}>
                 <Play size="veryHuge" />
               </span>
@@ -70,10 +70,11 @@ const EpisodesIntroduction = () => {
                   participaram deste episódio
                 </p>
               </div>
-            </div>
-          </>
-        )
-      )}
+            </>
+          )
+        )}
+        {episode.error && <p className={styles.error}>{episode.error}</p>}
+      </div>
     </section>
   );
 };

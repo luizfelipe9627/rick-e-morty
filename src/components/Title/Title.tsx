@@ -1,6 +1,6 @@
 import React from "react";
 import styles from "./Title.module.scss";
-import Label from "../Button/Label";
+import Label from "../Label/Label";
 import SquaresFour from "../../assets/svg/SquaresFour.svg";
 
 interface TitleProps {
@@ -11,13 +11,7 @@ interface TitleProps {
   componentSvg?: React.ReactNode;
 }
 
-const Title = ({
-  type,
-  children,
-  label,
-  to,
-  componentSvg,
-}: TitleProps) => {
+const Title = ({ type, children, label, to, componentSvg }: TitleProps) => {
   return type === "primary" ? (
     <div className={styles.titlePrimary}>
       <h1>{children}</h1>

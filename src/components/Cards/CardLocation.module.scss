@@ -1,9 +1,9 @@
 .cardLocation {
   background-color: var(--bg-card-color);
-  padding: 24px 16px 16px;
-  border-radius: 16px;
+  padding: 1.5rem 1rem 1rem;
+  border-radius: 1rem;
   position: relative;
-  margin-top: 20px;
+  margin-top: 1.25rem;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -24,7 +24,7 @@
 
   .icon {
     position: absolute;
-    top: 0px;
+    top: 0rem;
     /* Centraliza na horizontal e vertical */
     left: 50%;
     transform: translate(-50%, -50%);
@@ -34,7 +34,7 @@
     .type,
     .name {
       text-align: center;
-      font-size: 16px;
+      font-size: 1rem;
     }
 
     .type {
@@ -52,7 +52,7 @@
     flex-direction: column;
 
     a {
-      margin: 16px 0 14px 0;
+      margin: 1rem 0 0.875rem 0;
 
       &:hover {
         p,

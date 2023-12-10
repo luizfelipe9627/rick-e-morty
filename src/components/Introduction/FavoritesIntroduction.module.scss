@@ -1,9 +1,19 @@
 .favoritesIntroduction {
-  border-bottom: 2px solid #11b0c8;
+  border-bottom: 0.125rem solid #11b0c8;
+  height: calc(100vh - 128px);
+
+  @media (max-width: 600px) {
+    height: max-content;
+  }
 
   .wrapper {
     display: flex;
     justify-content: space-between;
+    height: 100%;
+
+    @media (max-width: 768px) {
+      flex-direction: column;
+    }
 
     .info {
       max-width: 40ch;
@@ -11,7 +21,7 @@
       h1,
       span {
         color: var(--dark-gray-color);
-        font-size: 48px;
+        font-size: 3rem;
         font-weight: 700;
       }
 
@@ -20,18 +30,12 @@
       }
 
       svg {
-        margin-bottom: 16px;
+        margin-bottom: 1rem;
       }
     }
-  }
 
-  @media (max-width: 768px) {
-    .wrapper {
-      flex-direction: column;
-
-      .info {
-        margin-bottom: 32px;
-      }
+    .img {
+      display: flex;
     }
   }
 }

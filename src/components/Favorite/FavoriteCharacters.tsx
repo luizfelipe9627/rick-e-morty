@@ -26,7 +26,9 @@ const FavoriteCharacters = () => {
       </Title>
 
       <div className={styles.cards}>
-        {characters.loading ? (
+        {characters.error ? (
+          <p className={styles.error}>{characters.error}</p>
+        ) : characters.loading ? (
           Array.from({ length: 8 }).map((_, index) => (
             <SkeletonCardCharacter key={index} />
           ))

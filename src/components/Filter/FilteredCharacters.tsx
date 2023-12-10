@@ -39,7 +39,9 @@ const FilteredCharacters = ({ inputValue }: FilteredCharactersProps) => {
 
   const isLastPage = page === totalPages;
 
-  return filteredCharacters.length > 0 ? (
+  return characters.error ? (
+    <p className={styles.error}>{characters.error}</p>
+  ) : filteredCharacters.length > 0 ? (
     <div className="container">
       <div className={styles.cardsCharacters}>
         {!isLastPage

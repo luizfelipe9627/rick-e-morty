@@ -1,4 +1,4 @@
-import styles from "./FavoritesOverview.module.scss";
+import styles from "./Overview.module.scss";
 import FavoriteCharacters from "../Favorite/FavoriteCharacters";
 import FavoriteEpisodes from "../Favorite/FavoriteEpisodes";
 import FavoriteLocations from "../Favorite/FavoriteLocations";
@@ -6,7 +6,7 @@ import useFilter from "../../hooks/useFilter";
 
 const FavoritesOverview = () => {
   const { activeFilter, Filter } = useFilter();
-  
+
   return (
     <section className={`${styles.favoritesOverview} container`}>
       <Filter />

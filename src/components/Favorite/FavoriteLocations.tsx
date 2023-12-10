@@ -26,7 +26,9 @@ const FavoriteLocations = () => {
       </Title>
 
       <div className={`${styles.cards} ${styles.locations}`}>
-        {locations.loading ? (
+        {locations.error ? (
+          <p className={styles.error}>{locations.error}</p>
+        ) : locations.loading ? (
           Array.from({ length: 5 }).map((_, index) => (
             <SkeletonCardEpisode key={index} />
           ))

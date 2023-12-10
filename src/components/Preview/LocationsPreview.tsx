@@ -3,7 +3,7 @@ import useRandomNumbers from "../../hooks/useRandomNumbers";
 import CardLocation from "../Cards/CardLocation";
 import SkeletonCardLocation from "../Skeleton/SkeletonCardLocation";
 import Title from "../Title/Title";
-import styles from "./LocationsPreview.module.scss";
+import styles from "./Preview.module.scss";
 
 const LocationsPreview = () => {
   const randomNumbers = useRandomNumbers(6, 126);
@@ -12,14 +12,14 @@ const LocationsPreview = () => {
   );
 
   return (
-    <div className={`${styles.locationPreview} container`}>
+    <div className={`${styles.locationsPreview} container`}>
       <Title type="primary" label="Ver todos" to="locations/1">
         Localizações
       </Title>
 
       <div className={styles.cards}>
         {locations.loading
-          ? Array.from({ length: 5 }).map((_, index) => (
+          ? Array.from({ length: 6 }).map((_, index) => (
               <SkeletonCardLocation key={index} />
             ))
           : locations.data?.map((location) => (
@@ -30,6 +30,7 @@ const LocationsPreview = () => {
                 type={location.type}
               />
             ))}
+        {locations.error && <p className={styles.error}>{locations.error}</p>}
       </div>
     </div>
   );

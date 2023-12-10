@@ -1,7 +1,7 @@
 import Logo from "../../assets/svg/LogoHeader.svg";
 import styles from "./Header.module.scss";
 import { Link, useLocation } from "react-router-dom";
-import Label from "../Button/Label";
+import Label from "../Label/Label";
 import Heart from "../Svg/Heart";
 
 const Header = () => {

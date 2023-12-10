@@ -119,6 +119,7 @@ const CharactersIntroduction = () => {
             </>
           )
         )}
+        {character.error && <p className={styles.error}>{character.error}</p>}
       </div>
     </section>
   );

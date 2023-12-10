@@ -1,7 +1,8 @@
 .cardsCharacters,
-.cardsEpisodes {
+.cardsEpisodes,
+.cardsLocations {
   display: grid;
-  gap: 16px;
+  gap: 1rem;
   grid-template-columns: repeat(4, 1fr);
 
   p {
@@ -22,25 +23,21 @@
 }
 
 .cardsLocations {
-  display: grid;
-  gap: 16px;
   grid-template-columns: repeat(6, 1fr);
 
   @media (max-width: 1200px) {
     grid-template-columns: repeat(4, 1fr);
   }
-
-  @media (max-width: 768px) {
-    grid-template-columns: repeat(2, 1fr);
-  }
-
-  @media (max-width: 425px) {
-    grid-template-columns: repeat(1, 1fr);
-  }
 }
 
 .title {
-  font-size: 32px;
+  font-size: 2rem;
   font-weight: 700;
-  margin-bottom: 16px;
+  margin-bottom: 1rem;
+}
+
+.error {
+  font-size: 1.125rem;
+  letter-spacing: 0.0625rem;
+  color: var(--text-color-light);
 }

@@ -37,7 +37,9 @@ const FilteredLocations = ({ inputValue }: FilteredLocationsProps) => {
 
   const isLastPage = page === totalPages;
 
-  return filteredLocations.length > 0 ? (
+  return locations.error ? (
+    <p className={styles.error}>{locations.error}</p>
+  ) : filteredLocations.length > 0 ? (
     <div className="container">
       <div className={styles.cardsLocations}>
         {!isLastPage

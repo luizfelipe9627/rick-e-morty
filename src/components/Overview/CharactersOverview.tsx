@@ -1,7 +1,7 @@
 import useFetch from "../../hooks/useFetch";
 import useTheme from "../../hooks/useTheme";
 import React from "react";
-import styles from "./CharactersOverview.module.scss";
+import styles from "./Overview.module.scss";
 import CardCharacter from "../../components/Cards/CardCharacter";
 import Title from "../../components/Title/Title";
 import Smiley from "../../components/Svg/Smiley";
@@ -11,15 +11,15 @@ import SkeletonCardCharacter from "../../components/Skeleton/SkeletonCardCharact
 const CharactersOverview = () => {
   const { theme } = useTheme();
 
-  const charactersPages = useFetch<CharacterProps>(
+  const characters = useFetch<CharacterProps>(
     `https://rickandmortyapi.com/api/character`,
   );
 
-  const pages = charactersPages.data?.info.pages;
+  const pages = characters.data?.info.pages;
 
   const { page, active, Controls } = usePagination(1, pages);
 
-  const characters = useFetch<CharacterProps>(
+  const charactersPages = useFetch<CharacterProps>(
     `https://rickandmortyapi.com/api/character?page=${page}`,
   );
 
@@ -31,10 +31,12 @@ const CharactersOverview = () => {
   React.useEffect(() => {
     const cards = document.querySelector(`.${styles.cards}`) as HTMLDivElement;
 
-    if (active === pages) {
-      cards.style.height = "auto";
-    } else {
-      cards.style.height = "1640px";
+    if (cards) {
+      if (active === pages) {
+        cards.style.height = "auto";
+      } else {
+        cards.style.height = "1640px";
+      }
     }
   }, [active, page]);
 
@@ -53,25 +55,32 @@ const CharactersOverview = () => {
         Mais personagens
       </Title>
 
-      <div className={styles.cards}>
-        {characters.loading
-          ? Array.from({ length: 20 }).map((_, index) => (
-              <SkeletonCardCharacter key={index} />
-            ))
-          : characters.data?.results?.map((character: CharacterProps) => (
-              <CardCharacter
-                key={character.id}
-                id={character.id}
-                image={character.image}
-                name={character.name}
-                status={character.status}
-                species={character.species}
-                origin={character.origin.name}
-              />
-            ))}
-      </div>
-
-      <Controls />
+      {characters.error ? (
+        <p className={styles.error}>{characters.error}</p>
+      ) : (
+        <>
+          <div className={styles.cards}>
+            {charactersPages.loading
+              ? Array.from({ length: 20 }).map((_, index) => (
+                  <SkeletonCardCharacter key={index} />
+                ))
+              : charactersPages.data?.results?.map(
+                  (character: CharacterProps) => (
+                    <CardCharacter
+                      key={character.id}
+                      id={character.id}
+                      image={character.image}
+                      name={character.name}
+                      status={character.status}
+                      species={character.species}
+                      origin={character.origin.name}
+                    />
+                  ),
+                )}
+          </div>
+          <Controls />
+        </>
+      )}
     </section>
   );
 };

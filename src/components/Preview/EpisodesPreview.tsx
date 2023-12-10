@@ -1,4 +1,4 @@
-import styles from "./EpisodesPreview.module.scss";
+import styles from "./Preview.module.scss";
 import Title from "../Title/Title";
 import CardEpisode from "../Cards/CardEpisode";
 import useFetch from "../../hooks/useFetch";
@@ -36,6 +36,7 @@ const EpisodesPreview = () => {
                 episode={episode.episode}
               />
             ))}
+        {episodes.error && <p className={styles.error}>{episodes.error}</p>}
       </div>
     </div>
   );

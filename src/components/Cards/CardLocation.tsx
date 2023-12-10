@@ -1,4 +1,4 @@
-import Label from "../Button/Label";
+import Label from "../Label/Label";
 import Info from "../Svg/Info";
 import Heart from "../Svg/Heart";
 import styles from "./CardLocation.module.scss";

@@ -24,12 +24,12 @@ const LocationsIntroduction = () => {
 
   return (
     <section className={styles.locationsIntroduction}>
-      {location.loading ? (
-        <SkeletonLocation />
-      ) : (
-        location.data && (
-          <>
-            <div className={`${styles.wrapper} container`}>
+      <div className={`${styles.wrapper} container`}>
+        {location.loading ? (
+          <SkeletonLocation />
+        ) : (
+          location.data && (
+            <>
               <span className={styles.icon}>
                 <Planet size="huge" />
               </span>
@@ -69,10 +69,11 @@ const LocationsIntroduction = () => {
                   localizados aqui
                 </p>
               </div>
-            </div>
-          </>
-        )
-      )}
+            </>
+          )
+        )}
+        {location.error && <p className={styles.error}>{location.error}</p>}
+      </div>
     </section>
   );
 };
