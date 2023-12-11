@@ -9,8 +9,6 @@ import usePagination from "../../hooks/usePagination";
 import SkeletonCardCharacter from "../../components/Skeleton/SkeletonCardCharacter";
 
 const CharactersOverview = () => {
-  const { theme } = useTheme();
-
   const characters = useFetch<CharacterProps>(
     `https://rickandmortyapi.com/api/character`,
   );
@@ -24,18 +22,13 @@ const CharactersOverview = () => {
   );
 
   React.useEffect(() => {
-    document.body.classList.toggle("dark", theme === "dark");
-    localStorage.setItem("theme", theme);
-  }, [theme]);
-
-  React.useEffect(() => {
     const cards = document.querySelector(`.${styles.cards}`) as HTMLDivElement;
 
     if (cards) {
       if (active === pages) {
         cards.style.height = "auto";
       } else {
-        cards.style.height = "1640px";
+        cards.style.height = "102.5rem";
       }
     }
   }, [active, page]);
@@ -45,7 +38,7 @@ const CharactersOverview = () => {
       <Title
         type="secondary"
         componentSvg={
-          theme === "dark" ? (
+          localStorage.getItem("theme") === "dark" ? (
             <Smiley size="big" theme="dark" />
           ) : (
             <Smiley size="big" />

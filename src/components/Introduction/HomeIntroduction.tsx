@@ -3,7 +3,7 @@ import HomeImgLight from "../../assets/img/HomeImgLight.png";
 import HomeImgDark from "../../assets/img/HomeImgDark.png";
 import styles from "./HomeIntroduction.module.scss";
 import Label from "../Label/Label";
-import useTheme from "../../hooks/useTheme";
+import { useTheme } from "../../context/ThemeContext";
 import Moon from "../Svg/Moon";
 import Sun from "../Svg/Sun";
 

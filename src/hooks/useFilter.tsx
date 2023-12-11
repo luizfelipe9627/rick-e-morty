@@ -3,12 +3,10 @@ import Label from "../components/Label/Label";
 import Planet from "../components/Svg/Planet";
 import Play from "../components/Svg/Play";
 import Smiley from "../components/Svg/Smiley";
-import useTheme from "./useTheme";
 import styles from "./useFilter.module.scss";
 
 const useFilter = (active?: string) => {
   const [activeFilter, setActiveFilter] = React.useState(`${active || ""}`);
-  const { theme } = useTheme();
 
   const handleClick = (filterValue: string) => {
     setActiveFilter((prevFilter) =>
@@ -21,7 +19,7 @@ const useFilter = (active?: string) => {
       <div className={styles.filter}>
         <Label
           componentSvg={
-            theme === "dark" ? (
+            localStorage.getItem("theme") === "dark" ? (
               <Smiley size="small" theme="dark" />
             ) : (
               <Smiley size="small" />

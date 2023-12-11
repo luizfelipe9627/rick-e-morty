@@ -4,13 +4,11 @@ import Heart from "../Svg/Heart";
 import Planet from "../Svg/Planet";
 import Smiley from "../Svg/Smiley";
 import styles from "./LocationsIntroduction.module.scss";
-import useTheme from "../../hooks/useTheme";
 import Cube from "../Svg/Cube";
 import SkeletonLocation from "../Skeleton/SkeletonLocation";
 import useFavorite from "../../hooks/useFavorite";
 
 const LocationsIntroduction = () => {
-  const { theme } = useTheme();
   const { id } = useParams();
 
   const { checkIfFavorite, toggleFavorite } = useFavorite({
@@ -56,7 +54,7 @@ const LocationsIntroduction = () => {
               </div>
 
               <div className={styles.statistic}>
-                {theme === "dark" ? (
+                {localStorage.getItem("theme") === "dark" ? (
                   <Smiley size="medium" theme="dark" />
                 ) : (
                   <Smiley size="medium" />

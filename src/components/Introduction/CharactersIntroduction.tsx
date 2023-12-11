@@ -6,15 +6,12 @@ import Gender from "../Svg/Gender";
 import Heart from "../Svg/Heart";
 import Play from "../Svg/Play";
 import Pulse from "../Svg/Pulse";
-import React from "react";
 import { useParams } from "react-router-dom";
 import useFetch from "../../hooks/useFetch";
-import useTheme from "../../hooks/useTheme";
 import useFavorite from "../../hooks/useFavorite";
 
 const CharactersIntroduction = () => {
   const { id } = useParams();
-  const { theme } = useTheme();
 
   const { checkIfFavorite, toggleFavorite } = useFavorite({
     id: Number(id),
@@ -30,11 +27,6 @@ const CharactersIntroduction = () => {
 
   const locationUrl = character.data?.location.url;
   const idLocation = locationUrl?.split("/")[locationUrl.split("/").length - 1];
-
-  React.useEffect(() => {
-    document.body.classList.toggle("dark", theme === "dark");
-    localStorage.setItem("theme", theme);
-  }, [theme]);
 
   return (
     <section className={styles.charactersIntroduction}>

@@ -83,7 +83,7 @@ const usePagination = (
 
   const Controls: React.FC = () => {
     return (
-      <div className={styles.controls} ref={containerControls}>
+      <div className={styles.controls}>
         <button
           className={styles.previous}
           onClick={handlePreviousPage}

@@ -1,6 +1,5 @@
 import styles from "./EpisodesIntroduction.module.scss";
 import Play from "../Svg/Play";
-import useTheme from "../../hooks/useTheme";
 import Heart from "../Svg/Heart";
 import { useParams } from "react-router-dom";
 import useFetch from "../../hooks/useFetch";
@@ -11,7 +10,6 @@ import SkeletonEpisode from "../Skeleton/SkeletonEpisode";
 import useFavorite from "../../hooks/useFavorite";
 
 const EpisodesIntroduction = () => {
-  const { theme } = useTheme();
   const { id } = useParams();
 
   const { checkIfFavorite, toggleFavorite } = useFavorite({
@@ -57,7 +55,7 @@ const EpisodesIntroduction = () => {
               </div>
 
               <div className={styles.statistic}>
-                {theme === "dark" ? (
+                {localStorage.getItem("theme") === "dark" ? (
                   <Smiley size="medium" theme="dark" />
                 ) : (
                   <Smiley size="medium" />

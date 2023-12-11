@@ -1,6 +1,6 @@
 .charactersIntroduction {
   border-bottom: 0.125rem solid #11b0c8;
-  min-height: calc(100vh - 128px);
+  min-height: calc(100vh - 8rem);
 
   @media (max-width: 900px) {
     height: max-content;
