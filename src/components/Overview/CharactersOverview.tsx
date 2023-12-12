@@ -1,5 +1,4 @@
 import useFetch from "../../hooks/useFetch";
-import useTheme from "../../hooks/useTheme";
 import React from "react";
 import styles from "./Overview.module.scss";
 import CardCharacter from "../../components/Cards/CardCharacter";
