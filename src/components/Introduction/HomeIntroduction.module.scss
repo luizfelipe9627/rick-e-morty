@@ -59,6 +59,16 @@
 
     .img {
       height: 100%;
+
+      .homeImgDark,
+      .homeImgLight {
+        display: none;
+        height: 100%;
+
+        &.active {
+          display: flex;
+        }
+      }
     }
   }
 }

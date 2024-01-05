@@ -10,10 +10,6 @@ import Sun from "../Svg/Sun";
 const HomeIntroduction = () => {
   const { theme, updateTheme } = useTheme();
 
-  const handleThemeChange = (newTheme: string) => {
-    updateTheme(newTheme);
-  };
-
   React.useEffect(() => {
     const buttonsTheme = document.querySelectorAll(
       `.${styles.themes} button`,
@@ -23,6 +19,21 @@ const HomeIntroduction = () => {
     document.body.classList.toggle("dark", isDarkTheme);
     buttonsTheme[0]?.classList.toggle("active", isDarkTheme);
     buttonsTheme[1]?.classList.toggle("active", !isDarkTheme);
+
+    const imgDark = document.querySelector(
+      `.${styles.homeImgDark}`,
+    ) as HTMLImageElement;
+    const imgLight = document.querySelector(
+      `.${styles.homeImgLight}`,
+    ) as HTMLImageElement;
+
+    if (theme === "dark") {
+      imgDark.classList.add(styles.active);
+      imgLight.classList.remove(styles.active);
+    } else {
+      imgLight.classList.add(styles.active);
+      imgDark.classList.remove(styles.active);
+    }
   }, [theme]);
 
   return (
@@ -39,7 +50,7 @@ const HomeIntroduction = () => {
           <div className={styles.themes}>
             <Label
               componentSvg={<Moon size="medium" />}
-              onClick={() => handleThemeChange("dark")}
+              onClick={() => updateTheme("dark")}
               className="buttonDark"
             >
               Escuro
@@ -47,7 +58,7 @@ const HomeIntroduction = () => {
 
             <Label
               componentSvg={<Sun size="medium" />}
-              onClick={() => handleThemeChange("light")}
+              onClick={() => updateTheme("light")}
               className="buttonLight"
             >
               Claro
@@ -63,9 +74,14 @@ const HomeIntroduction = () => {
 
         <div className={styles.img}>
           <img
-            src={theme === "dark" ? HomeImgDark : HomeImgLight}
+            src={HomeImgLight}
             alt="Foto do Rick e do Morty"
-            className={styles.img}
+            className={`animeOpacity ${styles.homeImgLight}`}
+          />
+          <img
+            src={HomeImgDark}
+            alt="Foto do Rick e do Morty"
+            className={`animeOpacity ${styles.homeImgDark}`}
           />
         </div>
       </div>
