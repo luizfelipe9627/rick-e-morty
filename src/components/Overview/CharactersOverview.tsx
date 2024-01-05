@@ -6,8 +6,11 @@ import Title from "../../components/Title/Title";
 import Smiley from "../../components/Svg/Smiley";
 import usePagination from "../../hooks/usePagination";
 import SkeletonCardCharacter from "../../components/Skeleton/SkeletonCardCharacter";
+import { useTheme } from "../../context/ThemeContext";
 
 const CharactersOverview = () => {
+  const { theme } = useTheme();
+
   const characters = useFetch<CharacterProps>(
     `https://rickandmortyapi.com/api/character`,
   );
@@ -37,7 +40,7 @@ const CharactersOverview = () => {
       <Title
         type="secondary"
         componentSvg={
-          localStorage.getItem("theme") === "dark" ? (
+          theme === "dark" ? (
             <Smiley size="big" theme="dark" />
           ) : (
             <Smiley size="big" />
